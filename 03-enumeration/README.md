@@ -41,7 +41,7 @@ Which port/service is open?
 
 - **[commands.md](commands.md)** — copy-paste recipes
 - **[walkthroughs.md](walkthroughs.md)** — full multi-step examples
-- Question bank: **[../questions/03-enumeration.md](../questions/03-enumeration.md)** *(coming)*
+- Question bank: **[../questions/by-domain/03-enumeration.md](../questions/by-domain/03-enumeration.md)** *(coming)*
 
 ## 🛠 Tools used in this domain
 

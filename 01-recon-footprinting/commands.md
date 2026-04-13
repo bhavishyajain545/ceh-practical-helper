@@ -76,7 +76,7 @@ theHarvester -d <DOMAIN> -b bing -l 500
 theHarvester -d <DOMAIN> -b crtsh          # SSL cert transparency → subdomains
 ```
 
-→ See [theHarvester.md](../tools/theHarvester.md)
+→ See [theHarvester.md](../tools/theharvester.md)
 
 ## Reverse DNS on a range
 

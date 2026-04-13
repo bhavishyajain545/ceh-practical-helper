@@ -36,7 +36,7 @@ APK file provided?
 
 - **[commands.md](commands.md)** — apktool / jadx / adb recipes
 - **[walkthroughs.md](walkthroughs.md)** — full APK extraction examples
-- Question bank: **[../questions/15-mobile.md](../questions/15-mobile.md)**
+- Question bank: **[../questions/by-domain/15-mobile.md](../questions/by-domain/15-mobile.md)**
 
 ## 🛠 Tools used in this domain
 
@@ -54,4 +54,4 @@ APK file provided?
 - [ ] Read `AndroidManifest.xml` — permissions + exported components
 - [ ] Know where `strings.xml` lives (`res/values/strings.xml`)
 - [ ] Run an APK through MobSF (upload + read report)
-- [ ] Done all questions in [the question bank](../questions/15-mobile.md)
+- [ ] Done all questions in [the question bank](../questions/by-domain/15-mobile.md)

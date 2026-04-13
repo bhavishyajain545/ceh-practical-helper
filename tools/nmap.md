@@ -173,4 +173,4 @@ nmap -sV -p <PORT> <IP>
 
 - [02-scanning domain README](../02-scanning/README.md)
 - [Scanning playbook](../playbooks/scanning-playbook.md)
-- [Scanning question bank](../questions/02-scanning.md)
+- [Scanning question bank](../questions/by-domain/02-scanning.md)

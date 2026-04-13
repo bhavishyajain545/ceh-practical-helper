@@ -159,4 +159,4 @@ unzip hidden.zip
 - [foremost — file recovery from disk / pcap](./foremost.md)
 - [exiftool — metadata first](./exiftool.md)
 - [steghide — LSB stego in JPEG/WAV](./steghide.md)
-- [Forensics question bank](../questions/forensics.md)
+- [Forensics question bank](../questions/by-domain/07-sniffing.md)

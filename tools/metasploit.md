@@ -224,4 +224,4 @@ run post/multi/recon/local_exploit_suggester
 - [nmap](./nmap.md) (feeds `db_nmap`)
 - [john](./john.md) (crack hashes from `hashdump`)
 - [Exploitation playbook](../playbooks/exploitation-playbook.md)
-- [System hacking question bank](../questions/06-system-hacking.md)
+- [System hacking question bank](../questions/by-domain/05-system-hacking.md)

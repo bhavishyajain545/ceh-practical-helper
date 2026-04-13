@@ -167,5 +167,5 @@ aircrack-ng -a 1 -b <BSSID> wep-capture-01.cap
 
 - [wireshark](wireshark.md) — verify `eapol` handshake completeness
 - [bettercap](bettercap.md) — alternative wireless + network attack framework
-- [16-wireless domain README](../16-wireless/README.md)
+- [16-wireless domain README](../14-wireless/README.md)
 - [Wireless playbook](../playbooks/wireless-playbook.md)

@@ -67,10 +67,10 @@
 
 ### Q5 🟡 — Brute force a web login form at `http://10.10.10.25/login.php`
 
-**Category:** HTTP form brute | **Tools:** [hydra](../../tools/hydra.md), [burp](../../tools/burp.md)
+**Category:** HTTP form brute | **Tools:** [hydra](../../tools/hydra.md), [burp](../../tools/burpsuite.md)
 
 **Steps:**
-1. Capture the POST in [burp](../../tools/burp.md) to find field names and failure message.
+1. Capture the POST in [burp](../../tools/burpsuite.md) to find field names and failure message.
 2. Example failure: `Invalid credentials`.
 3. `hydra -l admin -P rockyou.txt 10.10.10.25 http-post-form "/login.php:user=^USER^&pass=^PASS^:Invalid credentials"` ← [why http-post-form](../../tools/hydra.md#http-form)
 
@@ -208,4 +208,4 @@
 - [crackmapexec](../../tools/crackmapexec.md) · [impacket](../../tools/impacket.md) · [evil-winrm](../../tools/evil-winrm.md) · [mimikatz](../../tools/mimikatz.md)
 - [System hacking playbook](../../playbooks/system-hacking-playbook.md)
 - [05-system-hacking README](../../05-system-hacking/README.md)
-- [18-crypto (for cracking dumped hashes)](../../18-crypto/README.md)
+- [18-crypto (for cracking dumped hashes)](../../18-cryptography/README.md)

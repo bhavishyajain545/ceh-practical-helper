@@ -187,5 +187,5 @@
 - [sublist3r reference](../../tools/sublist3r.md)
 - [dnsrecon reference](../../tools/dnsrecon.md)
 - [Recon playbook (decision tree)](../../playbooks/recon-playbook.md)
-- [01-recon README](../../01-recon/README.md)
+- [01-recon README](../../01-recon-footprinting/README.md)
 - [Next: 02-scanning](02-scanning.md)

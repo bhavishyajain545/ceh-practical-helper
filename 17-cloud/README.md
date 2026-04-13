@@ -37,7 +37,7 @@ Bucket / storage target?
 
 - **[commands.md](commands.md)** — aws cli / cloud_enum / s3 recipes
 - **[walkthroughs.md](walkthroughs.md)** — full bucket enum examples
-- Question bank: **[../questions/17-cloud.md](../questions/17-cloud.md)**
+- Question bank: **[../questions/by-domain/17-cloud.md](../questions/by-domain/17-cloud.md)**
 
 ## 🛠 Tools used in this domain
 
@@ -54,4 +54,4 @@ Bucket / storage target?
 - [ ] Know the S3 HTTP URL pattern: `http://<BUCKET>.s3.amazonaws.com/`
 - [ ] Run cloud_enum against a keyword
 - [ ] Know where common creds hide (`~/.aws/credentials`, env vars, `.bash_history`)
-- [ ] Done all questions in [the question bank](../questions/17-cloud.md)
+- [ ] Done all questions in [the question bank](../questions/by-domain/17-cloud.md)

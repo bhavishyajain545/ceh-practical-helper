@@ -43,10 +43,10 @@
 
 ### Q3 🟡 — Replay a captured cookie via Burp Repeater
 
-**Category:** Cookie replay | **Tools:** [burp](../../tools/burp.md)
+**Category:** Cookie replay | **Tools:** [burp](../../tools/burpsuite.md)
 
 **Steps:**
-1. Open [Burp Suite](../../tools/burp.md#repeater) → Proxy → intercept an unauthenticated request to the target.
+1. Open [Burp Suite](../../tools/burpsuite.md#repeater) → Proxy → intercept an unauthenticated request to the target.
 2. Send to Repeater (`Ctrl+R`).
 3. Add header: `Cookie: PHPSESSID=abc123`
 4. `Send` — observe the authenticated response.
@@ -57,7 +57,7 @@
 
 ### Q4 🟡 — Perform a session fixation attack against 10.10.10.20
 
-**Category:** Fixation | **Tools:** [curl](../../tools/curl.md), [burp](../../tools/burp.md)
+**Category:** Fixation | **Tools:** [curl](../../tools/curl.md), [burp](../../tools/burpsuite.md)
 
 **Steps:**
 1. As attacker, visit the login page and receive a session cookie: `curl -c atk.txt http://10.10.10.20/login.php`
@@ -92,10 +92,10 @@
 
 ### Q6 🟢 — Identify the CSRF token field in a POST request captured in Burp
 
-**Category:** CSRF recon | **Tools:** [burp](../../tools/burp.md)
+**Category:** CSRF recon | **Tools:** [burp](../../tools/burpsuite.md)
 
 **Steps:**
-1. In [Burp Proxy](../../tools/burp.md#proxy), capture a form-submit request.
+1. In [Burp Proxy](../../tools/burpsuite.md#proxy), capture a form-submit request.
 2. Inspect the POST body for fields named `csrf_token`, `authenticity_token`, `__RequestVerificationToken`, `_csrf`, `nonce`.
 3. Or check a hidden form field in the prior GET.
 
@@ -105,10 +105,10 @@
 
 ### Q7 🟡 — Generate a CSRF Proof-of-Concept HTML page from a captured request in Burp
 
-**Category:** CSRF PoC | **Tools:** [burp](../../tools/burp.md)
+**Category:** CSRF PoC | **Tools:** [burp](../../tools/burpsuite.md)
 
 **Steps:**
-1. In Burp (Pro), right-click the request → `Engagement tools` → `Generate CSRF PoC`. ← [why](../../tools/burp.md#csrf-poc)
+1. In Burp (Pro), right-click the request → `Engagement tools` → `Generate CSRF PoC`. ← [why](../../tools/burpsuite.md#csrf-poc)
 2. Copy the generated HTML and save as `csrf.html`.
 3. Host it: `python3 -m http.server 8000` and send the victim `http://10.10.10.100:8000/csrf.html`.
 
@@ -120,7 +120,7 @@
 
 ### Q8 🔴 — Hijack a session that uses predictable incrementing session IDs
 
-**Category:** Weak session ID | **Tools:** [burp](../../tools/burp.md), [curl](../../tools/curl.md)
+**Category:** Weak session ID | **Tools:** [burp](../../tools/burpsuite.md), [curl](../../tools/curl.md)
 
 **Steps:**
 1. Log in as attacker → observe your ID (e.g. `SID=1045`).
@@ -141,11 +141,11 @@
 
 ### Q9 🟡 — Use Burp Sequencer to test session token randomness
 
-**Category:** Session strength | **Tools:** [burp](../../tools/burp.md)
+**Category:** Session strength | **Tools:** [burp](../../tools/burpsuite.md)
 
 **Steps:**
 1. Capture a login response containing `Set-Cookie: SID=...`.
-2. Send to [Burp Sequencer](../../tools/burp.md#sequencer).
+2. Send to [Burp Sequencer](../../tools/burpsuite.md#sequencer).
 3. Select the cookie token → `Start live capture` (needs ~200 samples).
 4. Read the entropy estimate in bits.
 
@@ -180,6 +180,6 @@
 
 ## 📌 Quick links
 
-- [burp](../../tools/burp.md) · [ettercap](../../tools/ettercap.md) · [bettercap](../../tools/bettercap.md) · [wireshark](../../tools/wireshark.md) · [curl](../../tools/curl.md)
+- [burp](../../tools/burpsuite.md) · [ettercap](../../tools/ettercap.md) · [bettercap](../../tools/bettercap.md) · [wireshark](../../tools/wireshark.md) · [curl](../../tools/curl.md)
 - [Session hijacking playbook](../../playbooks/session-hijacking-playbook.md)
 - [10-session-hijacking README](../../10-session-hijacking/README.md)

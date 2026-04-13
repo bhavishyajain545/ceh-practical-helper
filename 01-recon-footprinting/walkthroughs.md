@@ -34,7 +34,7 @@ End-to-end examples. Start with a domain, end with an answer.
    ```bash
    sublist3r -d example.com -o subs.txt
    ```
-2. While it runs, try cert transparency via theHarvester ([why crtsh](../tools/theHarvester.md#sources)):
+2. While it runs, try cert transparency via theHarvester ([why crtsh](../tools/theharvester.md#sources)):
    ```bash
    theHarvester -d example.com -b crtsh
    ```

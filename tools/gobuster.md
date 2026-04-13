@@ -139,4 +139,4 @@ gobuster dir -u http://<IP> -w /usr/share/wordlists/dirb/common.txt \
 - [nikto](nikto.md) — baseline web vuln scan
 - [wpscan](wpscan.md) — WordPress-specific
 - [sqlmap](sqlmap.md) — once you find an endpoint with params
-- [05-web-app domain README](../05-web-app/README.md)
+- [05-web-app domain README](../12-web-apps/README.md)

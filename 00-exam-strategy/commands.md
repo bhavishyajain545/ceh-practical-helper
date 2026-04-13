@@ -51,7 +51,7 @@ grep "^[0-9]" quick.txt | tee services.txt
 
 Now jump to the domain README:
 - SMB/SNMP/LDAP/NFS open → [../03-enumeration/](../03-enumeration/README.md)
-- HTTP(S) open → [../06-web/](../06-web/README.md) *(coming)*
+- HTTP(S) open → [../12-web-apps/](../12-web-apps/README.md) *(coming)*
 - Only weird services → [../04-vuln-analysis/](../04-vuln-analysis/README.md)
 - Need CVE per banner → [../04-vuln-analysis/commands.md](../04-vuln-analysis/commands.md)
 

@@ -136,4 +136,4 @@ nikto -h <IP> -p 80,443,8080,8443
 - [dirb](dirb.md) — slower but different wordlist
 - [wpscan](wpscan.md) — if nikto sees WordPress
 - [sqlmap](sqlmap.md) — once you have a param
-- [05-web-app domain README](../05-web-app/README.md)
+- [05-web-app domain README](../12-web-apps/README.md)

@@ -159,4 +159,4 @@ wpscan --url http://<IP> --proxy http://127.0.0.1:8080 \
 - [gobuster](gobuster.md) — find `/wp-admin/`, `/wp-content/` if wpscan can't detect
 - [ffuf](ffuf.md) — fuzz plugin paths manually
 - [nmap](nmap.md) — `http-wordpress-*` NSE scripts
-- [05-web-app domain README](../05-web-app/README.md)
+- [05-web-app domain README](../12-web-apps/README.md)

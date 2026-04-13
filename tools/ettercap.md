@@ -164,5 +164,5 @@ ettercap -P list
 - [bettercap](bettercap.md) — the modern replacement
 - [wireshark](wireshark.md) — analyze the traffic you just intercepted
 - [tcpdump](tcpdump.md) — lightweight capture alternative
-- [08-sniffing domain README](../08-sniffing/README.md)
+- [08-sniffing domain README](../07-sniffing/README.md)
 - [MITM playbook](../playbooks/mitm-playbook.md)

@@ -182,5 +182,5 @@ sqlmap -u "http://<IP>/item.php?id=1" --proxy http://127.0.0.1:8080 --batch
 - [ffuf](ffuf.md) — fuzz params before sqlmap
 - [wpscan](wpscan.md) — WordPress-specific, chain into sqlmap for plugin SQLi
 - [nikto](nikto.md) — baseline web scan
-- [05-web-app domain README](../05-web-app/README.md)
+- [05-web-app domain README](../12-web-apps/README.md)
 - [Web-app playbook](../playbooks/webapp-playbook.md)

@@ -152,4 +152,4 @@ steghide info cover.jpg
 - [exiftool — check metadata for the password](./exiftool.md)
 - [binwalk — find appended/embedded files](./binwalk.md)
 - [foremost — carve files from larger blobs](./foremost.md)
-- [Steganography question bank](../questions/20-cryptography.md)
+- [Steganography question bank](../questions/by-domain/18-cryptography.md)

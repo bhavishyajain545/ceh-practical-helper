@@ -23,7 +23,7 @@ What am I analyzing?
 │   └── OpenVAS / Greenbone              ← authenticated + unauth
 │
 ├── Known-vulnerable CMS (WordPress, Joomla, Drupal)
-│   └── see [../06-web](../06-web/README.md)     *(coming)*
+│   └── see [../06-web](../12-web-apps/README.md)     *(coming)*
 │
 └── Just need the CVSS / CVE detail
     └── https://nvd.nist.gov/vuln/search  (paste CVE)
@@ -33,7 +33,7 @@ What am I analyzing?
 
 - **[commands.md](commands.md)** — copy-paste recipes
 - **[walkthroughs.md](walkthroughs.md)** — full multi-step examples
-- Question bank: **[../questions/04-vuln-analysis.md](../questions/04-vuln-analysis.md)** *(coming)*
+- Question bank: **[../questions/by-domain/04-vuln-analysis.md](../questions/by-domain/04-vuln-analysis.md)** *(coming)*
 
 ## 🛠 Tools used in this domain
 

@@ -35,11 +35,11 @@ How will you get / abuse the session?
 
 - **[commands.md](commands.md)** — copy-paste recipes and Burp notes
 - **[walkthroughs.md](walkthroughs.md)** — full multi-step examples
-- Question bank: **[../questions/10-session-hijacking.md](../questions/10-session-hijacking.md)**
+- Question bank: **[../questions/by-domain/10-session-hijacking.md](../questions/by-domain/10-session-hijacking.md)**
 
 ## 🛠 Tools used in this domain
 
-- **[burp](../tools/burp.md)** ← the big one (Repeater, Intruder, CSRF PoC generator)
+- **[burp](../tools/burpsuite.md)** ← the big one (Repeater, Intruder, CSRF PoC generator)
 - **[ettercap](../tools/ettercap.md)** — ARP poison for cookie capture
 - **[bettercap](../tools/bettercap.md)** — modern MITM
 - **[wireshark](../tools/wireshark.md)** — pull cookies from pcap
@@ -53,4 +53,4 @@ How will you get / abuse the session?
 - [ ] Write an XSS cookie-stealer payload from memory
 - [ ] Generate a CSRF PoC HTML file from a Burp request
 - [ ] Explain the difference between session hijacking, fixation, and CSRF
-- [ ] Done all questions in [the question bank](../questions/10-session-hijacking.md)
+- [ ] Done all questions in [the question bank](../questions/by-domain/10-session-hijacking.md)

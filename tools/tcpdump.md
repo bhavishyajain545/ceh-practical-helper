@@ -149,4 +149,4 @@ wireshark /tmp/out.pcap &
 
 - [wireshark](wireshark.md) — GUI analysis of the pcap you just captured
 - [aircrack-ng](aircrack-ng.md) — airodump-ng is essentially tcpdump for 802.11
-- [08-sniffing domain README](../08-sniffing/README.md)
+- [08-sniffing domain README](../07-sniffing/README.md)

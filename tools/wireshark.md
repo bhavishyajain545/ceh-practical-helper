@@ -168,4 +168,4 @@ tshark -r wpa.pcap -Y eapol
 - [tcpdump](tcpdump.md) — same captures, CLI
 - [aircrack-ng](aircrack-ng.md) — verify WPA handshake in Wireshark with `eapol`
 - [ettercap](ettercap.md) / [bettercap](bettercap.md) — generate the traffic you then sniff
-- [08-sniffing domain README](../08-sniffing/README.md)
+- [08-sniffing domain README](../07-sniffing/README.md)

@@ -33,7 +33,7 @@ What encryption?
 
 - **[commands.md](commands.md)** — aircrack-ng + wifite + reaver recipes
 - **[walkthroughs.md](walkthroughs.md)** — full capture→crack flows
-- Question bank: **[../questions/14-wireless.md](../questions/14-wireless.md)**
+- Question bank: **[../questions/by-domain/14-wireless.md](../questions/by-domain/14-wireless.md)**
 
 ## 🛠 Tools used in this domain
 
@@ -50,4 +50,4 @@ What encryption?
 - [ ] Recognize a WPA handshake line in airodump
 - [ ] Crack a WPA handshake with rockyou
 - [ ] Run reaver / wash against WPS
-- [ ] Done all questions in [the question bank](../questions/14-wireless.md)
+- [ ] Done all questions in [the question bank](../questions/by-domain/14-wireless.md)

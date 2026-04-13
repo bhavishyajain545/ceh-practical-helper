@@ -136,5 +136,5 @@
 - [exam-day first-contact playbook](../../exam-day/first-contact.md)
 - [exam-day decision tree](../../exam-day/decision-tree.md)
 - [exam-day stuck / triage](../../exam-day/stuck.md)
-- [tool index](../../tools/README.md)
+- [tool index](../../tools/)
 - [all domain READMEs](../../README.md)

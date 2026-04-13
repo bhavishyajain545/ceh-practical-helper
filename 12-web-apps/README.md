@@ -35,7 +35,7 @@ Web app in scope?
 
 - **[commands.md](commands.md)** — copy-paste recipes
 - **[walkthroughs.md](walkthroughs.md)** — full multi-step examples
-- Question bank: **[../questions/12-web-apps.md](../questions/12-web-apps.md)**
+- Question bank: **[../questions/by-domain/12-web-apps.md](../questions/by-domain/12-web-apps.md)**
 
 ## 🛠 Tools used in this domain
 
@@ -57,4 +57,4 @@ Web app in scope?
 - [ ] Test one param for LFI with `../../../../etc/passwd`
 - [ ] Know where to find default creds (admin/admin, admin/password)
 - [ ] Upload a .php shell and catch the callback
-- [ ] Done all questions in [the question bank](../questions/12-web-apps.md)
+- [ ] Done all questions in [the question bank](../questions/by-domain/12-web-apps.md)

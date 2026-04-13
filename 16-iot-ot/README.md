@@ -37,7 +37,7 @@ IP / device given?
 
 - **[commands.md](commands.md)** — shodan / nmap / default-creds recipes
 - **[walkthroughs.md](walkthroughs.md)** — full identify→access examples
-- Question bank: **[../questions/16-iot-ot.md](../questions/16-iot-ot.md)**
+- Question bank: **[../questions/by-domain/16-iot-ot.md](../questions/by-domain/16-iot-ot.md)**
 
 ## 🛠 Tools used in this domain
 
@@ -54,4 +54,4 @@ IP / device given?
 - [ ] Know Modbus=502, S7=102, BACnet=47808, DNP3=20000
 - [ ] Run `nmap --script modbus-discover -p 502 <IP>`
 - [ ] Extract a firmware image with binwalk
-- [ ] Done all questions in [the question bank](../questions/16-iot-ot.md)
+- [ ] Done all questions in [the question bank](../questions/by-domain/16-iot-ot.md)

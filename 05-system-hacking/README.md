@@ -38,7 +38,7 @@ What do you already have?
 
 - **[commands.md](commands.md)** — copy-paste recipes
 - **[walkthroughs.md](walkthroughs.md)** — full multi-step examples
-- Question bank: **[../questions/05-system-hacking.md](../questions/05-system-hacking.md)**
+- Question bank: **[../questions/by-domain/05-system-hacking.md](../questions/by-domain/05-system-hacking.md)**
 
 ## 🛠 Tools used in this domain
 
@@ -63,4 +63,4 @@ What do you already have?
 - [ ] Run linpeas and winpeas and know what findings actually matter
 - [ ] Dump hashes with `secretsdump.py` and `mimikatz sekurlsa::logonpasswords`
 - [ ] Know the hashcat mode numbers for NTLM (1000), NetNTLMv2 (5600), sha512crypt (1800)
-- [ ] Done all questions in [the question bank](../questions/05-system-hacking.md)
+- [ ] Done all questions in [the question bank](../questions/by-domain/05-system-hacking.md)

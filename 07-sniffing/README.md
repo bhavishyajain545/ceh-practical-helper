@@ -53,7 +53,7 @@ What are you given?
 
 - **[commands.md](commands.md)** — copy-paste recipes
 - **[walkthroughs.md](walkthroughs.md)** — full multi-step examples
-- Question bank: **[../questions/07-sniffing.md](../questions/07-sniffing.md)**
+- Question bank: **[../questions/by-domain/07-sniffing.md](../questions/by-domain/07-sniffing.md)**
 
 ## 🛠 Tools used in this domain
 
@@ -72,4 +72,4 @@ What are you given?
 - [ ] Enable IP forwarding and ARP-spoof a target with arpspoof
 - [ ] Run a full bettercap MITM (arp.spoof + net.sniff + http.proxy)
 - [ ] Recognize ARP spoofing in a pcap (duplicate MAC for same IP)
-- [ ] Done all questions in [the question bank](../questions/07-sniffing.md)
+- [ ] Done all questions in [the question bank](../questions/by-domain/07-sniffing.md)

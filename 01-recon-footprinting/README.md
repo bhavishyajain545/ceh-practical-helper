@@ -41,12 +41,12 @@ Question gives you a DOMAIN (e.g. example.com)?
 
 - **[commands.md](commands.md)** — copy-paste recipes
 - **[walkthroughs.md](walkthroughs.md)** — full multi-step examples
-- Question bank: **[../questions/01-recon.md](../questions/01-recon.md)** *(coming)*
+- Question bank: **[../questions/by-domain/01-recon.md](../questions/by-domain/01-recon.md)** *(coming)*
 
 ## 🛠 Tools used in this domain
 
 - **[whois](../tools/whois.md)** — registrar data
-- **[theHarvester](../tools/theHarvester.md)** — emails / subdomains / hosts
+- **[theHarvester](../tools/theharvester.md)** — emails / subdomains / hosts
 - **[dnsrecon](../tools/dnsrecon.md)** — DNS enumeration + zone transfer
 - **[sublist3r](../tools/sublist3r.md)** — subdomain bruteforce
 - **[dig](../tools/dig.md)** — DNS swiss army knife

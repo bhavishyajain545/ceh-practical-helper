@@ -189,4 +189,4 @@ exiftool -r -ext jpg -all= /path/to/dir     # strip all JPGs recursively
 - [steghide — extract hidden payloads from JPEG/WAV](./steghide.md)
 - [binwalk — find appended/embedded files](./binwalk.md)
 - [foremost — carve files](./foremost.md)
-- [Forensics question bank](../questions/forensics.md)
+- [Forensics question bank](../questions/by-domain/07-sniffing.md)

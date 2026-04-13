@@ -203,5 +203,5 @@ openssl rand -base64 32     # 32 random bytes b64
 ## 🔗 Related
 
 - [john — crack the hashes you generate](./john.md)
-- [Cryptography question bank](../questions/20-cryptography.md)
+- [Cryptography question bank](../questions/by-domain/18-cryptography.md)
 - [Cryptography playbook](../playbooks/crypto-playbook.md)

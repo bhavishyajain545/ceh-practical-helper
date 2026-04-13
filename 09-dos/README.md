@@ -28,7 +28,7 @@ What layer does the question target?
 
 - **[commands.md](commands.md)** — copy-paste recipes
 - **[walkthroughs.md](walkthroughs.md)** — full multi-step examples
-- Question bank: **[../questions/09-dos.md](../questions/09-dos.md)**
+- Question bank: **[../questions/by-domain/09-dos.md](../questions/by-domain/09-dos.md)**
 
 ## 🛠 Tools used in this domain
 
@@ -45,4 +45,4 @@ What layer does the question target?
 - [ ] Run Slowloris and understand why it's different from HULK (sockets vs bandwidth)
 - [ ] Recognize SYN flood traffic in Wireshark (lots of SYNs, no ACKs)
 - [ ] Stop all flood attacks cleanly (Ctrl-C) and verify target recovers
-- [ ] Done all questions in [the question bank](../questions/09-dos.md)
+- [ ] Done all questions in [the question bank](../questions/by-domain/09-dos.md)

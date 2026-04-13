@@ -130,5 +130,5 @@ cat recovered/audit.txt
 
 - [binwalk — firmware & single-file carving](./binwalk.md)
 - [exiftool — check metadata of recovered files](./exiftool.md)
-- [Forensics question bank](../questions/forensics.md)
+- [Forensics question bank](../questions/by-domain/07-sniffing.md)
 - [Forensics playbook](../playbooks/forensics-playbook.md)

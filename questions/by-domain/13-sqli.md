@@ -95,7 +95,7 @@
 1. Save hash to `hash.txt`.
 2. `hashcat -m 0 -a 0 hash.txt /usr/share/wordlists/rockyou.txt` ← [why -m 0](../../tools/hashcat.md#common-modes)
 3. Or `john --format=raw-md5 --wordlist=rockyou.txt hash.txt`
-4. See also [18-crypto](../../18-crypto/README.md) for alternate hash types.
+4. See also [18-crypto](../../18-cryptography/README.md) for alternate hash types.
 
 **Answer format:** cleartext password
 
@@ -105,10 +105,10 @@
 
 ### Q8 🟡 — Inject via a POST request saved from Burp (`req.txt`)
 
-**Category:** Authenticated SQLi | **Tools:** [sqlmap](../../tools/sqlmap.md), [burp](../../tools/burp.md)
+**Category:** Authenticated SQLi | **Tools:** [sqlmap](../../tools/sqlmap.md), [burp](../../tools/burpsuite.md)
 
 **Steps:**
-1. In [burp](../../tools/burp.md), right-click the request → Copy to file → `req.txt`.
+1. In [burp](../../tools/burpsuite.md), right-click the request → Copy to file → `req.txt`.
 2. `sqlmap -r req.txt --batch --dbs` ← [why -r](../../tools/sqlmap.md#request-file)
 3. If multiple params, specify: `sqlmap -r req.txt -p username --dbs`
 
@@ -182,8 +182,8 @@
 ## 📌 Quick links
 
 - [sqlmap full reference](../../tools/sqlmap.md)
-- [burp (request capture)](../../tools/burp.md)
+- [burp (request capture)](../../tools/burpsuite.md)
 - [hashcat](../../tools/hashcat.md) · [john](../../tools/john.md) (for cracking dumped hashes)
 - [SQLi playbook (decision tree)](../../playbooks/sqli-playbook.md)
 - [13-sqli README](../../13-sqli/README.md)
-- [12-web-apps question bank](./12-web-apps.md) · [18-crypto README](../../18-crypto/README.md)
+- [12-web-apps question bank](./12-web-apps.md) · [18-crypto README](../../18-cryptography/README.md)

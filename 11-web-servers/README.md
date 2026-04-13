@@ -34,7 +34,7 @@ Port 80/443/8080/8443 open?
 
 - **[commands.md](commands.md)** — copy-paste recipes
 - **[walkthroughs.md](walkthroughs.md)** — full multi-step examples
-- Question bank: **[../questions/11-web-servers.md](../questions/11-web-servers.md)**
+- Question bank: **[../questions/by-domain/11-web-servers.md](../questions/by-domain/11-web-servers.md)**
 
 ## 🛠 Tools used in this domain
 
@@ -55,4 +55,4 @@ Port 80/443/8080/8443 open?
 - [ ] Detect a WAF with wafw00f
 - [ ] Identify CMS with whatweb (WordPress → jump to [12-web-apps](../12-web-apps/README.md))
 - [ ] Read `robots.txt` and `/sitemap.xml` manually
-- [ ] Done all questions in [the question bank](../questions/11-web-servers.md)
+- [ ] Done all questions in [the question bank](../questions/by-domain/11-web-servers.md)

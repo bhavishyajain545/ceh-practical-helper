@@ -32,7 +32,7 @@ Found an injectable parameter?
 
 - **[commands.md](commands.md)** — the sqlmap cheat sheet
 - **[walkthroughs.md](walkthroughs.md)** — full end-to-end dumps
-- Question bank: **[../questions/13-sqli.md](../questions/13-sqli.md)**
+- Question bank: **[../questions/by-domain/13-sqli.md](../questions/by-domain/13-sqli.md)**
 
 ## 🛠 Tools used in this domain
 
@@ -47,4 +47,4 @@ Found an injectable parameter?
 - [ ] Know how to pass a cookie with `--cookie`
 - [ ] Know `--level` and `--risk` (bump them if nothing found)
 - [ ] Know `--os-shell` exists and when it works (MySQL + FILE privilege)
-- [ ] Done all questions in [the question bank](../questions/13-sqli.md)
+- [ ] Done all questions in [the question bank](../questions/by-domain/13-sqli.md)

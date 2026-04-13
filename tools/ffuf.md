@@ -180,4 +180,4 @@ ffuf -u http://<IP>/FUZZ -w /usr/share/wordlists/dirb/common.txt \
 - [nikto](nikto.md) — vuln scan before/after fuzzing
 - [wpscan](wpscan.md) — WordPress-specific
 - [sqlmap](sqlmap.md) — once ffuf finds the param
-- [05-web-app domain README](../05-web-app/README.md)
+- [05-web-app domain README](../12-web-apps/README.md)

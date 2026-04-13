@@ -165,5 +165,5 @@ When you send `-S -p 80` you get back flag strings:
 
 - [nmap](nmap.md) — for actual port scanning; hping3 is for crafting
 - [wireshark](wireshark.md) — observe the packets you're sending
-- [14-dos domain README](../14-dos/README.md)
+- [14-dos domain README](../09-dos/README.md)
 - [DoS playbook](../playbooks/dos-playbook.md)

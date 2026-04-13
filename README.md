@@ -10,6 +10,42 @@
 
 ---
 
+## 🧠 Strategies (Hinglish — read these first)
+
+The single most important folder. **Tools sab ke paas hote hain, strategy alag karti hai.**
+
+- **[strategies/mindset.md](strategies/mindset.md)** — sahi soch
+- **[strategies/time-strategy.md](strategies/time-strategy.md)** — 6 ghante mein 20 sawal
+- **[strategies/question-reading.md](strategies/question-reading.md)** — question kaise padho
+- **[strategies/when-stuck.md](strategies/when-stuck.md)** — atak gaye toh
+- **[strategies/parallel-work.md](strategies/parallel-work.md)** — ek time pe 3 cheezein
+- **[strategies/answer-format.md](strategies/answer-format.md)** — sabse zyada marks yahan
+- **[strategies/common-traps.md](strategies/common-traps.md)** — kahan log fail hote hain
+- **[strategies/3-week-plan.md](strategies/3-week-plan.md)** — day-by-day plan
+- **[strategies/exam-day-checklist.md](strategies/exam-day-checklist.md)** — exam ki subah
+- **[strategies/mental-models.md](strategies/mental-models.md)** — sochne ke patterns
+
+→ **[Browse all strategies](strategies/README.md)**
+
+---
+
+## 🌐 Online Tools (browser-based)
+
+Backup arsenal — jab terminal tool fail ho jaye, ya quick lookup chahiye. Sab Firefox se.
+
+- **[online-tools/hash-tools.md](online-tools/hash-tools.md)** — CrackStation, hash lookup
+- **[online-tools/crypto-tools.md](online-tools/crypto-tools.md)** — CyberChef + cipher decoders
+- **[online-tools/stego-tools.md](online-tools/stego-tools.md)** — Aperi'Solve all-in-one
+- **[online-tools/recon-tools.md](online-tools/recon-tools.md)** — DNSDumpster, Shodan, crt.sh
+- **[online-tools/web-tools.md](online-tools/web-tools.md)** — JWT.io, vuln DBs
+- **[online-tools/exploit-dbs.md](online-tools/exploit-dbs.md)** — Exploit-DB, CVE Details, Rapid7
+- **[online-tools/network-tools.md](online-tools/network-tools.md)** — port scanners, traceroute
+- **[online-tools/converters.md](online-tools/converters.md)** — base/encoding converters
+
+→ **[Browse all online tools](online-tools/README.md)**
+
+---
+
 ## 🚀 Start Here (Exam Day)
 
 - **[First 5 commands you run on every target](exam-day/first-5-commands.md)** ← run these in background while you read the next question

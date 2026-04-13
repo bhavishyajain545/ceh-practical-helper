@@ -44,7 +44,7 @@ What are you given?
 
 - **[commands.md](commands.md)** — hash / stego / openssl recipes
 - **[walkthroughs.md](walkthroughs.md)** — full examples (hash, stego, openssl)
-- Question bank: **[../questions/18-cryptography.md](../questions/18-cryptography.md)**
+- Question bank: **[../questions/by-domain/18-cryptography.md](../questions/by-domain/18-cryptography.md)**
 
 ## 🛠 Tools used in this domain
 
@@ -69,4 +69,4 @@ What are you given?
 - [ ] Extract a steghide-protected file with a known password
 - [ ] Decrypt an AES file with openssl
 - [ ] Base64-decode a blob
-- [ ] Done all questions in [the question bank](../questions/18-cryptography.md)
+- [ ] Done all questions in [the question bank](../questions/by-domain/18-cryptography.md)

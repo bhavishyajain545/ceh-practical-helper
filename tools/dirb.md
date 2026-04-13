@@ -123,4 +123,4 @@ dirb http://<IP> -p 127.0.0.1:8080
 - [nikto](nikto.md) — run alongside for vuln findings
 - [wpscan](wpscan.md) — WordPress
 - [sqlmap](sqlmap.md) — after you find a param
-- [05-web-app domain README](../05-web-app/README.md)
+- [05-web-app domain README](../12-web-apps/README.md)

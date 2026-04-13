@@ -36,7 +36,7 @@ What do they want?
 
 - **[commands.md](commands.md)** — copy-paste recipes
 - **[walkthroughs.md](walkthroughs.md)** — full multi-step examples
-- Question bank: **[../questions/08-social-engineering.md](../questions/08-social-engineering.md)**
+- Question bank: **[../questions/by-domain/08-social-engineering.md](../questions/by-domain/08-social-engineering.md)**
 
 ## 🛠 Tools used in this domain
 
@@ -51,4 +51,4 @@ What do they want?
 - [ ] Find the `harvester_<timestamp>.txt` report file location
 - [ ] Know your attacker IP and how the victim reaches it from the lab network
 - [ ] Generate an infectious-media payload with SET
-- [ ] Done all questions in [the question bank](../questions/08-social-engineering.md)
+- [ ] Done all questions in [the question bank](../questions/by-domain/08-social-engineering.md)

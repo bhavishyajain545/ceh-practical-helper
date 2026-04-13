@@ -159,5 +159,5 @@ The `[net.sniff.creds]` line is what you're looking for in most credential-sniff
 - [ettercap](ettercap.md) — older equivalent; same ARP-poisoning concept
 - [wireshark](wireshark.md) — analyze the pcap bettercap writes
 - [aircrack-ng](aircrack-ng.md) — Wi-Fi modules need monitor mode from airmon-ng
-- [08-sniffing domain README](../08-sniffing/README.md)
+- [08-sniffing domain README](../07-sniffing/README.md)
 - [MITM playbook](../playbooks/mitm-playbook.md)

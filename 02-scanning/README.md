@@ -39,7 +39,7 @@ Question gives you an IP / range?
 
 - **[commands.md](commands.md)** — copy-paste recipes
 - **[walkthroughs.md](walkthroughs.md)** — full multi-step examples
-- Question bank: **[../questions/02-scanning.md](../questions/02-scanning.md)**
+- Question bank: **[../questions/by-domain/02-scanning.md](../questions/by-domain/02-scanning.md)**
 
 ## 🛠 Tools used in this domain
 
@@ -54,4 +54,4 @@ Question gives you an IP / range?
 - [ ] Know the difference between `-sS`, `-sT`, `-sU`, `-sA`, `-sN/sF/sX`
 - [ ] Recognize what a `filtered` vs `closed` vs `open` port means
 - [ ] Know the top 10 NSE scripts in [tools/nmap.md NSE table](../tools/nmap.md#nse-scripts-the-money-section)
-- [ ] Done all 12 questions in [the question bank](../questions/02-scanning.md)
+- [ ] Done all 12 questions in [the question bank](../questions/by-domain/02-scanning.md)
