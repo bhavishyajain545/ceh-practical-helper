@@ -10,6 +10,42 @@
 
 ---
 
+## 🧭 Navigation — kahan se kya milega
+
+| Folder / file | Purpose | Kab kholo |
+|---|---|---|
+| **[glossary.md](glossary.md)** | 200+ terms in Hinglish (SUID, NTLM, Kerberoasting, LFI, JWT, PtH...) | Jab koi term samajh nahi aaye |
+| **[strategies/](strategies/README.md)** | Hinglish strategies — mindset, time, format, traps | **Pehle padho**, prep ke time |
+| **[online-tools/](online-tools/README.md)** | Browser-based tools — CyberChef, CrackStation, Aperi'Solve | Jab terminal tool fail ho ya quick lookup |
+| **[exam-day/](exam-day/first-5-commands.md)** | First 5 commands, time mgmt, Parrot tool locations | Exam start hote hi |
+| **[playbooks/](playbooks/master-playbook.md)** | Decision trees: keyword → domain | Jab pata nahi kaha se start karu |
+| **[tools/](tools/nmap.md)** | 100 tool docs (every flag, recipe, gotcha) | Jab specific tool ka command chahiye |
+| **[questions/by-domain/](questions/README.md)** | 207 drill questions, 18 domains | Daily practice |
+| **[questions/scenarios/](questions/scenarios/README.md)** | 30 multi-step cross-domain chains | Real exam-style practice |
+| **[questions/full-mock-exams/](questions/full-mock-exams/README.md)** | 3 full mock exams (20 Qs × 6 hours each) | Final week (timed) |
+| **[00-exam-strategy/](00-exam-strategy/README.md)** to **[18-cryptography/](18-cryptography/README.md)** | 19 domain folders, each with README + commands + walkthroughs | Domain-deep dive |
+
+---
+
+## ⚡ Quick start (3 paths)
+
+**Mai abhi shuru kar raha hu (Day 1):**
+1. [strategies/mindset.md](strategies/mindset.md)
+2. [strategies/3-week-plan.md](strategies/3-week-plan.md)
+3. [glossary.md](glossary.md) — 5 min skim
+
+**Mai exam ke time hu (Day 22):**
+1. [exam-day/first-5-commands.md](exam-day/first-5-commands.md)
+2. [playbooks/master-playbook.md](playbooks/master-playbook.md) ← Ctrl+F yahan
+3. [exam-day/time-management.md](exam-day/time-management.md)
+
+**Mujhe specific tool/term chahiye:**
+- Tool name pata hai → [tools/](tools/nmap.md) section niche dekho
+- Term confuse hai → [glossary.md](glossary.md) → Ctrl+F
+- Domain naam pata hai → niche [Domains table](#-domains-18) dekho
+
+---
+
 ## 📖 Glossary (Hinglish — terminology decoded)
 
 Saare confusing CEH/pentest terms ek file mein, simple Hinglish mein. SUID, NTLM, Kerberoasting, LFI, JWT, PtH — sab Ctrl+F friendly.
