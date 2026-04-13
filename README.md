@@ -10,6 +10,14 @@
 
 ---
 
+## 📖 Glossary (Hinglish — terminology decoded)
+
+Saare confusing CEH/pentest terms ek file mein, simple Hinglish mein. SUID, NTLM, Kerberoasting, LFI, JWT, PtH — sab Ctrl+F friendly.
+
+→ **[glossary.md](glossary.md)** — 200+ terms, 16 categories
+
+---
+
 ## 🧠 Strategies (Hinglish — read these first)
 
 The single most important folder. **Tools sab ke paas hote hain, strategy alag karti hai.**
