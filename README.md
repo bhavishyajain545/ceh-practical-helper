@@ -93,18 +93,48 @@ If you don't know where to start, go here first:
 
 ---
 
-## 🛠 Tools (dictionary)
+## 🛠 Tools (dictionary) — **100 tools, all complete**
 
-Every tool gets its own page with: install/check, syntax, every flag you'll need, common patterns, gotchas. Question solutions link directly into these pages.
+Every tool has its own page: install/check, syntax, every flag you'll need, common patterns, gotchas. Question solutions link directly into these pages.
 
-- **[nmap](tools/nmap.md)** ← 🟢 complete
-- hydra *(coming)*
-- john *(coming)*
-- hashcat *(coming)*
-- sqlmap *(coming)*
-- aircrack-ng *(coming)*
-- wireshark *(coming)*
-- ... 25+ more
+### 🔍 Recon & Scanning
+[nmap](tools/nmap.md) · [whois](tools/whois.md) · [dig](tools/dig.md) · [nslookup](tools/nslookup.md) · [host](tools/host.md) · [dnsrecon](tools/dnsrecon.md) · [theharvester](tools/theharvester.md) · [sublist3r](tools/sublist3r.md) · [recon-ng](tools/recon-ng.md) · [shodan](tools/shodan.md) · [google-dorks](tools/google-dorks.md) · [hping3](tools/hping3.md)
+
+### 🧮 Enumeration
+[enum4linux](tools/enum4linux.md) · [smbclient](tools/smbclient.md) · [smbmap](tools/smbmap.md) · [rpcclient](tools/rpcclient.md) · [nbtscan](tools/nbtscan.md) · [nmblookup](tools/nmblookup.md) · [snmpwalk](tools/snmpwalk.md) · [onesixtyone](tools/onesixtyone.md) · [ldapsearch](tools/ldapsearch.md) · [showmount](tools/showmount.md) · [smtp-user-enum](tools/smtp-user-enum.md) · [finger](tools/finger.md)
+
+### 🎯 Vuln Analysis
+[nikto](tools/nikto.md) · [searchsploit](tools/searchsploit.md) · [openvas](tools/openvas.md) · [nuclei](tools/nuclei.md) · [sslscan](tools/sslscan.md) · [wafw00f](tools/wafw00f.md) · [whatweb](tools/whatweb.md) · [wappalyzer](tools/wappalyzer.md)
+
+### 🔐 Cred Attacks (online + offline)
+[hydra](tools/hydra.md) · [john](tools/john.md) · [hashcat](tools/hashcat.md) · [hashid](tools/hashid.md) · [hash-identifier](tools/hash-identifier.md) · [crackmapexec](tools/crackmapexec.md) · [responder](tools/responder.md) · [mimikatz](tools/mimikatz.md) · [default-creds](tools/default-creds.md)
+
+### 💥 Exploitation
+[metasploit](tools/metasploit.md) · [msfvenom](tools/msfvenom.md) · [impacket](tools/impacket.md) · [evil-winrm](tools/evil-winrm.md) · [linpeas](tools/linpeas.md) · [winpeas](tools/winpeas.md)
+
+### 🌍 Web (recon + exploit)
+[burpsuite](tools/burpsuite.md) · [zap](tools/zap.md) · [gobuster](tools/gobuster.md) · [dirb](tools/dirb.md) · [ffuf](tools/ffuf.md) · [wpscan](tools/wpscan.md) · [joomscan](tools/joomscan.md) · [sqlmap](tools/sqlmap.md) · [curl](tools/curl.md) · [xss](tools/xss.md)
+
+### 📡 Sniffing & MITM
+[wireshark](tools/wireshark.md) · [tcpdump](tools/tcpdump.md) · [ettercap](tools/ettercap.md) · [bettercap](tools/bettercap.md) · [arpspoof](tools/arpspoof.md) · [dnsspoof](tools/dnsspoof.md)
+
+### 📶 Wireless
+[aircrack-ng](tools/aircrack-ng.md) · [airmon-ng](tools/airmon-ng.md) · [airodump-ng](tools/airodump-ng.md) · [aireplay-ng](tools/aireplay-ng.md) · [reaver](tools/reaver.md) · [wash](tools/wash.md) · [wifite](tools/wifite.md)
+
+### 💣 DoS / Social Eng
+[hulk](tools/hulk.md) · [slowloris](tools/slowloris.md) · [loic](tools/loic.md) · [setoolkit](tools/setoolkit.md)
+
+### 🦠 Malware Analysis
+[file](tools/file.md) · [strings](tools/strings.md) · [md5sum](tools/md5sum.md) · [sha256sum](tools/sha256sum.md) · [peframe](tools/peframe.md) · [peview](tools/peview.md) · [olevba](tools/olevba.md) · [pdfid](tools/pdfid.md) · [yara](tools/yara.md) · [virustotal](tools/virustotal.md) · [sigverif](tools/sigverif.md)
+
+### 🖼 Crypto / Stego / Forensics
+[openssl](tools/openssl.md) · [steghide](tools/steghide.md) · [stegcracker](tools/stegcracker.md) · [exiftool](tools/exiftool.md) · [binwalk](tools/binwalk.md) · [foremost](tools/foremost.md)
+
+### 📱 Mobile
+[apktool](tools/apktool.md) · [jadx](tools/jadx.md) · [dex2jar](tools/dex2jar.md) · [mobsf](tools/mobsf.md) · [adb](tools/adb.md)
+
+### ☁️ Cloud
+[aws-cli](tools/aws-cli.md) · [gsutil](tools/gsutil.md) · [cloud_enum](tools/cloud_enum.md) · [s3scanner](tools/s3scanner.md) · [trufflehog](tools/trufflehog.md)
 
 ---
 
