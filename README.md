@@ -142,7 +142,7 @@ If you don't know where to start, go here first:
 Every tool has its own page: install/check, syntax, every flag you'll need, common patterns, gotchas. Question solutions link directly into these pages.
 
 ### 🔍 Recon & Scanning
-[nmap](tools/nmap.md) · [whois](tools/whois.md) · [dig](tools/dig.md) · [nslookup](tools/nslookup.md) · [host](tools/host.md) · [dnsrecon](tools/dnsrecon.md) · [theharvester](tools/theharvester.md) · [sublist3r](tools/sublist3r.md) · [recon-ng](tools/recon-ng.md) · [shodan](tools/shodan.md) · [google-dorks](tools/google-dorks.md) · [hping3](tools/hping3.md)
+[nmap](tools/nmap.md) · [masscan](tools/masscan.md) · [whois](tools/whois.md) · [dig](tools/dig.md) · [nslookup](tools/nslookup.md) · [host](tools/host.md) · [dnsrecon](tools/dnsrecon.md) · [theharvester](tools/theharvester.md) · [sublist3r](tools/sublist3r.md) · [recon-ng](tools/recon-ng.md) · [shodan](tools/shodan.md) · [google-dorks](tools/google-dorks.md) · [hping3](tools/hping3.md)
 
 ### 🧮 Enumeration
 [enum4linux](tools/enum4linux.md) · [smbclient](tools/smbclient.md) · [smbmap](tools/smbmap.md) · [rpcclient](tools/rpcclient.md) · [nbtscan](tools/nbtscan.md) · [nmblookup](tools/nmblookup.md) · [snmpwalk](tools/snmpwalk.md) · [onesixtyone](tools/onesixtyone.md) · [ldapsearch](tools/ldapsearch.md) · [showmount](tools/showmount.md) · [smtp-user-enum](tools/smtp-user-enum.md) · [finger](tools/finger.md)
