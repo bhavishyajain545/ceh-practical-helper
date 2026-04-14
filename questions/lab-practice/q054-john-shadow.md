@@ -5,7 +5,7 @@
 | **Target** | `192.168.52.129` / `192.168.52.130` |
 | **Domain** | 05 — System Hacking |
 | **Difficulty** | 🟡 Medium |
-| **Tools** | `metasploit`, `hydra`, `john`, `hashcat`, `linpeas`, `mimikatz` |
+| **Tools** | `john, unshadow` |
 | **Time budget** | 15–25 min |
 
 ---
@@ -66,9 +66,11 @@ Cracks `msfadmin:msfadmin` quickly.
 ## 🤖 Claude Setup Prompt (for Claude-on-your-PC)
 
 ```
-1. Verify VMs running: ping 192.168.52.129 and ping 192.168.52.130 from 192.168.52.128.
-2. Required services for this Q already up by default on the relevant target.
-3. If something is down, restart it on the target VM.
+Pre-requisites for Q054:
+1. Need root-access shell on Metasploitable2 to read /etc/shadow (use Q044 samba_usermap or sudo as msfadmin).
+2. SSH msfadmin@192.168.52.129 (msfadmin/msfadmin) then sudo cat /etc/shadow.
+3. On Parrot: ls /usr/share/wordlists/rockyou.txt (gunzip it if still .gz: sudo gunzip /usr/share/wordlists/rockyou.txt.gz).
+4. john version: which john — should be /usr/sbin/john.
 
-Report back: "Lab ready for Q054".
+Report back: "Lab ready for Q054 — root shell path to /etc/shadow on 192.168.52.129, rockyou available".
 ```

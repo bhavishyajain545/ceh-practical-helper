@@ -5,7 +5,7 @@
 | **Target** | `192.168.52.129` / `192.168.52.130` / pcap |
 | **Domain** | 07 — Sniffing / 14 — Wireless |
 | **Difficulty** | 🟢 Easy |
-| **Tools** | `tcpdump`, `wireshark`, `ettercap`, `bettercap`, `aircrack-ng` |
+| **Tools** | `tcpdump` |
 | **Time budget** | 10–20 min |
 
 ---
@@ -65,9 +65,10 @@ Saves 50 packets.
 ## 🤖 Claude Setup Prompt (for Claude-on-your-PC)
 
 ```
-1. Verify VMs running: ping 192.168.52.129 and ping 192.168.52.130 from 192.168.52.128.
-2. Required services for this Q already up by default on the relevant target.
-3. If something is down, restart it on the target VM.
+Pre-requisites for Q126:
+1. Verify Metasploitable2 up.
+2. On Parrot: which tcpdump; sudo needed for raw sniffing on eth0.
+3. To generate traffic for capture, run curl http://192.168.52.129/ in a second terminal while tcpdump runs.
 
-Report back: "Lab ready for Q126".
+Report back: "Lab ready for Q126 — tcpdump on Parrot, HTTP traffic source available".
 ```

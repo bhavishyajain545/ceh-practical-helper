@@ -5,7 +5,7 @@
 | **Target** | `192.168.52.129` / `192.168.52.130` |
 | **Domain** | 05 — System Hacking |
 | **Difficulty** | 🔴 Hard |
-| **Tools** | `metasploit`, `hydra`, `john`, `hashcat`, `linpeas`, `mimikatz` |
+| **Tools** | `sudo` |
 | **Time budget** | 15–25 min |
 
 ---
@@ -65,9 +65,10 @@ msfadmin may run ALL commands as ALL users.
 ## 🤖 Claude Setup Prompt (for Claude-on-your-PC)
 
 ```
-1. Verify VMs running: ping 192.168.52.129 and ping 192.168.52.130 from 192.168.52.128.
-2. Required services for this Q already up by default on the relevant target.
-3. If something is down, restart it on the target VM.
+Pre-requisites for Q057:
+1. SSH as msfadmin (msfadmin/msfadmin) to 192.168.52.129.
+2. msfadmin has default NOPASSWD-like sudoers (actually 'ALL=(ALL) ALL' requiring password).
+3. No extra setup.
 
-Report back: "Lab ready for Q057".
+Report back: "Lab ready for Q057 — msfadmin ssh access to 192.168.52.129".
 ```

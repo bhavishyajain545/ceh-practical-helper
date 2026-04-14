@@ -5,7 +5,7 @@
 | **Target** | `192.168.52.129` / `192.168.52.130` |
 | **Domain** | 05 — System Hacking |
 | **Difficulty** | 🔴 Hard |
-| **Tools** | `metasploit`, `hydra`, `john`, `hashcat`, `linpeas`, `mimikatz` |
+| **Tools** | `metasploit (meterpreter+kiwi)` |
 | **Time budget** | 15–25 min |
 
 ---
@@ -66,9 +66,10 @@ Dumps any cached cleartext passwords.
 ## 🤖 Claude Setup Prompt (for Claude-on-your-PC)
 
 ```
-1. Verify VMs running: ping 192.168.52.129 and ping 192.168.52.130 from 192.168.52.128.
-2. Required services for this Q already up by default on the relevant target.
-3. If something is down, restart it on the target VM.
+Pre-requisites for Q052:
+1. Requires existing SYSTEM Meterpreter session on Win7 (re-establish via Q042 if needed).
+2. On Win7, ensure a user is actually logged in interactively — WDigest only caches credentials of logged-on users.
+3. Optional: enable WDigest on Win7 (reg add HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\WDigest /v UseLogonCredential /t REG_DWORD /d 1 /f) then lock+unlock to repopulate cache.
 
-Report back: "Lab ready for Q052".
+Report back: "Lab ready for Q052 — SYSTEM meterpreter on Win7 with WDigest cache populated".
 ```

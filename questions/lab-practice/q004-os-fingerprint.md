@@ -5,7 +5,7 @@
 | **Target** | `192.168.52.129` (Metasploitable 2) |
 | **Domain** | 02 — Scanning |
 | **Difficulty** | 🟢 Easy |
-| **Tools** | `nmap`, `hping3`, `masscan`, `nc` |
+| **Tools** | `nmap` |
 | **Time budget** | 5–10 min |
 
 ---
@@ -65,7 +65,11 @@ Reports Linux 2.6.x kernel.
 ## 🤖 Claude Setup Prompt (for Claude-on-your-PC)
 
 ```
-1. Metasploitable up. 2. Run as root from Parrot.
+Pre-requisites for Q004:
+1. Verify Metasploitable2 (192.168.52.129) is reachable: ping -c 2 192.168.52.129.
+2. OS detection (-O) requires raw packets — sudo on Parrot required. Confirm: sudo -n true || sudo -v.
+3. Nmap needs at least 1 open AND 1 closed TCP port on the target for reliable fingerprinting — Metasploitable satisfies this by default (many open ports + some closed in top 1000). No tuning needed.
+4. Expected result: Linux 2.6.x kernel family.
 
-Report back: "Lab ready for Q004".
+Report back: "Lab ready for Q004 — 192.168.52.129 reachable, sudo available".
 ```

@@ -5,7 +5,7 @@
 | **Target** | `192.168.52.129` / `192.168.52.130` |
 | **Domain** | 05 — Credential Attacks |
 | **Difficulty** | 🟡 Medium |
-| **Tools** | `hydra`, `john`, `hashcat`, `crackmapexec`, `responder` |
+| **Tools** | `medusa` |
 | **Time budget** | 10–20 min |
 
 ---
@@ -65,9 +65,10 @@ Cracks msfadmin:msfadmin.
 ## 🤖 Claude Setup Prompt (for Claude-on-your-PC)
 
 ```
-1. Verify VMs running: ping 192.168.52.129 and ping 192.168.52.130 from 192.168.52.128.
-2. Required services for this Q already up by default on the relevant target.
-3. If something is down, restart it on the target VM.
+Pre-requisites for Q108:
+1. Verify Metasploitable2 up; ssh running (22 open).
+2. On Parrot: which medusa (sudo apt install medusa).
+3. fasttrack.txt present.
 
-Report back: "Lab ready for Q108".
+Report back: "Lab ready for Q108 — SSH 22 open, medusa + fasttrack ready".
 ```

@@ -5,7 +5,7 @@
 | **Target** | `192.168.52.129` (Metasploitable 2) |
 | **Domain** | 03 — Enumeration |
 | **Difficulty** | 🟡 Medium |
-| **Tools** | `enum4linux`, `smbclient`, `rpcclient`, `nmap NSE` |
+| **Tools** | `rsh-client` |
 | **Time budget** | 10–15 min |
 
 ---
@@ -65,9 +65,10 @@ Returns `uid=0(root) gid=0(root)` — full root with no password.
 ## 🤖 Claude Setup Prompt (for Claude-on-your-PC)
 
 ```
-1. Verify VMs running: ping 192.168.52.129 and ping 192.168.52.130 from 192.168.52.128.
-2. Required services for this Q already up by default on the relevant target.
-3. If something is down, restart it on the target VM.
+Pre-requisites for Q040:
+1. Verify Metasploitable2 (192.168.52.129) up; r-services (xinetd-managed) running: ssh msfadmin@192.168.52.129 → sudo service xinetd status.
+2. /root/.rhosts on Metasploitable2 contains '+ +' by default → passwordless rsh as root.
+3. From Parrot: nmap -p 512,513,514 192.168.52.129 — all open. Install rsh client: sudo apt install rsh-client.
 
-Report back: "Lab ready for Q040".
+Report back: "Lab ready for Q040 — rsh 514 open on 192.168.52.129, /root/.rhosts=+ +".
 ```

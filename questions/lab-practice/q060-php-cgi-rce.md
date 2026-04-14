@@ -5,7 +5,7 @@
 | **Target** | `192.168.52.129` / `192.168.52.130` |
 | **Domain** | 05 — System Hacking |
 | **Difficulty** | 🔴 Hard |
-| **Tools** | `metasploit`, `hydra`, `john`, `hashcat`, `linpeas`, `mimikatz` |
+| **Tools** | `metasploit` |
 | **Time budget** | 15–25 min |
 
 ---
@@ -65,9 +65,10 @@ RCE as www-data; CVE-2012-1823.
 ## 🤖 Claude Setup Prompt (for Claude-on-your-PC)
 
 ```
-1. Verify VMs running: ping 192.168.52.129 and ping 192.168.52.130 from 192.168.52.128.
-2. Required services for this Q already up by default on the relevant target.
-3. If something is down, restart it on the target VM.
+Pre-requisites for Q060:
+1. Verify Metasploitable2 (192.168.52.129) up; apache2 + php5-cgi running (the /cgi-bin/php path is default).
+2. From Parrot: curl -I 'http://192.168.52.129/cgi-bin/php?-s' — must return 200.
+3. msfconsole ready; LHOST 192.168.52.128:4444 free.
 
-Report back: "Lab ready for Q060".
+Report back: "Lab ready for Q060 — php-cgi path accessible on 192.168.52.129".
 ```

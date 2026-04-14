@@ -5,7 +5,7 @@
 | **Target** | `192.168.52.129` (Metasploitable 2) |
 | **Domain** | 02 — Scanning |
 | **Difficulty** | 🟢 Easy |
-| **Tools** | `nmap`, `hping3`, `masscan`, `nc` |
+| **Tools** | `masscan` |
 | **Time budget** | 5–10 min |
 
 ---
@@ -65,8 +65,12 @@ Typically ~30 ports across full range (NFS RPC dynamic ports inflate count).
 ## 🤖 Claude Setup Prompt (for Claude-on-your-PC)
 
 ```
-1. Metasploitable up.
-2. Install masscan if missing: `sudo apt install masscan`.
+Pre-requisites for Q007:
+1. Verify Metasploitable2 (192.168.52.129) is reachable: ping -c 2 192.168.52.129.
+2. Confirm masscan installed on Parrot: which masscan → /usr/bin/masscan. If missing: sudo apt install -y masscan.
+3. masscan uses its own TCP/IP stack → requires root. Confirm: sudo -n true || sudo -v.
+4. masscan can conflict with host firewall conntrack on the sender side. On Parrot, either disable ufw briefly or add an iptables rule to ignore RST on the scan source port. Simplest: sudo iptables -A INPUT -p tcp --dport 60000:61000 -j DROP (matches default masscan source-port range).
+5. All Metasploitable services should be up so masscan finds the full ~30 open TCP ports (top 23 + NFS dynamic RPC).
 
-Report back: "Lab ready for Q007".
+Report back: "Lab ready for Q007 — masscan installed, sudo works, 192.168.52.129 reachable".
 ```

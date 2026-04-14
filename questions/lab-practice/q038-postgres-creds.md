@@ -5,7 +5,7 @@
 | **Target** | `192.168.52.129` (Metasploitable 2) |
 | **Domain** | 03 — Enumeration |
 | **Difficulty** | 🟡 Medium |
-| **Tools** | `enum4linux`, `smbclient`, `rpcclient`, `nmap NSE` |
+| **Tools** | `psql` |
 | **Time budget** | 10–15 min |
 
 ---
@@ -65,9 +65,10 @@ Returns PostgreSQL 8.x.
 ## 🤖 Claude Setup Prompt (for Claude-on-your-PC)
 
 ```
-1. Verify VMs running: ping 192.168.52.129 and ping 192.168.52.130 from 192.168.52.128.
-2. Required services for this Q already up by default on the relevant target.
-3. If something is down, restart it on the target VM.
+Pre-requisites for Q038:
+1. Verify Metasploitable2 (192.168.52.129) up; postgres running: ssh msfadmin@192.168.52.129 → sudo service postgresql status (start if down).
+2. Confirm postgres configured to accept remote auth: /etc/postgresql/*/main/pg_hba.conf should have host all all 0.0.0.0/0 md5 (Metasploitable2 default).
+3. From Parrot: nmap -p 5432 192.168.52.129 — open. Install psql client: sudo apt install postgresql-client.
 
-Report back: "Lab ready for Q038".
+Report back: "Lab ready for Q038 — Postgres 5432 open on 192.168.52.129, creds postgres/postgres".
 ```

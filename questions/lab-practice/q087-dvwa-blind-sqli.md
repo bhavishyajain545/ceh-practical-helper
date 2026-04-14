@@ -5,7 +5,7 @@
 | **Target** | `192.168.52.129` (Metasploitable 2) |
 | **Domain** | 12 — Web Apps / 13 — SQLi |
 | **Difficulty** | 🟡 Medium |
-| **Tools** | `burpsuite`, `sqlmap`, `gobuster`, `nikto`, `curl` |
+| **Tools** | `sqlmap` |
 | **Time budget** | 15–25 min |
 
 ---
@@ -65,9 +65,9 @@ Boolean blind succeeds.
 ## 🤖 Claude Setup Prompt (for Claude-on-your-PC)
 
 ```
-1. Verify VMs running: ping 192.168.52.129 and ping 192.168.52.130 from 192.168.52.128.
-2. Required services for this Q already up by default on the relevant target.
-3. If something is down, restart it on the target VM.
+Pre-requisites for Q087:
+1. Same as Q067: DVWA up, security=low, PHPSESSID available.
+2. The blind SQLi page /dvwa/vulnerabilities/sqli_blind/ reachable.
 
-Report back: "Lab ready for Q087".
+Report back: "Lab ready for Q087 — DVWA blind SQLi page reachable, security=low".
 ```

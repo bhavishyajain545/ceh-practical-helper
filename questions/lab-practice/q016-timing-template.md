@@ -5,7 +5,7 @@
 | **Target** | `192.168.52.129` (Metasploitable 2) |
 | **Domain** | 02 — Scanning |
 | **Difficulty** | 🟢 Easy |
-| **Tools** | `nmap`, `hping3`, `masscan`, `nc` |
+| **Tools** | `nmap` |
 | **Time budget** | 5–10 min |
 
 ---
@@ -65,7 +65,11 @@ On LAN, completes in ~10-20s.
 ## 🤖 Claude Setup Prompt (for Claude-on-your-PC)
 
 ```
-1. Metasploitable up.
+Pre-requisites for Q016:
+1. Verify Metasploitable2 (192.168.52.129) is reachable: ping -c 2 192.168.52.129.
+2. -sS with -T4 → raw packets → sudo required on Parrot. Confirm: sudo -n true || sudo -v.
+3. For a clean timing number, no competing traffic on the lab NIC — close Wireshark captures, bulk downloads, etc. This keeps wall-clock close to the expected ~10-20s on LAN.
+4. If you want to compare, also run with -T3 (default) and -T5 (insane, may miss ports) and note the delta. Put the numbers in the answer if the exam asks for them.
 
-Report back: "Lab ready for Q016".
+Report back: "Lab ready for Q016 — 192.168.52.129 reachable, sudo works, lab NIC quiet".
 ```

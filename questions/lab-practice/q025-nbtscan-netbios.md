@@ -5,7 +5,7 @@
 | **Target** | `192.168.52.129` (Metasploitable 2) |
 | **Domain** | 03 — Enumeration |
 | **Difficulty** | 🟢 Easy |
-| **Tools** | `enum4linux`, `smbclient`, `rpcclient`, `nmap NSE` |
+| **Tools** | `nbtscan` |
 | **Time budget** | 10–15 min |
 
 ---
@@ -65,9 +65,10 @@ Returns `METASPLOITABLE` for `.129`.
 ## 🤖 Claude Setup Prompt (for Claude-on-your-PC)
 
 ```
-1. Verify VMs running: ping 192.168.52.129 and ping 192.168.52.130 from 192.168.52.128.
-2. Required services for this Q already up by default on the relevant target.
-3. If something is down, restart it on the target VM.
+Pre-requisites for Q025:
+1. Verify Metasploitable2 (192.168.52.129) up; nmbd running (sudo service nmbd status).
+2. UDP 137 must be open on target: nmap -sU -p 137 192.168.52.129.
+3. On Parrot, install nbtscan if missing: sudo apt install nbtscan.
 
-Report back: "Lab ready for Q025".
+Report back: "Lab ready for Q025 — nbtscan installed, UDP 137 reachable on 192.168.52.129".
 ```

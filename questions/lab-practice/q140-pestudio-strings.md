@@ -5,7 +5,7 @@
 | **Target** | (local sample files) |
 | **Domain** | 06 — Malware / Forensics |
 | **Difficulty** | 🟡 Medium |
-| **Tools** | `strings`, `file`, `peframe`, `olevba`, `yara`, `foremost` |
+| **Tools** | `strings (pestudio is Windows-only)` |
 | **Time budget** | 10–15 min |
 
 ---
@@ -65,9 +65,9 @@ VirtualAllocEx flagged as suspicious.
 ## 🤖 Claude Setup Prompt (for Claude-on-your-PC)
 
 ```
-1. Verify VMs running: ping 192.168.52.129 and ping 192.168.52.130 from 192.168.52.128.
-2. Required services for this Q already up by default on the relevant target.
-3. If something is down, restart it on the target VM.
+Pre-requisites for Q140:
+1. Local Parrot exercise (pestudio is Windows GUI — on Parrot use `strings -a sample.exe | grep -i virtualalloc` as substitute).
+2. Stage sample.exe (any PE, e.g. a Win putty.exe copied via scp).
 
-Report back: "Lab ready for Q140".
+Report back: "Lab ready for Q140 — strings available, sample.exe staged (pestudio optional on Win7)".
 ```

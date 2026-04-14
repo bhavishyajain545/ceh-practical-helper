@@ -5,7 +5,7 @@
 | **Target** | `192.168.52.129` / `192.168.52.130` |
 | **Domain** | 05 — Credential Attacks |
 | **Difficulty** | 🟡 Medium |
-| **Tools** | `hydra`, `john`, `hashcat`, `crackmapexec`, `responder` |
+| **Tools** | `hydra` |
 | **Time budget** | 10–20 min |
 
 ---
@@ -65,9 +65,10 @@ Cracks `user:user`.
 ## 🤖 Claude Setup Prompt (for Claude-on-your-PC)
 
 ```
-1. Verify VMs running: ping 192.168.52.129 and ping 192.168.52.130 from 192.168.52.128.
-2. Required services for this Q already up by default on the relevant target.
-3. If something is down, restart it on the target VM.
+Pre-requisites for Q096:
+1. Verify Metasploitable2 up; vsftpd running.
+2. user 'user' with password 'user' exists by default on Metasploitable2.
+3. fasttrack.txt available: ls /usr/share/wordlists/fasttrack.txt.
 
-Report back: "Lab ready for Q096".
+Report back: "Lab ready for Q096 — FTP 21 open, user:user account exists, hydra ready".
 ```

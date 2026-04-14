@@ -5,7 +5,7 @@
 | **Target** | `192.168.52.129` / `192.168.52.130` |
 | **Domain** | 05 — System Hacking |
 | **Difficulty** | 🟡 Medium |
-| **Tools** | `metasploit`, `hydra`, `john`, `hashcat`, `linpeas`, `mimikatz` |
+| **Tools** | `metasploit` |
 | **Time budget** | 15–25 min |
 
 ---
@@ -65,9 +65,10 @@ Drops shell as `root` typically.
 ## 🤖 Claude Setup Prompt (for Claude-on-your-PC)
 
 ```
-1. Verify VMs running: ping 192.168.52.129 and ping 192.168.52.130 from 192.168.52.128.
-2. Required services for this Q already up by default on the relevant target.
-3. If something is down, restart it on the target VM.
+Pre-requisites for Q046:
+1. Verify Metasploitable2 (192.168.52.129) up; UnrealIRCd running on 6667: ssh msfadmin@192.168.52.129 → ps aux | grep ircd (start via /etc/rc.d or /usr/local/unrealircd/unreal start if down).
+2. From Parrot: nc 192.168.52.129 6667 should show IRC banner.
+3. msfconsole ready.
 
-Report back: "Lab ready for Q046".
+Report back: "Lab ready for Q046 — UnrealIRCd 6667 reachable on 192.168.52.129".
 ```

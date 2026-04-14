@@ -5,7 +5,7 @@
 | **Target** | `192.168.52.129` (Metasploitable 2) |
 | **Domain** | 12 — Web Apps / 13 — SQLi |
 | **Difficulty** | 🔴 Hard |
-| **Tools** | `burpsuite`, `sqlmap`, `gobuster`, `nikto`, `curl` |
+| **Tools** | `curl` |
 | **Time budget** | 15–25 min |
 
 ---
@@ -65,9 +65,9 @@ TikiWiki **1.9.5** — vulnerable to graph_formula RCE.
 ## 🤖 Claude Setup Prompt (for Claude-on-your-PC)
 
 ```
-1. Verify VMs running: ping 192.168.52.129 and ping 192.168.52.130 from 192.168.52.128.
-2. Required services for this Q already up by default on the relevant target.
-3. If something is down, restart it on the target VM.
+Pre-requisites for Q077:
+1. Verify Metasploitable2 (192.168.52.129) up; apache2 running.
+2. curl -s http://192.168.52.129/tikiwiki/ must return TikiWiki 1.9.5 HTML.
 
-Report back: "Lab ready for Q077".
+Report back: "Lab ready for Q077 — TikiWiki 1.9.5 reachable on 192.168.52.129".
 ```

@@ -5,7 +5,7 @@
 | **Target** | `192.168.52.129` (Metasploitable 2) |
 | **Domain** | 12 — Web Apps / 13 — SQLi |
 | **Difficulty** | 🟡 Medium |
-| **Tools** | `burpsuite`, `sqlmap`, `gobuster`, `nikto`, `curl` |
+| **Tools** | `browser, nc` |
 | **Time budget** | 15–25 min |
 
 ---
@@ -66,9 +66,10 @@ Visiting the page exfiltrates cookies to attacker.
 ## 🤖 Claude Setup Prompt (for Claude-on-your-PC)
 
 ```
-1. Verify VMs running: ping 192.168.52.129 and ping 192.168.52.130 from 192.168.52.128.
-2. Required services for this Q already up by default on the relevant target.
-3. If something is down, restart it on the target VM.
+Pre-requisites for Q070:
+1. Verify Metasploitable2 (192.168.52.129) up; DVWA security=low; logged-in session.
+2. On Parrot start capture: nc -lvnp 8000 (in a dedicated terminal).
+3. Parrot IP 192.168.52.128 reachable from Metasploitable2's browser context (the stored XSS fires when anyone views the guestbook — no real second victim needed, viewing from Parrot's Firefox triggers exfil).
 
-Report back: "Lab ready for Q070".
+Report back: "Lab ready for Q070 — DVWA security=low, nc listener on Parrot:8000".
 ```

@@ -5,7 +5,7 @@
 | **Target** | `192.168.52.129` (Metasploitable 2) |
 | **Domain** | 12 — Web Apps / 13 — SQLi |
 | **Difficulty** | 🟢 Easy |
-| **Tools** | `burpsuite`, `sqlmap`, `gobuster`, `nikto`, `curl` |
+| **Tools** | `curl` |
 | **Time budget** | 15–25 min |
 
 ---
@@ -65,9 +65,9 @@ Server echoes the full request including custom header — XST PoC.
 ## 🤖 Claude Setup Prompt (for Claude-on-your-PC)
 
 ```
-1. Verify VMs running: ping 192.168.52.129 and ping 192.168.52.130 from 192.168.52.128.
-2. Required services for this Q already up by default on the relevant target.
-3. If something is down, restart it on the target VM.
+Pre-requisites for Q086:
+1. Verify Metasploitable2 up; apache2 running with TRACE enabled (Metasploitable2 default).
+2. curl -X TRACE http://192.168.52.129/ returns 200 with echoed request.
 
-Report back: "Lab ready for Q086".
+Report back: "Lab ready for Q086 — TRACE method enabled on 192.168.52.129:80".
 ```

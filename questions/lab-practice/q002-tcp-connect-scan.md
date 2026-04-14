@@ -5,7 +5,7 @@
 | **Target** | `192.168.52.129` (Metasploitable 2) |
 | **Domain** | 02 — Scanning |
 | **Difficulty** | 🟢 Easy |
-| **Tools** | `nmap`, `hping3`, `masscan`, `nc` |
+| **Tools** | `nmap` |
 | **Time budget** | 5–10 min |
 
 ---
@@ -65,9 +65,11 @@ Default top-1000 scan reveals 23 open ports; highest commonly **8180** (Tomcat).
 ## 🤖 Claude Setup Prompt (for Claude-on-your-PC)
 
 ```
-1. Verify 192.168.52.129 is reachable from 192.168.52.128 (ping).
-2. Ensure all default Metasploitable services up.
-3. No extra setup needed.
+Pre-requisites for Q002:
+1. Verify Metasploitable2 (192.168.52.129) is reachable from Parrot: ping -c 2 192.168.52.129.
+2. Confirm nmap on Parrot supports -sT (default, no root needed): which nmap → /usr/bin/nmap; nmap --version.
+3. All 23 default Metasploitable TCP services should be up. Optional sanity: ssh msfadmin@192.168.52.129 (password: msfadmin) → sudo service --status-all | grep '+'.
+4. If any listener is down, start it: sudo service <name> start (ssh, apache2, vsftpd, postfix, samba, tomcat6, mysql, postgresql).
 
-Report back: "Lab ready for Q002".
+Report back: "Lab ready for Q002 — 192.168.52.129 reachable, nmap present".
 ```

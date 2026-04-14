@@ -5,7 +5,7 @@
 | **Target** | `192.168.52.130` (Windows 7) |
 | **Domain** | 05 — Credential Attacks |
 | **Difficulty** | 🟡 Medium |
-| **Tools** | `hydra`, `john`, `hashcat`, `crackmapexec`, `responder` |
+| **Tools** | `ncrack` |
 | **Time budget** | 10–20 min |
 
 ---
@@ -65,9 +65,10 @@ Tests creds; slow due to RDP timing.
 ## 🤖 Claude Setup Prompt (for Claude-on-your-PC)
 
 ```
-1. Verify VMs running: ping 192.168.52.129 and ping 192.168.52.130 from 192.168.52.128.
-2. Required services for this Q already up by default on the relevant target.
-3. If something is down, restart it on the target VM.
+Pre-requisites for Q109:
+1. Verify Win7 up; RDP enabled on 3389 (see Q063 steps).
+2. On Parrot: which ncrack (sudo apt install ncrack).
+3. Set Administrator pwd to a wordlist entry for lab success.
 
-Report back: "Lab ready for Q109".
+Report back: "Lab ready for Q109 — Win7 RDP 3389 open, ncrack + fasttrack ready".
 ```

@@ -5,7 +5,7 @@
 | **Target** | `192.168.52.129` (Metasploitable 2) |
 | **Domain** | 03 — Enumeration |
 | **Difficulty** | 🟢 Easy |
-| **Tools** | `enum4linux`, `smbclient`, `rpcclient`, `nmap NSE` |
+| **Tools** | `smbmap` |
 | **Time budget** | 10–15 min |
 
 ---
@@ -65,9 +65,10 @@ smbmap -H 192.168.52.129
 ## 🤖 Claude Setup Prompt (for Claude-on-your-PC)
 
 ```
-1. Verify VMs running: ping 192.168.52.129 and ping 192.168.52.130 from 192.168.52.128.
-2. Required services for this Q already up by default on the relevant target.
-3. If something is down, restart it on the target VM.
+Pre-requisites for Q023:
+1. Verify Metasploitable2 (192.168.52.129) up; samba running (sudo service samba status).
+2. On Parrot confirm smbmap is installed: which smbmap (install via sudo apt install smbmap if missing).
+3. From Parrot: nmap -p 445 192.168.52.129 — open.
 
-Report back: "Lab ready for Q023".
+Report back: "Lab ready for Q023 — smbmap installed on Parrot, port 445 open on 192.168.52.129".
 ```

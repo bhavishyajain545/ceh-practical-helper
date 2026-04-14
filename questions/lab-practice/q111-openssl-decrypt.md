@@ -5,7 +5,7 @@
 | **Target** | (local files on Parrot) |
 | **Domain** | 18 — Cryptography |
 | **Difficulty** | 🟡 Medium |
-| **Tools** | `openssl`, `steghide`, `binwalk`, `exiftool`, `hashid` |
+| **Tools** | `openssl` |
 | **Time budget** | 10–15 min |
 
 ---
@@ -65,9 +65,10 @@ Yields plaintext.
 ## 🤖 Claude Setup Prompt (for Claude-on-your-PC)
 
 ```
-1. Verify VMs running: ping 192.168.52.129 and ping 192.168.52.130 from 192.168.52.128.
-2. Required services for this Q already up by default on the relevant target.
-3. If something is down, restart it on the target VM.
+Pre-requisites for Q111:
+1. Local Parrot exercise.
+2. Pre-generate a cipher.b64 file: echo 'secret' | openssl enc -aes-256-cbc -pbkdf2 -salt -a -k lab123 > cipher.b64.
+3. which openssl.
 
-Report back: "Lab ready for Q111".
+Report back: "Lab ready for Q111 — openssl available, cipher.b64 staged in cwd".
 ```

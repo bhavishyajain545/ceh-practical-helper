@@ -5,7 +5,7 @@
 | **Target** | `192.168.52.129` (Metasploitable 2) |
 | **Domain** | 03 — Enumeration |
 | **Difficulty** | 🟢 Easy |
-| **Tools** | `enum4linux`, `smbclient`, `rpcclient`, `nmap NSE` |
+| **Tools** | `nmap` |
 | **Time budget** | 10–15 min |
 
 ---
@@ -65,9 +65,10 @@ TRACE shown as supported (XST risk).
 ## 🤖 Claude Setup Prompt (for Claude-on-your-PC)
 
 ```
-1. Verify VMs running: ping 192.168.52.129 and ping 192.168.52.130 from 192.168.52.128.
-2. Required services for this Q already up by default on the relevant target.
-3. If something is down, restart it on the target VM.
+Pre-requisites for Q031:
+1. Verify Metasploitable2 (192.168.52.129) up; apache2 running (sudo service apache2 status).
+2. From Parrot: curl -I http://192.168.52.129/ — must return HTTP 200/OK.
+3. TRACE is enabled by default in the Metasploitable2 Apache config — confirm no patch applied.
 
-Report back: "Lab ready for Q031".
+Report back: "Lab ready for Q031 — HTTP 80 open on 192.168.52.129, TRACE enabled".
 ```

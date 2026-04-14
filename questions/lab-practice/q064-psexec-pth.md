@@ -5,7 +5,7 @@
 | **Target** | `192.168.52.130` (Windows 7) |
 | **Domain** | 05 — System Hacking |
 | **Difficulty** | 🔴 Hard |
-| **Tools** | `metasploit`, `hydra`, `john`, `hashcat`, `linpeas`, `mimikatz` |
+| **Tools** | `impacket-psexec` |
 | **Time budget** | 15–25 min |
 
 ---
@@ -65,9 +65,10 @@ Drops SYSTEM shell on Win7.
 ## 🤖 Claude Setup Prompt (for Claude-on-your-PC)
 
 ```
-1. Verify VMs running: ping 192.168.52.129 and ping 192.168.52.130 from 192.168.52.128.
-2. Required services for this Q already up by default on the relevant target.
-3. If something is down, restart it on the target VM.
+Pre-requisites for Q064:
+1. Need NTLM hash of local Administrator (obtain via Q042+Q051 chain).
+2. Verify Win7 (192.168.52.130): SMB 445 open; admin shares (ADMIN$, C$) enabled — on Win7 workgroup set: reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1 /f (required for workgroup PTH).
+3. On Parrot: which impacket-psexec (sudo apt install python3-impacket if missing).
 
-Report back: "Lab ready for Q064".
+Report back: "Lab ready for Q064 — Win7 SMB 445 open, LocalAccountTokenFilterPolicy=1, NTLM hash captured".
 ```

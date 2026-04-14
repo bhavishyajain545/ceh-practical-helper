@@ -5,7 +5,7 @@
 | **Target** | (local files on Parrot) |
 | **Domain** | 18 — Cryptography |
 | **Difficulty** | 🟡 Medium |
-| **Tools** | `openssl`, `steghide`, `binwalk`, `exiftool`, `hashid` |
+| **Tools** | `python3` |
 | **Time budget** | 10–15 min |
 
 ---
@@ -65,9 +65,10 @@ Yields plaintext file.
 ## 🤖 Claude Setup Prompt (for Claude-on-your-PC)
 
 ```
-1. Verify VMs running: ping 192.168.52.129 and ping 192.168.52.130 from 192.168.52.128.
-2. Required services for this Q already up by default on the relevant target.
-3. If something is down, restart it on the target VM.
+Pre-requisites for Q117:
+1. Local Parrot exercise.
+2. which python3.
+3. Stage XOR-encoded file: python3 -c 'import os; d=b"hello world"; open("e.bin","wb").write(bytes(b^0x42 for b in d))'.
 
-Report back: "Lab ready for Q117".
+Report back: "Lab ready for Q117 — python3 available, e.bin XOR-encoded staged".
 ```

@@ -5,7 +5,7 @@
 | **Target** | `192.168.52.129` (Metasploitable 2) |
 | **Domain** | 02 — Scanning |
 | **Difficulty** | 🟢 Easy |
-| **Tools** | `nmap`, `hping3`, `masscan`, `nc` |
+| **Tools** | `nmap` |
 | **Time budget** | 5–10 min |
 
 ---
@@ -65,7 +65,13 @@ Script flags `vsftpd 2.3.4 backdoor` → CVE-2011-2523.
 ## 🤖 Claude Setup Prompt (for Claude-on-your-PC)
 
 ```
-1. Metasploitable vsftpd running on 21.
+Pre-requisites for Q008:
+1. Verify Metasploitable2 (192.168.52.129) is reachable: ping -c 2 192.168.52.129.
+2. vsftpd 2.3.4 must be running on port 21 — that banner is what vuln NSE scripts match against:
+   - Confirm: nc 192.168.52.129 21 → "220 (vsFTPd 2.3.4)".
+   - If down: ssh msfadmin@192.168.52.129 → sudo service vsftpd start.
+3. vuln NSE category scripts ship with nmap — verify: ls /usr/share/nmap/scripts/ftp-vsftpd-backdoor.nse. If absent, sudo apt install -y nmap.
+4. No internet required (offline NSE db is local); no root needed for -sV --script vuln against a single port.
 
-Report back: "Lab ready for Q008".
+Report back: "Lab ready for Q008 — vsftpd 2.3.4 banner confirmed on 192.168.52.129:21".
 ```

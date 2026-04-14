@@ -5,7 +5,7 @@
 | **Target** | `192.168.52.129` (Metasploitable 2) |
 | **Domain** | 03 — Enumeration |
 | **Difficulty** | 🟢 Easy |
-| **Tools** | `enum4linux`, `smbclient`, `rpcclient`, `nmap NSE` |
+| **Tools** | `nfs-common (showmount)` |
 | **Time budget** | 10–15 min |
 
 ---
@@ -65,9 +65,11 @@ showmount -e 192.168.52.129
 ## 🤖 Claude Setup Prompt (for Claude-on-your-PC)
 
 ```
-1. Verify VMs running: ping 192.168.52.129 and ping 192.168.52.130 from 192.168.52.128.
-2. Required services for this Q already up by default on the relevant target.
-3. If something is down, restart it on the target VM.
+Pre-requisites for Q027:
+1. Verify Metasploitable2 (192.168.52.129) up; NFS services running: ssh msfadmin@192.168.52.129 → sudo service portmap status && sudo service nfs-kernel-server status (start if down).
+2. Confirm /etc/exports on target contains '/ *' (Metasploitable2 default).
+3. From Parrot: rpcinfo -p 192.168.52.129 | grep mountd — must show mountd entry.
+4. On Parrot install nfs-common if missing: sudo apt install nfs-common.
 
-Report back: "Lab ready for Q027".
+Report back: "Lab ready for Q027 — NFS exports visible on 192.168.52.129".
 ```

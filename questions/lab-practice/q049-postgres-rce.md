@@ -5,7 +5,7 @@
 | **Target** | `192.168.52.129` / `192.168.52.130` |
 | **Domain** | 05 — System Hacking |
 | **Difficulty** | 🔴 Hard |
-| **Tools** | `metasploit`, `hydra`, `john`, `hashcat`, `linpeas`, `mimikatz` |
+| **Tools** | `metasploit` |
 | **Time budget** | 15–25 min |
 
 ---
@@ -65,9 +65,11 @@ Yields postgres-user shell.
 ## 🤖 Claude Setup Prompt (for Claude-on-your-PC)
 
 ```
-1. Verify VMs running: ping 192.168.52.129 and ping 192.168.52.130 from 192.168.52.128.
-2. Required services for this Q already up by default on the relevant target.
-3. If something is down, restart it on the target VM.
+Pre-requisites for Q049:
+1. Verify Metasploitable2 (192.168.52.129) up; postgres running (sudo service postgresql status).
+2. Creds postgres/postgres accepted remotely: psql -h 192.168.52.129 -U postgres (password postgres).
+3. From Parrot: nmap -p 5432 192.168.52.129 — open.
+4. msfconsole ready; LHOST 192.168.52.128 listener free.
 
-Report back: "Lab ready for Q049".
+Report back: "Lab ready for Q049 — Postgres 5432 open with postgres/postgres on 192.168.52.129".
 ```

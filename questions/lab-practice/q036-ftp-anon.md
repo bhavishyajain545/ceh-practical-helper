@@ -5,7 +5,7 @@
 | **Target** | `192.168.52.129` (Metasploitable 2) |
 | **Domain** | 03 — Enumeration |
 | **Difficulty** | 🟢 Easy |
-| **Tools** | `enum4linux`, `smbclient`, `rpcclient`, `nmap NSE` |
+| **Tools** | `nmap` |
 | **Time budget** | 10–15 min |
 
 ---
@@ -65,9 +65,10 @@ Reports anonymous FTP login disabled.
 ## 🤖 Claude Setup Prompt (for Claude-on-your-PC)
 
 ```
-1. Verify VMs running: ping 192.168.52.129 and ping 192.168.52.130 from 192.168.52.128.
-2. Required services for this Q already up by default on the relevant target.
-3. If something is down, restart it on the target VM.
+Pre-requisites for Q036:
+1. Verify Metasploitable2 (192.168.52.129) up; vsftpd running (sudo service vsftpd status).
+2. From Parrot: nmap -p 21 192.168.52.129 — open.
+3. Metasploitable2 vsftpd has anonymous DISABLED by default (expected answer 'no') — do not modify /etc/vsftpd.conf.
 
-Report back: "Lab ready for Q036".
+Report back: "Lab ready for Q036 — FTP 21 open on 192.168.52.129, anon disabled".
 ```

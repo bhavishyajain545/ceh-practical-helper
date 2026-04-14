@@ -5,7 +5,7 @@
 | **Target** | `192.168.52.129` (Metasploitable 2) |
 | **Domain** | 12 — Web Apps / 13 — SQLi |
 | **Difficulty** | 🟡 Medium |
-| **Tools** | `burpsuite`, `sqlmap`, `gobuster`, `nikto`, `curl` |
+| **Tools** | `curl, browser` |
 | **Time budget** | 15–25 min |
 
 ---
@@ -65,9 +65,9 @@ Authenticated session hijacked.
 ## 🤖 Claude Setup Prompt (for Claude-on-your-PC)
 
 ```
-1. Verify VMs running: ping 192.168.52.129 and ping 192.168.52.130 from 192.168.52.128.
-2. Required services for this Q already up by default on the relevant target.
-3. If something is down, restart it on the target VM.
+Pre-requisites for Q084:
+1. Requires DVWA (Q067 prereqs) + a stolen PHPSESSID cookie from Q070 XSS.
+2. Two browsers (or Firefox+curl) on Parrot — one authenticated (supplies cookie), one as attacker replaying it.
 
-Report back: "Lab ready for Q084".
+Report back: "Lab ready for Q084 — DVWA up, two browser contexts available".
 ```

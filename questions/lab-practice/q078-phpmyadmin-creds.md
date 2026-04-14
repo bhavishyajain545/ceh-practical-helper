@@ -5,7 +5,7 @@
 | **Target** | `192.168.52.129` (Metasploitable 2) |
 | **Domain** | 12 — Web Apps / 13 — SQLi |
 | **Difficulty** | 🔴 Hard |
-| **Tools** | `burpsuite`, `sqlmap`, `gobuster`, `nikto`, `curl` |
+| **Tools** | `curl (or browser)` |
 | **Time budget** | 15–25 min |
 
 ---
@@ -65,9 +65,10 @@ Logs in as root.
 ## 🤖 Claude Setup Prompt (for Claude-on-your-PC)
 
 ```
-1. Verify VMs running: ping 192.168.52.129 and ping 192.168.52.130 from 192.168.52.128.
-2. Required services for this Q already up by default on the relevant target.
-3. If something is down, restart it on the target VM.
+Pre-requisites for Q078:
+1. Verify Metasploitable2 (192.168.52.129) up; apache2+mysql running.
+2. curl http://192.168.52.129/phpMyAdmin/ returns 200.
+3. mysql root has blank password (Metasploitable2 default — do not change).
 
-Report back: "Lab ready for Q078".
+Report back: "Lab ready for Q078 — phpMyAdmin reachable, mysql root blank on 192.168.52.129".
 ```

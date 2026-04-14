@@ -5,7 +5,7 @@
 | **Target** | `192.168.52.129` / `192.168.52.130` |
 | **Domain** | 05 — System Hacking |
 | **Difficulty** | 🔴 Hard |
-| **Tools** | `metasploit`, `hydra`, `john`, `hashcat`, `linpeas`, `mimikatz` |
+| **Tools** | `metasploit (meterpreter)` |
 | **Time budget** | 15–25 min |
 
 ---
@@ -65,9 +65,10 @@ Returns Administrator:500:<lm>:<ntlm>:::
 ## 🤖 Claude Setup Prompt (for Claude-on-your-PC)
 
 ```
-1. Verify VMs running: ping 192.168.52.129 and ping 192.168.52.130 from 192.168.52.128.
-2. Required services for this Q already up by default on the relevant target.
-3. If something is down, restart it on the target VM.
+Pre-requisites for Q051:
+1. Requires an existing SYSTEM-level Meterpreter session on Win7 (see Q042 to establish).
+2. If no session live, re-run EternalBlue: ensure Win7 prereqs still met (SMBv1 on, MS17-010 unpatched).
+3. hashdump command is run from meterpreter prompt — no extra setup.
 
-Report back: "Lab ready for Q051".
+Report back: "Lab ready for Q051 — SYSTEM meterpreter on Win7 available".
 ```

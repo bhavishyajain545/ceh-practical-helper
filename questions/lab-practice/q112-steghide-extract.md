@@ -5,7 +5,7 @@
 | **Target** | (local files on Parrot) |
 | **Domain** | 18 — Cryptography |
 | **Difficulty** | 🟡 Medium |
-| **Tools** | `openssl`, `steghide`, `binwalk`, `exiftool`, `hashid` |
+| **Tools** | `steghide` |
 | **Time budget** | 10–15 min |
 
 ---
@@ -65,9 +65,10 @@ Extracts hidden file.
 ## 🤖 Claude Setup Prompt (for Claude-on-your-PC)
 
 ```
-1. Verify VMs running: ping 192.168.52.129 and ping 192.168.52.130 from 192.168.52.128.
-2. Required services for this Q already up by default on the relevant target.
-3. If something is down, restart it on the target VM.
+Pre-requisites for Q112:
+1. Local Parrot exercise (or file delivered via scp).
+2. On Parrot: sudo apt install steghide.
+3. Stage test file: create carrier JPEG (cp /usr/share/pixmaps/*.jpg secret.jpg) and embed: echo 'flag' > msg.txt; steghide embed -cf secret.jpg -ef msg.txt -p cehlab.
 
-Report back: "Lab ready for Q112".
+Report back: "Lab ready for Q112 — steghide installed, secret.jpg with embedded data (pwd=cehlab)".
 ```

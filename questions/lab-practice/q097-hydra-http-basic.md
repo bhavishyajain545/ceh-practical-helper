@@ -5,7 +5,7 @@
 | **Target** | `192.168.52.129` / `192.168.52.130` |
 | **Domain** | 05 — Credential Attacks |
 | **Difficulty** | 🟡 Medium |
-| **Tools** | `hydra`, `john`, `hashcat`, `crackmapexec`, `responder` |
+| **Tools** | `hydra` |
 | **Time budget** | 10–20 min |
 
 ---
@@ -65,9 +65,9 @@ Hydra cycles creds.
 ## 🤖 Claude Setup Prompt (for Claude-on-your-PC)
 
 ```
-1. Verify VMs running: ping 192.168.52.129 and ping 192.168.52.130 from 192.168.52.128.
-2. Required services for this Q already up by default on the relevant target.
-3. If something is down, restart it on the target VM.
+Pre-requisites for Q097:
+1. This is a syntax/recall Q — no real /secured/ endpoint needs to exist.
+2. If you want to actually execute: create basic-auth dir on Metasploitable2: ssh msfadmin → sudo mkdir /var/www/secured; htpasswd -cb /etc/apache2/.htpasswd admin admin; add AuthType Basic directive in /etc/apache2/sites-enabled/000-default.conf (optional).
 
-Report back: "Lab ready for Q097".
+Report back: "Lab ready for Q097 — hydra available; endpoint optional".
 ```

@@ -5,7 +5,7 @@
 | **Target** | `192.168.52.129` / `192.168.52.130` |
 | **Domain** | 05 — Credential Attacks |
 | **Difficulty** | 🔴 Hard |
-| **Tools** | `hydra`, `john`, `hashcat`, `crackmapexec`, `responder` |
+| **Tools** | `hashcat` |
 | **Time budget** | 10–20 min |
 
 ---
@@ -65,9 +65,9 @@ Significantly expands keyspace.
 ## 🤖 Claude Setup Prompt (for Claude-on-your-PC)
 
 ```
-1. Verify VMs running: ping 192.168.52.129 and ping 192.168.52.130 from 192.168.52.128.
-2. Required services for this Q already up by default on the relevant target.
-3. If something is down, restart it on the target VM.
+Pre-requisites for Q107:
+1. Local Parrot exercise.
+2. which hashcat; ls /usr/share/hashcat/rules/best64.rule; rockyou.txt unzipped.
 
-Report back: "Lab ready for Q107".
+Report back: "Lab ready for Q107 — hashcat + best64.rule + rockyou available".
 ```

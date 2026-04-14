@@ -5,7 +5,7 @@
 | **Target** | `192.168.52.129` (Metasploitable 2) |
 | **Domain** | 03 — Enumeration |
 | **Difficulty** | 🟡 Medium |
-| **Tools** | `enum4linux`, `smbclient`, `rpcclient`, `nmap NSE` |
+| **Tools** | `enum4linux` |
 | **Time budget** | 10–15 min |
 
 ---
@@ -65,9 +65,11 @@ Shares: print$, tmp, opt, IPC$, ADMIN$.
 ## 🤖 Claude Setup Prompt (for Claude-on-your-PC)
 
 ```
-1. Verify VMs running: ping 192.168.52.129 and ping 192.168.52.130 from 192.168.52.128.
-2. Required services for this Q already up by default on the relevant target.
-3. If something is down, restart it on the target VM.
+Pre-requisites for Q021:
+1. Verify Metasploitable2 (192.168.52.129) up and reachable: ping 192.168.52.129 from Parrot.
+2. Confirm Samba running on target: ssh msfadmin@192.168.52.129 → sudo service samba status (start if not running).
+3. From Parrot sanity-check: nmap -p 139,445 192.168.52.129 — both must be open.
+4. No auth config change needed; Metasploitable2 ships with null-session enabled.
 
-Report back: "Lab ready for Q021".
+Report back: "Lab ready for Q021 — SMB 139/445 open on 192.168.52.129, null session allowed".
 ```

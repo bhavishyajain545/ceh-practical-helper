@@ -5,7 +5,7 @@
 | **Target** | `192.168.52.130` (Windows 7) |
 | **Domain** | 03 — Enumeration |
 | **Difficulty** | 🟢 Easy |
-| **Tools** | `enum4linux`, `smbclient`, `rpcclient`, `nmap NSE` |
+| **Tools** | `nmap` |
 | **Time budget** | 10–15 min |
 
 ---
@@ -65,9 +65,10 @@ Port 389 closed on standalone Win7.
 ## 🤖 Claude Setup Prompt (for Claude-on-your-PC)
 
 ```
-1. Verify VMs running: ping 192.168.52.129 and ping 192.168.52.130 from 192.168.52.128.
-2. Required services for this Q already up by default on the relevant target.
-3. If something is down, restart it on the target VM.
+Pre-requisites for Q028:
+1. Verify Win7 (192.168.52.130) up and reachable: ping 192.168.52.130.
+2. Win7 is a standalone workgroup — LDAP will NOT be running; expected answer 'closed'.
+3. Ensure Win7 firewall allows ping (File & Printer Sharing) so host is not falsely 'down'.
 
-Report back: "Lab ready for Q028".
+Report back: "Lab ready for Q028 — Win7 reachable; port 389 expected closed".
 ```

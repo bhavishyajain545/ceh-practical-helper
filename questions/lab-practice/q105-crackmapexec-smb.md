@@ -5,7 +5,7 @@
 | **Target** | `192.168.52.130` (Windows 7) |
 | **Domain** | 05 — Credential Attacks |
 | **Difficulty** | 🟡 Medium |
-| **Tools** | `hydra`, `john`, `hashcat`, `crackmapexec`, `responder` |
+| **Tools** | `crackmapexec` |
 | **Time budget** | 10–20 min |
 
 ---
@@ -65,9 +65,10 @@ Validates auth and shows hostname/domain.
 ## 🤖 Claude Setup Prompt (for Claude-on-your-PC)
 
 ```
-1. Verify VMs running: ping 192.168.52.129 and ping 192.168.52.130 from 192.168.52.128.
-2. Required services for this Q already up by default on the relevant target.
-3. If something is down, restart it on the target VM.
+Pre-requisites for Q105:
+1. Verify Win7 (192.168.52.130) up; SMB 445 open.
+2. Administrator password set to 'password' on Win7 for lab (Control Panel → User Accounts).
+3. On Parrot: which crackmapexec (sudo apt install crackmapexec).
 
-Report back: "Lab ready for Q105".
+Report back: "Lab ready for Q105 — Win7 SMB 445 open, Administrator=password, crackmapexec ready".
 ```

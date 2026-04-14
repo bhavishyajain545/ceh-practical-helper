@@ -5,7 +5,7 @@
 | **Target** | (local sample files) |
 | **Domain** | 06 — Malware / Forensics |
 | **Difficulty** | 🔴 Hard |
-| **Tools** | `strings`, `file`, `peframe`, `olevba`, `yara`, `foremost` |
+| **Tools** | `olevba` |
 | **Time budget** | 10–15 min |
 
 ---
@@ -65,9 +65,10 @@ Prints VBA source + IOCs.
 ## 🤖 Claude Setup Prompt (for Claude-on-your-PC)
 
 ```
-1. Verify VMs running: ping 192.168.52.129 and ping 192.168.52.130 from 192.168.52.128.
-2. Required services for this Q already up by default on the relevant target.
-3. If something is down, restart it on the target VM.
+Pre-requisites for Q141:
+1. Local Parrot exercise.
+2. Install: pip3 install oletools.
+3. Stage macro.docm sample — create via LibreOffice on Parrot, or download a known-benign macro sample.
 
-Report back: "Lab ready for Q141".
+Report back: "Lab ready for Q141 — olevba installed, macro.docm staged".
 ```

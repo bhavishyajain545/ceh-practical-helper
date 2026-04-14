@@ -5,7 +5,7 @@
 | **Target** | `192.168.52.129` / `192.168.52.130` / pcap |
 | **Domain** | 07 — Sniffing / 14 — Wireless |
 | **Difficulty** | 🟡 Medium |
-| **Tools** | `tcpdump`, `wireshark`, `ettercap`, `bettercap`, `aircrack-ng` |
+| **Tools** | `bettercap` |
 | **Time budget** | 10–20 min |
 
 ---
@@ -68,9 +68,10 @@ Sniffs MITM traffic.
 ## 🤖 Claude Setup Prompt (for Claude-on-your-PC)
 
 ```
-1. Verify VMs running: ping 192.168.52.129 and ping 192.168.52.130 from 192.168.52.128.
-2. Required services for this Q already up by default on the relevant target.
-3. If something is down, restart it on the target VM.
+Pre-requisites for Q129:
+1. Verify Metasploitable2 up.
+2. On Parrot: which bettercap (sudo apt install bettercap).
+3. Interface eth0 on 192.168.52.0/24.
 
-Report back: "Lab ready for Q129".
+Report back: "Lab ready for Q129 — bettercap installed on Parrot eth0".
 ```

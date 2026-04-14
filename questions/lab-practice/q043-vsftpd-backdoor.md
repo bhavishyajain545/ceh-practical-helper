@@ -5,7 +5,7 @@
 | **Target** | `192.168.52.129` / `192.168.52.130` |
 | **Domain** | 05 — System Hacking |
 | **Difficulty** | 🟡 Medium |
-| **Tools** | `metasploit`, `hydra`, `john`, `hashcat`, `linpeas`, `mimikatz` |
+| **Tools** | `metasploit (or nc)` |
 | **Time budget** | 15–25 min |
 
 ---
@@ -66,9 +66,11 @@ Port 6200 opens with root shell.
 ## 🤖 Claude Setup Prompt (for Claude-on-your-PC)
 
 ```
-1. Verify VMs running: ping 192.168.52.129 and ping 192.168.52.130 from 192.168.52.128.
-2. Required services for this Q already up by default on the relevant target.
-3. If something is down, restart it on the target VM.
+Pre-requisites for Q043:
+1. Verify Metasploitable2 (192.168.52.129) up; vsftpd 2.3.4 running (sudo service vsftpd status).
+2. Confirm banner: nc 192.168.52.129 21 shows 'vsFTPd 2.3.4'.
+3. Ports 21 and 6200 (backdoor) must be reachable — no Parrot egress firewall on 6200.
+4. If backdoor already triggered previously, restart vsftpd on target to reset state: sudo service vsftpd restart.
 
-Report back: "Lab ready for Q043".
+Report back: "Lab ready for Q043 — vsFTPd 2.3.4 banner confirmed, backdoor untriggered on 192.168.52.129".
 ```

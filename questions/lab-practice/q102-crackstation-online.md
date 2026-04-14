@@ -5,7 +5,7 @@
 | **Target** | `192.168.52.129` / `192.168.52.130` |
 | **Domain** | 05 — Credential Attacks |
 | **Difficulty** | 🟢 Easy |
-| **Tools** | `hydra`, `john`, `hashcat`, `crackmapexec`, `responder` |
+| **Tools** | `browser (crackstation.net)` |
 | **Time budget** | 10–20 min |
 
 ---
@@ -65,9 +65,9 @@ Returns `123456`.
 ## 🤖 Claude Setup Prompt (for Claude-on-your-PC)
 
 ```
-1. Verify VMs running: ping 192.168.52.129 and ping 192.168.52.130 from 192.168.52.128.
-2. Required services for this Q already up by default on the relevant target.
-3. If something is down, restart it on the target VM.
+Pre-requisites for Q102:
+1. Conceptual — requires internet from Parrot.
+2. Verify DNS+HTTPS out: curl -sI https://crackstation.net.
 
-Report back: "Lab ready for Q102".
+Report back: "Lab ready for Q102 — Parrot internet access to crackstation.net".
 ```

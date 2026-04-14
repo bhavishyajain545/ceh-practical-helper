@@ -5,7 +5,7 @@
 | **Target** | `192.168.52.129` / external |
 | **Domain** | 09 — DoS / 08 — Social Eng / 10 — Session Hijacking / Recon |
 | **Difficulty** | 🟢 Easy |
-| **Tools** | `hping3`, `hulk`, `setoolkit`, `bettercap`, `shodan` |
+| **Tools** | `hping3` |
 | **Time budget** | 10–20 min |
 
 ---
@@ -65,9 +65,11 @@ Floods port 80 with SYNs.
 ## 🤖 Claude Setup Prompt (for Claude-on-your-PC)
 
 ```
-1. Verify VMs running: ping 192.168.52.129 and ping 192.168.52.130 from 192.168.52.128.
-2. Required services for this Q already up by default on the relevant target.
-3. If something is down, restart it on the target VM.
+Pre-requisites for Q146:
+1. Verify Metasploitable2 up; apache2 running.
+2. On Parrot: which hping3 (sudo apt install hping3).
+3. Run as sudo since raw sockets needed.
+4. WARNING: lab only — SYN flood will DoS apache2; restart after with sudo service apache2 restart on target.
 
-Report back: "Lab ready for Q146".
+Report back: "Lab ready for Q146 — hping3 installed, apache2 up on 192.168.52.129".
 ```

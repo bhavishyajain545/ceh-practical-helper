@@ -5,7 +5,7 @@
 | **Target** | `192.168.52.129` (Metasploitable 2) |
 | **Domain** | 02 — Scanning |
 | **Difficulty** | 🟢 Easy |
-| **Tools** | `nmap`, `hping3`, `masscan`, `nc` |
+| **Tools** | `hping3` |
 | **Time budget** | 5–10 min |
 
 ---
@@ -65,7 +65,13 @@ Replies show `flags=SA` (SYN/ACK) confirming the port is open.
 ## 🤖 Claude Setup Prompt (for Claude-on-your-PC)
 
 ```
-1. Metasploitable apache running on 80.
+Pre-requisites for Q006:
+1. Verify Metasploitable2 (192.168.52.129) is reachable: ping -c 2 192.168.52.129.
+2. Confirm hping3 installed on Parrot: which hping3 → /usr/sbin/hping3. If missing: sudo apt install hping3.
+3. hping3 crafts raw packets → needs root. Confirm: sudo -n true || sudo -v.
+4. Apache on Metasploitable port 80 must be listening (that's what sends back SYN/ACK):
+   - Quick test: curl -sI http://192.168.52.129/ | head -1 should return HTTP/1.1 200 OK.
+   - If down: ssh msfadmin@192.168.52.129 → sudo service apache2 start.
 
-Report back: "Lab ready for Q006".
+Report back: "Lab ready for Q006 — hping3 present, apache on 80 responsive".
 ```

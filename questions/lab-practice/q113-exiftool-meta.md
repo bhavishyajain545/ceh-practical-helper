@@ -5,7 +5,7 @@
 | **Target** | (local files on Parrot) |
 | **Domain** | 18 — Cryptography |
 | **Difficulty** | 🟢 Easy |
-| **Tools** | `openssl`, `steghide`, `binwalk`, `exiftool`, `hashid` |
+| **Tools** | `exiftool` |
 | **Time budget** | 10–15 min |
 
 ---
@@ -65,9 +65,10 @@ Reports GPSPosition if present.
 ## 🤖 Claude Setup Prompt (for Claude-on-your-PC)
 
 ```
-1. Verify VMs running: ping 192.168.52.129 and ping 192.168.52.130 from 192.168.52.128.
-2. Required services for this Q already up by default on the relevant target.
-3. If something is down, restart it on the target VM.
+Pre-requisites for Q113:
+1. Local Parrot exercise.
+2. which exiftool (sudo apt install exiftool/libimage-exiftool-perl).
+3. Stage a JPEG with GPS data, e.g. download a sample: curl -o image.jpg https://exiftool.org/gps.jpg (or any JPEG with GPSPosition metadata).
 
-Report back: "Lab ready for Q113".
+Report back: "Lab ready for Q113 — exiftool installed, sample JPEG with GPSPosition in cwd".
 ```

@@ -5,7 +5,7 @@
 | **Target** | `192.168.52.129` / `192.168.52.130` |
 | **Domain** | 05 — System Hacking |
 | **Difficulty** | 🔴 Hard |
-| **Tools** | `metasploit`, `hydra`, `john`, `hashcat`, `linpeas`, `mimikatz` |
+| **Tools** | `bash` |
 | **Time budget** | 15–25 min |
 
 ---
@@ -66,9 +66,10 @@ Default — no writable. Acceptable answer `none`.
 ## 🤖 Claude Setup Prompt (for Claude-on-your-PC)
 
 ```
-1. Verify VMs running: ping 192.168.52.129 and ping 192.168.52.130 from 192.168.52.128.
-2. Required services for this Q already up by default on the relevant target.
-3. If something is down, restart it on the target VM.
+Pre-requisites for Q058:
+1. SSH msfadmin to 192.168.52.129; read /etc/crontab and /etc/cron.*.
+2. Default Metasploitable2 has no world-writable cron scripts — expected 'none'.
+3. No setup changes.
 
-Report back: "Lab ready for Q058".
+Report back: "Lab ready for Q058 — shell on 192.168.52.129 available".
 ```

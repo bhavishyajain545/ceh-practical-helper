@@ -5,7 +5,7 @@
 | **Target** | `192.168.52.129` / `192.168.52.130` |
 | **Domain** | 05 — System Hacking |
 | **Difficulty** | 🔴 Hard |
-| **Tools** | `metasploit`, `hydra`, `john`, `hashcat`, `linpeas`, `mimikatz` |
+| **Tools** | `metasploit` |
 | **Time budget** | 15–25 min |
 
 ---
@@ -66,9 +66,10 @@ Module uploads a UDF `.so` into MySQL's plugin path via `SELECT ... INTO DUMPFIL
 ## 🤖 Claude Setup Prompt (for Claude-on-your-PC)
 
 ```
-1. Verify VMs running: ping 192.168.52.129 and ping 192.168.52.130 from 192.168.52.128.
-2. Required services for this Q already up by default on the relevant target.
-3. If something is down, restart it on the target VM.
+Pre-requisites for Q048:
+1. Verify Metasploitable2 (192.168.52.129) up; mysql running with blank root (sudo service mysql status; mysql -h 192.168.52.129 -u root connects).
+2. From Parrot: nmap -p 3306 192.168.52.129 — open.
+3. msfconsole ready on Parrot.
 
-Report back: "Lab ready for Q048".
+Report back: "Lab ready for Q048 — MySQL 3306 blank-root on 192.168.52.129".
 ```

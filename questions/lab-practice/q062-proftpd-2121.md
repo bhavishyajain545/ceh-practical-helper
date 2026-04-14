@@ -5,7 +5,7 @@
 | **Target** | `192.168.52.129` / `192.168.52.130` |
 | **Domain** | 05 — System Hacking |
 | **Difficulty** | 🟡 Medium |
-| **Tools** | `metasploit`, `hydra`, `john`, `hashcat`, `linpeas`, `mimikatz` |
+| **Tools** | `nc (netcat)` |
 | **Time budget** | 15–25 min |
 
 ---
@@ -65,9 +65,9 @@ Banner reveals 1.3.1; CVE-2015-3306 applies to 1.3.5 — accept reference.
 ## 🤖 Claude Setup Prompt (for Claude-on-your-PC)
 
 ```
-1. Verify VMs running: ping 192.168.52.129 and ping 192.168.52.130 from 192.168.52.128.
-2. Required services for this Q already up by default on the relevant target.
-3. If something is down, restart it on the target VM.
+Pre-requisites for Q062:
+1. Verify Metasploitable2 (192.168.52.129) up; proftpd listening on 2121: ssh msfadmin → sudo service proftpd status (start if down; apt has it installed on Metasploitable2).
+2. From Parrot: nc 192.168.52.129 2121 should print ProFTPD banner.
 
-Report back: "Lab ready for Q062".
+Report back: "Lab ready for Q062 — ProFTPD 2121 reachable on 192.168.52.129".
 ```

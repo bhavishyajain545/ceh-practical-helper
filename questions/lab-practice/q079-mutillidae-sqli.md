@@ -5,7 +5,7 @@
 | **Target** | `192.168.52.129` (Metasploitable 2) |
 | **Domain** | 12 — Web Apps / 13 — SQLi |
 | **Difficulty** | 🟡 Medium |
-| **Tools** | `burpsuite`, `sqlmap`, `gobuster`, `nikto`, `curl` |
+| **Tools** | `curl (or browser)` |
 | **Time budget** | 15–25 min |
 
 ---
@@ -65,9 +65,10 @@ Dumps account info.
 ## 🤖 Claude Setup Prompt (for Claude-on-your-PC)
 
 ```
-1. Verify VMs running: ping 192.168.52.129 and ping 192.168.52.130 from 192.168.52.128.
-2. Required services for this Q already up by default on the relevant target.
-3. If something is down, restart it on the target VM.
+Pre-requisites for Q079:
+1. Verify Metasploitable2 (192.168.52.129) up; apache2+mysql up.
+2. Mutillidae reachable: curl -I http://192.168.52.129/mutillidae/.
+3. On first visit, click 'setup/reset the DB' link to initialize Mutillidae DB.
 
-Report back: "Lab ready for Q079".
+Report back: "Lab ready for Q079 — Mutillidae reachable with DB initialized on 192.168.52.129".
 ```

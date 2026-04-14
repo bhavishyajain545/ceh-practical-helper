@@ -5,7 +5,7 @@
 | **Target** | `192.168.52.130` (Windows 7) |
 | **Domain** | 02 — Scanning |
 | **Difficulty** | 🟢 Easy |
-| **Tools** | `nmap`, `hping3`, `masscan`, `nc` |
+| **Tools** | `nmap` |
 | **Time budget** | 5–10 min |
 
 ---
@@ -65,8 +65,16 @@ Port 445 open; OS = Windows 7.
 ## 🤖 Claude Setup Prompt (for Claude-on-your-PC)
 
 ```
-1. Win7 VM running; Windows Firewall configured to allow file sharing on internal NIC.
-2. Verify ping from Parrot.
+Pre-requisites for Q010:
+1. Win7 VM (192.168.52.130) must be powered on and on the same VMnet as Parrot.
+2. Windows Firewall on Win7 blocks ICMP and SMB by default. On the Win7 VM console, set the lab NIC profile to "Home/Work" AND either:
+   (a) Turn Windows Firewall OFF for the lab profile: Control Panel → System and Security → Windows Firewall → Turn Windows Firewall on or off → Off (Private network only). OR
+   (b) Enable the specific inbound rules: "File and Printer Sharing (SMB-In)" and "File and Printer Sharing (Echo Request - ICMPv4-In)" for the Private profile.
+3. Enable SMBv1 + File and Printer Sharing so port 445 is actually listening:
+   - Control Panel → Programs → Turn Windows features on or off → check "SMB 1.0/CIFS File Sharing Support".
+   - Network and Sharing Center → Advanced sharing settings → Turn on file and printer sharing.
+4. Verify from Parrot: ping -c 2 192.168.52.130 (should reply), then nc -vz 192.168.52.130 445 (should say "succeeded").
+5. -O requires raw packets — sudo required on Parrot.
 
-Report back: "Lab ready for Q010".
+Report back: "Lab ready for Q010 — 192.168.52.130 pings, port 445 open, sudo works".
 ```

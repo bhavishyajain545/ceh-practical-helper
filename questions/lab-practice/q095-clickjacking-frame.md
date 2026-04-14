@@ -5,7 +5,7 @@
 | **Target** | `192.168.52.129` (Metasploitable 2) |
 | **Domain** | 12 — Web Apps / 13 — SQLi |
 | **Difficulty** | 🟡 Medium |
-| **Tools** | `burpsuite`, `sqlmap`, `gobuster`, `nikto`, `curl` |
+| **Tools** | `browser` |
 | **Time budget** | 15–25 min |
 
 ---
@@ -65,9 +65,9 @@ Page renders inside attacker iframe — clickjacking PoC.
 ## 🤖 Claude Setup Prompt (for Claude-on-your-PC)
 
 ```
-1. Verify VMs running: ping 192.168.52.129 and ping 192.168.52.130 from 192.168.52.128.
-2. Required services for this Q already up by default on the relevant target.
-3. If something is down, restart it on the target VM.
+Pre-requisites for Q095:
+1. DVWA up; does not set X-Frame-Options (Metasploitable2 default).
+2. Host a small HTML file via python3 -m http.server on Parrot and open in Firefox.
 
-Report back: "Lab ready for Q095".
+Report back: "Lab ready for Q095 — DVWA reachable, no X-Frame-Options header".
 ```

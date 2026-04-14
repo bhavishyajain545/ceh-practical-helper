@@ -5,7 +5,7 @@
 | **Target** | `192.168.52.129` / `192.168.52.130` |
 | **Domain** | 05 — System Hacking |
 | **Difficulty** | 🔴 Hard |
-| **Tools** | `metasploit`, `hydra`, `john`, `hashcat`, `linpeas`, `mimikatz` |
+| **Tools** | `nfs-common, mount` |
 | **Time budget** | 15–25 min |
 
 ---
@@ -69,9 +69,11 @@ Yields root shell via no_root_squash misconfig.
 ## 🤖 Claude Setup Prompt (for Claude-on-your-PC)
 
 ```
-1. Verify VMs running: ping 192.168.52.129 and ping 192.168.52.130 from 192.168.52.128.
-2. Required services for this Q already up by default on the relevant target.
-3. If something is down, restart it on the target VM.
+Pre-requisites for Q059:
+1. Verify NFS exports as in Q027 (showmount -e 192.168.52.129 shows '/ *').
+2. On Parrot: sudo apt install nfs-common; mkdir -p /mnt/m.
+3. Parrot must run exploit as root (to preserve SUID bit when copying /bin/bash).
+4. Must have a second shell/path on Metasploitable2 to execute /tmp/rootbash -p (ssh msfadmin).
 
-Report back: "Lab ready for Q059".
+Report back: "Lab ready for Q059 — NFS / exported from 192.168.52.129 with no_root_squash".
 ```

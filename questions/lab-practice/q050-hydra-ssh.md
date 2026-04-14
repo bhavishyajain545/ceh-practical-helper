@@ -5,7 +5,7 @@
 | **Target** | `192.168.52.129` / `192.168.52.130` |
 | **Domain** | 05 — System Hacking |
 | **Difficulty** | 🟡 Medium |
-| **Tools** | `metasploit`, `hydra`, `john`, `hashcat`, `linpeas`, `mimikatz` |
+| **Tools** | `hydra` |
 | **Time budget** | 15–25 min |
 
 ---
@@ -65,9 +65,11 @@ Hydra cracks `msfadmin:msfadmin`.
 ## 🤖 Claude Setup Prompt (for Claude-on-your-PC)
 
 ```
-1. Verify VMs running: ping 192.168.52.129 and ping 192.168.52.130 from 192.168.52.128.
-2. Required services for this Q already up by default on the relevant target.
-3. If something is down, restart it on the target VM.
+Pre-requisites for Q050:
+1. Verify Metasploitable2 (192.168.52.129) up; ssh running (sudo service ssh status).
+2. From Parrot: nmap -p 22 192.168.52.129 — open. Confirm msfadmin user exists (default).
+3. Ensure rate limiting not too tight — default Metasploitable2 sshd_config allows brute.
+4. Wordlist present: ls /usr/share/wordlists/fasttrack.txt.
 
-Report back: "Lab ready for Q050".
+Report back: "Lab ready for Q050 — SSH 22 open on 192.168.52.129, hydra + fasttrack wordlist ready".
 ```

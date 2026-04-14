@@ -5,7 +5,7 @@
 | **Target** | `192.168.52.129` / `192.168.52.130` |
 | **Domain** | 05 — Credential Attacks |
 | **Difficulty** | 🟡 Medium |
-| **Tools** | `hydra`, `john`, `hashcat`, `crackmapexec`, `responder` |
+| **Tools** | `responder` |
 | **Time budget** | 10–20 min |
 
 ---
@@ -65,9 +65,11 @@ Captures hashes when Win7 attempts LLMNR resolution.
 ## 🤖 Claude Setup Prompt (for Claude-on-your-PC)
 
 ```
-1. Verify VMs running: ping 192.168.52.129 and ping 192.168.52.130 from 192.168.52.128.
-2. Required services for this Q already up by default on the relevant target.
-3. If something is down, restart it on the target VM.
+Pre-requisites for Q104:
+1. Verify Win7 (192.168.52.130) up; attacker Parrot on same L2 segment.
+2. On Parrot ensure responder installed: which responder (sudo apt install responder).
+3. Interface is eth0 — verify: ip -br a.
+4. On Win7 trigger an LLMNR query to capture (e.g. File Explorer → \\nonexistenthost).
 
-Report back: "Lab ready for Q104".
+Report back: "Lab ready for Q104 — responder installed, eth0 on 192.168.52.0/24, Win7 on segment".
 ```

@@ -5,7 +5,7 @@
 | **Target** | `192.168.52.129` (Metasploitable 2) |
 | **Domain** | 03 — Enumeration |
 | **Difficulty** | 🟡 Medium |
-| **Tools** | `enum4linux`, `smbclient`, `rpcclient`, `nmap NSE` |
+| **Tools** | `nmap, dig` |
 | **Time budget** | 10–15 min |
 
 ---
@@ -66,9 +66,10 @@ Port 53 may be open via dnsmasq fragments — usually no zone available; expect 
 ## 🤖 Claude Setup Prompt (for Claude-on-your-PC)
 
 ```
-1. Verify VMs running: ping 192.168.52.129 and ping 192.168.52.130 from 192.168.52.128.
-2. Required services for this Q already up by default on the relevant target.
-3. If something is down, restart it on the target VM.
+Pre-requisites for Q034:
+1. Verify Metasploitable2 (192.168.52.129) up.
+2. Metasploitable2 does NOT host an authoritative DNS zone — expected answer 'no_dns' / refused. Do not add named zones.
+3. On Parrot: which dig (install dnsutils/bind9-dnsutils if missing).
 
-Report back: "Lab ready for Q034".
+Report back: "Lab ready for Q034 — no AXFR zone on 192.168.52.129 (expected refused)".
 ```

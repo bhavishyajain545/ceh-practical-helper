@@ -5,7 +5,7 @@
 | **Target** | `192.168.52.129` (Metasploitable 2) |
 | **Domain** | 02 — Scanning |
 | **Difficulty** | 🟡 Medium |
-| **Tools** | `nmap`, `hping3`, `masscan`, `nc` |
+| **Tools** | `nc` |
 | **Time budget** | 5–10 min |
 
 ---
@@ -65,7 +65,15 @@ nc 192.168.52.129 25
 ## 🤖 Claude Setup Prompt (for Claude-on-your-PC)
 
 ```
-1. Metasploitable postfix running.
+Pre-requisites for Q009:
+1. Verify Metasploitable2 (192.168.52.129) is reachable: ping -c 2 192.168.52.129.
+2. Confirm nc on Parrot: which nc → /usr/bin/nc (usually nc.traditional or ncat symlinked). Either flavour works for this banner grab.
+3. Target services — all three must be listening or nc will just time out:
+   - 21 vsftpd: nc 192.168.52.129 21 → "220 (vsFTPd 2.3.4)"
+   - 22 OpenSSH: nc 192.168.52.129 22 → "SSH-2.0-OpenSSH_4.7p1 Debian-8ubuntu1"
+   - 25 Postfix: nc 192.168.52.129 25 → "220 metasploitable.localdomain ESMTP Postfix ..."
+   - If any missing: ssh msfadmin@192.168.52.129 → sudo service vsftpd|ssh|postfix start.
+4. No root required (nc uses regular TCP connect).
 
-Report back: "Lab ready for Q009".
+Report back: "Lab ready for Q009 — banners present on 21/22/25 of 192.168.52.129".
 ```

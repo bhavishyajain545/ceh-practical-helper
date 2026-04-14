@@ -5,7 +5,7 @@
 | **Target** | `192.168.52.129` (Metasploitable 2) |
 | **Domain** | 03 — Enumeration |
 | **Difficulty** | 🟢 Easy |
-| **Tools** | `enum4linux`, `smbclient`, `rpcclient`, `nmap NSE` |
+| **Tools** | `rpcclient` |
 | **Time budget** | 10–15 min |
 
 ---
@@ -65,9 +65,10 @@ Returns ~33 system + service users.
 ## 🤖 Claude Setup Prompt (for Claude-on-your-PC)
 
 ```
-1. Verify VMs running: ping 192.168.52.129 and ping 192.168.52.130 from 192.168.52.128.
-2. Required services for this Q already up by default on the relevant target.
-3. If something is down, restart it on the target VM.
+Pre-requisites for Q024:
+1. Verify Metasploitable2 (192.168.52.129) up; samba running (sudo service samba status).
+2. From Parrot: nmap -p 139,445 192.168.52.129 — both open.
+3. rpcclient is part of samba-client on Parrot: which rpcclient.
 
-Report back: "Lab ready for Q024".
+Report back: "Lab ready for Q024 — rpcclient ready, port 139/445 open on 192.168.52.129".
 ```

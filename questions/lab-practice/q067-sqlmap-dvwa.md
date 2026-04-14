@@ -5,7 +5,7 @@
 | **Target** | `192.168.52.129` (Metasploitable 2) |
 | **Domain** | 12 — Web Apps / 13 — SQLi |
 | **Difficulty** | 🟡 Medium |
-| **Tools** | `burpsuite`, `sqlmap`, `gobuster`, `nikto`, `curl` |
+| **Tools** | `sqlmap` |
 | **Time budget** | 15–25 min |
 
 ---
@@ -65,9 +65,12 @@ Returns users table with hashed passwords.
 ## 🤖 Claude Setup Prompt (for Claude-on-your-PC)
 
 ```
-1. Verify VMs running: ping 192.168.52.129 and ping 192.168.52.130 from 192.168.52.128.
-2. Required services for this Q already up by default on the relevant target.
-3. If something is down, restart it on the target VM.
+Pre-requisites for Q067:
+1. Verify Metasploitable2 (192.168.52.129) up; apache2 running.
+2. curl http://192.168.52.129/dvwa/login.php returns DVWA HTML.
+3. In DVWA: login admin/password → DVWA Security → Low → Submit.
+4. Initialize DB if first run: /dvwa/setup.php → Create/Reset Database.
+5. Capture a valid PHPSESSID (browser devtools or curl with -c cookies.txt).
 
-Report back: "Lab ready for Q067".
+Report back: "Lab ready for Q067 — DVWA reachable, security=low, fresh PHPSESSID available".
 ```

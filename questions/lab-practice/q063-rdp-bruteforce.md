@@ -5,7 +5,7 @@
 | **Target** | `192.168.52.130` (Windows 7) |
 | **Domain** | 05 — System Hacking |
 | **Difficulty** | 🟡 Medium |
-| **Tools** | `metasploit`, `hydra`, `john`, `hashcat`, `linpeas`, `mimikatz` |
+| **Tools** | `hydra` |
 | **Time budget** | 15–25 min |
 
 ---
@@ -65,9 +65,12 @@ Cracks lab Administrator password if weak.
 ## 🤖 Claude Setup Prompt (for Claude-on-your-PC)
 
 ```
-1. Verify VMs running: ping 192.168.52.129 and ping 192.168.52.130 from 192.168.52.128.
-2. Required services for this Q already up by default on the relevant target.
-3. If something is down, restart it on the target VM.
+Pre-requisites for Q063:
+1. Verify Win7 (192.168.52.130) up.
+2. Enable RDP on Win7: System Properties → Remote tab → Allow connections. Windows Firewall allow Remote Desktop.
+3. From Parrot: nmap -p 3389 192.168.52.130 — open.
+4. On Parrot ensure hydra has RDP support (xfreerdp or libfreerdp): hydra -h 2>&1 | grep rdp.
+5. Create small users.txt with 'Administrator' and 'user'.
 
-Report back: "Lab ready for Q063".
+Report back: "Lab ready for Q063 — RDP 3389 open on Win7, hydra rdp module ready".
 ```

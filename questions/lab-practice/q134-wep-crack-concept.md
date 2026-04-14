@@ -5,7 +5,7 @@
 | **Target** | `192.168.52.129` / `192.168.52.130` / pcap |
 | **Domain** | 07 — Sniffing / 14 — Wireless |
 | **Difficulty** | 🟡 Medium |
-| **Tools** | `tcpdump`, `wireshark`, `ettercap`, `bettercap`, `aircrack-ng` |
+| **Tools** | `aircrack-ng (concept)` |
 | **Time budget** | 10–20 min |
 
 ---
@@ -65,9 +65,9 @@ airmon-ng, airodump-ng, aireplay-ng, aircrack-ng.
 ## 🤖 Claude Setup Prompt (for Claude-on-your-PC)
 
 ```
-1. Verify VMs running: ping 192.168.52.129 and ping 192.168.52.130 from 192.168.52.128.
-2. Required services for this Q already up by default on the relevant target.
-3. If something is down, restart it on the target VM.
+Pre-requisites for Q134:
+1. Conceptual Q — no repro needed (no wifi card in VM lab).
+2. On Parrot: which aircrack-ng (installed by default).
 
-Report back: "Lab ready for Q134".
+Report back: "Lab ready for Q134 — aircrack-ng installed; conceptual only".
 ```

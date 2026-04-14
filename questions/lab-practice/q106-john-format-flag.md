@@ -5,7 +5,7 @@
 | **Target** | `192.168.52.129` / `192.168.52.130` |
 | **Domain** | 05 — Credential Attacks |
 | **Difficulty** | 🟡 Medium |
-| **Tools** | `hydra`, `john`, `hashcat`, `crackmapexec`, `responder` |
+| **Tools** | `john` |
 | **Time budget** | 10–20 min |
 
 ---
@@ -65,9 +65,9 @@ Forces NT format.
 ## 🤖 Claude Setup Prompt (for Claude-on-your-PC)
 
 ```
-1. Verify VMs running: ping 192.168.52.129 and ping 192.168.52.130 from 192.168.52.128.
-2. Required services for this Q already up by default on the relevant target.
-3. If something is down, restart it on the target VM.
+Pre-requisites for Q106:
+1. Local Parrot exercise.
+2. which john — ensure sample hashes.txt file is present in cwd before running.
 
-Report back: "Lab ready for Q106".
+Report back: "Lab ready for Q106 — john installed on Parrot".
 ```

@@ -5,7 +5,7 @@
 | **Target** | `192.168.52.130` (Windows 7) |
 | **Domain** | 05 — Credential Attacks |
 | **Difficulty** | 🟡 Medium |
-| **Tools** | `hydra`, `john`, `hashcat`, `crackmapexec`, `responder` |
+| **Tools** | `hydra` |
 | **Time budget** | 10–20 min |
 
 ---
@@ -65,9 +65,10 @@ Cracks if password in list.
 ## 🤖 Claude Setup Prompt (for Claude-on-your-PC)
 
 ```
-1. Verify VMs running: ping 192.168.52.129 and ping 192.168.52.130 from 192.168.52.128.
-2. Required services for this Q already up by default on the relevant target.
-3. If something is down, restart it on the target VM.
+Pre-requisites for Q098:
+1. Verify Win7 (192.168.52.130) up; SMB 445 open; Administrator account present.
+2. Set Administrator password to something present in fasttrack.txt (e.g. 'password') for lab success.
+3. fasttrack.txt present on Parrot.
 
-Report back: "Lab ready for Q098".
+Report back: "Lab ready for Q098 — Win7 SMB 445 open, Administrator pwd in wordlist".
 ```

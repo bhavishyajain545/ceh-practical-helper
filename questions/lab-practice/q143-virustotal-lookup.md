@@ -5,7 +5,7 @@
 | **Target** | (local sample files) |
 | **Domain** | 06 — Malware / Forensics |
 | **Difficulty** | 🟢 Easy |
-| **Tools** | `strings`, `file`, `peframe`, `olevba`, `yara`, `foremost` |
+| **Tools** | `browser (virustotal.com)` |
 | **Time budget** | 10–15 min |
 
 ---
@@ -65,9 +65,10 @@ VT returns EICAR-Test-File detections from all AVs.
 ## 🤖 Claude Setup Prompt (for Claude-on-your-PC)
 
 ```
-1. Verify VMs running: ping 192.168.52.129 and ping 192.168.52.130 from 192.168.52.128.
-2. Required services for this Q already up by default on the relevant target.
-3. If something is down, restart it on the target VM.
+Pre-requisites for Q143:
+1. Conceptual Q — requires Parrot internet access to virustotal.com.
+2. VT free web lookup works without API key.
+3. Optional: stage eicar.com: echo 'X5O!P%@AP[4\PZX54(P^)7CC)7}$EICAR-STANDARD-ANTIVIRUS-TEST-FILE!$H+H*' > eicar.com.
 
-Report back: "Lab ready for Q143".
+Report back: "Lab ready for Q143 — Parrot internet to virustotal.com, eicar.com staged".
 ```

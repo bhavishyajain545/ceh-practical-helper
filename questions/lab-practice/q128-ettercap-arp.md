@@ -5,7 +5,7 @@
 | **Target** | `192.168.52.129` (Metasploitable 2); `192.168.52.130` (Windows 7) |
 | **Domain** | 07 — Sniffing / 14 — Wireless |
 | **Difficulty** | 🟡 Medium |
-| **Tools** | `tcpdump`, `wireshark`, `ettercap`, `bettercap`, `aircrack-ng` |
+| **Tools** | `ettercap` |
 | **Time budget** | 10–20 min |
 
 ---
@@ -66,9 +66,10 @@ Poisons ARP tables both sides.
 ## 🤖 Claude Setup Prompt (for Claude-on-your-PC)
 
 ```
-1. Verify VMs running: ping 192.168.52.129 and ping 192.168.52.130 from 192.168.52.128.
-2. Required services for this Q already up by default on the relevant target.
-3. If something is down, restart it on the target VM.
+Pre-requisites for Q128:
+1. Verify both targets (192.168.52.129, 192.168.52.130) up on same L2.
+2. On Parrot: which ettercap; sudo sysctl -w net.ipv4.ip_forward=1.
+3. Interface eth0 verified: ip -br a.
 
-Report back: "Lab ready for Q128".
+Report back: "Lab ready for Q128 — ettercap installed, ip_forward=1, both targets reachable".
 ```

@@ -5,7 +5,7 @@
 | **Target** | `192.168.52.129` (Metasploitable 2) |
 | **Domain** | 12 — Web Apps / 13 — SQLi |
 | **Difficulty** | 🔴 Hard |
-| **Tools** | `burpsuite`, `sqlmap`, `gobuster`, `nikto`, `curl` |
+| **Tools** | `python3 (base64 util)` |
 | **Time budget** | 15–25 min |
 
 ---
@@ -65,9 +65,9 @@ Header becomes `eyJhbGciOiJub25lIn0`; vulnerable libs accept it.
 ## 🤖 Claude Setup Prompt (for Claude-on-your-PC)
 
 ```
-1. Verify VMs running: ping 192.168.52.129 and ping 192.168.52.130 from 192.168.52.128.
-2. Required services for this Q already up by default on the relevant target.
-3. If something is down, restart it on the target VM.
+Pre-requisites for Q085:
+1. Local Parrot exercise — no VM.
+2. Python3 available: which python3.
 
-Report back: "Lab ready for Q085".
+Report back: "Lab ready for Q085 — local Parrot shell with python3".
 ```

@@ -5,7 +5,7 @@
 | **Target** | `192.168.52.130` (Windows 7) |
 | **Domain** | 03 — Enumeration |
 | **Difficulty** | 🟢 Easy |
-| **Tools** | `enum4linux`, `smbclient`, `rpcclient`, `nmap NSE` |
+| **Tools** | `nmap` |
 | **Time budget** | 10–15 min |
 
 ---
@@ -65,9 +65,11 @@ Returns hostname (e.g. `WIN7-PC`).
 ## 🤖 Claude Setup Prompt (for Claude-on-your-PC)
 
 ```
-1. Verify VMs running: ping 192.168.52.129 and ping 192.168.52.130 from 192.168.52.128.
-2. Required services for this Q already up by default on the relevant target.
-3. If something is down, restart it on the target VM.
+Pre-requisites for Q033:
+1. Verify Win7 (192.168.52.130) up and reachable.
+2. Confirm File and Printer Sharing is enabled on Win7 (so port 445 is open): from Parrot → nmap -p 445 192.168.52.130 — open.
+3. Windows Firewall: allow inbound SMB on Private network (or temporarily disable).
+4. Note the Win7 hostname Claude will need for flag (e.g. WIN7-PC) — check Control Panel → System.
 
-Report back: "Lab ready for Q033".
+Report back: "Lab ready for Q033 — Win7 SMB 445 open, smb-os-discovery NSE returns hostname".
 ```

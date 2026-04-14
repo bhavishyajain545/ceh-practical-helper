@@ -5,7 +5,7 @@
 | **Target** | `192.168.52.129` / `192.168.52.130` |
 | **Domain** | 05 — System Hacking |
 | **Difficulty** | 🟡 Medium |
-| **Tools** | `metasploit`, `hydra`, `john`, `hashcat`, `linpeas`, `mimikatz` |
+| **Tools** | `metasploit` |
 | **Time budget** | 15–25 min |
 
 ---
@@ -65,9 +65,10 @@ Returns shell as `daemon` (uid=1).
 ## 🤖 Claude Setup Prompt (for Claude-on-your-PC)
 
 ```
-1. Verify VMs running: ping 192.168.52.129 and ping 192.168.52.130 from 192.168.52.128.
-2. Required services for this Q already up by default on the relevant target.
-3. If something is down, restart it on the target VM.
+Pre-requisites for Q045:
+1. Verify Metasploitable2 (192.168.52.129) up; distccd running: ssh msfadmin@192.168.52.129 → sudo service distcc status (or ps aux | grep distccd; start with /usr/bin/distccd --daemon --allow 0.0.0.0/0 if needed).
+2. From Parrot: nmap -p 3632 192.168.52.129 — open.
+3. msfconsole ready; LHOST 192.168.52.128 reachable on 4444.
 
-Report back: "Lab ready for Q045".
+Report back: "Lab ready for Q045 — distccd 3632 open on 192.168.52.129".
 ```

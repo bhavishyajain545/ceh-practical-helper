@@ -5,7 +5,7 @@
 | **Target** | `192.168.52.129` / `192.168.52.130` |
 | **Domain** | 05 — Credential Attacks |
 | **Difficulty** | 🟢 Easy |
-| **Tools** | `hydra`, `john`, `hashcat`, `crackmapexec`, `responder` |
+| **Tools** | `curl (or browser)` |
 | **Time budget** | 10–20 min |
 
 ---
@@ -65,9 +65,9 @@ tomcat:tomcat works.
 ## 🤖 Claude Setup Prompt (for Claude-on-your-PC)
 
 ```
-1. Verify VMs running: ping 192.168.52.129 and ping 192.168.52.130 from 192.168.52.128.
-2. Required services for this Q already up by default on the relevant target.
-3. If something is down, restart it on the target VM.
+Pre-requisites for Q103:
+1. Recall Q — no real login needed, but if verifying: Metasploitable2 up, Tomcat running.
+2. curl -u tomcat:tomcat http://192.168.52.129:8180/manager/html returns 200.
 
-Report back: "Lab ready for Q103".
+Report back: "Lab ready for Q103 — Tomcat manager accessible with tomcat:tomcat (optional)".
 ```

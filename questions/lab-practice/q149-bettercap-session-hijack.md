@@ -5,7 +5,7 @@
 | **Target** | `192.168.52.129` / external |
 | **Domain** | 09 — DoS / 08 — Social Eng / 10 — Session Hijacking / Recon |
 | **Difficulty** | 🔴 Hard |
-| **Tools** | `hping3`, `hulk`, `setoolkit`, `bettercap`, `shodan` |
+| **Tools** | `bettercap` |
 | **Time budget** | 10–20 min |
 
 ---
@@ -69,9 +69,10 @@ Captures HTTP cookies.
 ## 🤖 Claude Setup Prompt (for Claude-on-your-PC)
 
 ```
-1. Verify VMs running: ping 192.168.52.129 and ping 192.168.52.130 from 192.168.52.128.
-2. Required services for this Q already up by default on the relevant target.
-3. If something is down, restart it on the target VM.
+Pre-requisites for Q149:
+1. Verify DVWA up on Metasploitable2 (from Q066 prereqs).
+2. On Parrot: which bettercap; sudo sysctl -w net.ipv4.ip_forward=1.
+3. Interface eth0 on lab subnet.
 
-Report back: "Lab ready for Q149".
+Report back: "Lab ready for Q149 — bettercap installed, ip_forward=1, DVWA reachable".
 ```

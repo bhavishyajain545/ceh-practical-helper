@@ -5,7 +5,7 @@
 | **Target** | `192.168.52.129` / external |
 | **Domain** | 09 — DoS / 08 — Social Eng / 10 — Session Hijacking / Recon |
 | **Difficulty** | 🟡 Medium |
-| **Tools** | `hping3`, `hulk`, `setoolkit`, `bettercap`, `shodan` |
+| **Tools** | `setoolkit` |
 | **Time budget** | 10–20 min |
 
 ---
@@ -66,9 +66,11 @@ SET clones the page and serves harvester.
 ## 🤖 Claude Setup Prompt (for Claude-on-your-PC)
 
 ```
-1. Verify VMs running: ping 192.168.52.129 and ping 192.168.52.130 from 192.168.52.128.
-2. Required services for this Q already up by default on the relevant target.
-3. If something is down, restart it on the target VM.
+Pre-requisites for Q148:
+1. On Parrot: which setoolkit (sudo apt install set).
+2. Parrot needs internet to clone live facebook.com.
+3. Run as root: sudo setoolkit.
+4. LHOST = 192.168.52.128; port 80 free (stop apache2 on Parrot if running: sudo service apache2 stop).
 
-Report back: "Lab ready for Q148".
+Report back: "Lab ready for Q148 — setoolkit installed, Parrot:80 free, internet available".
 ```

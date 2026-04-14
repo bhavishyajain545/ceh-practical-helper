@@ -5,7 +5,7 @@
 | **Target** | `192.168.52.129` / `192.168.52.130` / pcap |
 | **Domain** | 07 — Sniffing / 14 — Wireless |
 | **Difficulty** | 🔴 Hard |
-| **Tools** | `tcpdump`, `wireshark`, `ettercap`, `bettercap`, `aircrack-ng` |
+| **Tools** | `aircrack-ng` |
 | **Time budget** | 10–20 min |
 
 ---
@@ -65,9 +65,10 @@ Cracks PSK if in dictionary.
 ## 🤖 Claude Setup Prompt (for Claude-on-your-PC)
 
 ```
-1. Verify VMs running: ping 192.168.52.129 and ping 192.168.52.130 from 192.168.52.128.
-2. Required services for this Q already up by default on the relevant target.
-3. If something is down, restart it on the target VM.
+Pre-requisites for Q133:
+1. Conceptual/local Parrot Q — no real wifi.
+2. On Parrot: which aircrack-ng; rockyou.txt unzipped.
+3. Stage wpa.pcap sample — download test handshake pcap (e.g. aircrack-ng test: curl -o wpa.pcap https://wiki.wireshark.org/SampleCaptures?action=AttachFile&do=get&target=wpa-eap-tls.pcap) or generate own if wifi card present.
 
-Report back: "Lab ready for Q133".
+Report back: "Lab ready for Q133 — aircrack-ng + rockyou available, wpa.pcap staged".
 ```

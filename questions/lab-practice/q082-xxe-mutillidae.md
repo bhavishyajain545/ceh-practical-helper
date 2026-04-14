@@ -5,7 +5,7 @@
 | **Target** | `192.168.52.129` (Metasploitable 2) |
 | **Domain** | 12 — Web Apps / 13 — SQLi |
 | **Difficulty** | 🔴 Hard |
-| **Tools** | `burpsuite`, `sqlmap`, `gobuster`, `nikto`, `curl` |
+| **Tools** | `burpsuite (or curl)` |
 | **Time budget** | 15–25 min |
 
 ---
@@ -65,9 +65,10 @@ Returns hostname.
 ## 🤖 Claude Setup Prompt (for Claude-on-your-PC)
 
 ```
-1. Verify VMs running: ping 192.168.52.129 and ping 192.168.52.130 from 192.168.52.128.
-2. Required services for this Q already up by default on the relevant target.
-3. If something is down, restart it on the target VM.
+Pre-requisites for Q082:
+1. Verify Metasploitable2 up; Mutillidae reachable.
+2. Set Mutillidae Security Level=0 (link at top of Mutillidae pages).
+3. Initialize/reset DB on first run.
 
-Report back: "Lab ready for Q082".
+Report back: "Lab ready for Q082 — Mutillidae reachable with security=0".
 ```
