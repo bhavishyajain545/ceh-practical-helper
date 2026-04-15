@@ -23,6 +23,7 @@
 | **[questions/by-domain/](questions/README.md)** | 207 drill questions, 18 domains | Daily practice |
 | **[questions/scenarios/](questions/scenarios/README.md)** | 30 multi-step cross-domain chains | Real exam-style practice |
 | **[questions/full-mock-exams/](questions/full-mock-exams/README.md)** | 3 full mock exams (20 Qs × 6 hours each) | Final week (timed) |
+| **[questions/lab-practice/](questions/lab-practice/README.md)** | 150 hands-on Qs for local VMware lab (Parrot + Metasploitable2 + Win7), with per-Q Claude VM setup prompts | Hands-on with own VMs |
 | **[00-exam-strategy/](00-exam-strategy/README.md)** to **[18-cryptography/](18-cryptography/README.md)** | 19 domain folders, each with README + commands + walkthroughs | Domain-deep dive |
 
 ---
