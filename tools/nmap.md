@@ -156,6 +156,105 @@ nmap -sV -p <PORT> <IP>
 
 ---
 
+## 🥷 Firewall / IDS Evasion
+
+CEH **loves** evasion questions. Know these cold — they're often worded as *"perform a decoy scan"*, *"fragment packets"*, *"scan using spoofed source port"*, *"idle/zombie scan"*.
+
+### Decoy scan (`-D`)
+Mask your real IP with fake attackers. IDS sees ~N sources, can't tell which is real.
+
+```bash
+sudo nmap -D RND:10 -sS 192.168.52.130              # 10 random decoys
+sudo nmap -D 10.0.0.1,10.0.0.2,ME,10.0.0.3 <IP>     # manual list, ME = your real IP position
+```
+
+- `RND:<n>` → n random decoys
+- **Must use `sudo`** (raw packets)
+- **Decoys must be alive** or remote endpoints might flag traffic as spoofed — pick real-looking IPs in the target's neighborhood.
+
+### Fragmentation (`-f`, `--mtu`)
+Split each probe into tiny IP fragments — primitive IDS may not reassemble.
+
+```bash
+sudo nmap -f <IP>                  # 8-byte fragments
+sudo nmap -ff <IP>                 # 16-byte fragments
+sudo nmap --mtu 24 <IP>            # custom MTU (multiple of 8)
+```
+
+### Source port spoofing (`-g` / `--source-port`)
+Many firewalls trust traffic from port 53 (DNS), 67 (DHCP), 88 (Kerberos), or 20 (FTP-DATA).
+
+```bash
+sudo nmap -g 53 -sS <IP>
+sudo nmap --source-port 88 <IP>
+```
+
+### Idle / zombie scan (`-sI`)
+Scan **entirely through a 3rd-party "zombie"** host with incremental IPID. Target never sees your IP.
+
+```bash
+# 1. Find a zombie with predictable IPID
+sudo nmap -O -v <ZOMBIE_IP> | grep -i "IP ID Sequence"   # want "Incremental"
+
+# 2. Scan target via zombie
+sudo nmap -sI <ZOMBIE_IP> <TARGET_IP>
+sudo nmap -sI <ZOMBIE_IP>:<port> <TARGET_IP>             # specify zombie's source port
+```
+
+- Zombie must be **idle** (no background traffic) and have **incremental IPID** (rare on modern OSes).
+- Use `nmap --script ipidseq.nse` on a subnet to find candidates.
+
+### MAC spoof (`--spoof-mac`)
+Change source MAC on the wire (useful on same L2 segment).
+
+```bash
+sudo nmap --spoof-mac 0 <IP>                  # random MAC
+sudo nmap --spoof-mac DE:AD:BE:EF:00:01 <IP>  # specific MAC
+sudo nmap --spoof-mac Apple <IP>              # random MAC from Apple OUI
+sudo nmap --spoof-mac Cisco <IP>              # OUI match
+```
+
+### Timing-based evasion (`-T0` / `--scan-delay`)
+Slow scans to dodge rate-based IDS rules.
+
+```bash
+sudo nmap -T0 <IP>                      # paranoid (5min between probes)
+sudo nmap -T1 <IP>                      # sneaky (15sec)
+sudo nmap --scan-delay 5s <IP>
+sudo nmap --max-scan-delay 10s --max-retries 1 <IP>
+```
+
+### Packet manipulation
+| Flag | Effect |
+|---|---|
+| `--data-length <n>` | Append n random bytes to every probe (evades signature matching) |
+| `--badsum` | Bad TCP/UDP checksum — replies mean a **bad firewall** (kernels drop bad checksums) |
+| `--ip-options <opts>` | Set custom IP options (loose source routing, etc.) |
+| `--ttl <n>` | Fixed TTL |
+| `--randomize-hosts` | Shuffle target order when scanning multiple hosts |
+
+### Combined evasion example (full stealth)
+```bash
+sudo nmap -sS -T2 -f --mtu 24 -D RND:5 -g 53 --data-length 25 --randomize-hosts -Pn <IP>
+```
+
+**Mental model:** Decoy confuses **source**, fragmentation confuses **signature matching**, source-port bypasses **rule**, idle hides **identity**, timing dodges **rate alarms**.
+
+### Evasion cheat-table (CEH keyword → flag)
+
+| Question says | Flag(s) |
+|---|---|
+| "decoy scan" / "cloaked source" | `-D RND:10` |
+| "fragment packets" / "split probes" | `-f` or `--mtu 24` |
+| "spoof source port" / "bypass firewall via DNS" | `-g 53` |
+| "idle scan" / "zombie scan" / "scan through proxy host" | `-sI <zombie>` |
+| "spoof MAC address" | `--spoof-mac 0` |
+| "slow/stealth scan" | `-T0` or `-T1` |
+| "append random data" / "evade signature" | `--data-length 25` |
+| "check firewall filtering" via bad checksum | `--badsum` |
+
+---
+
 ## ⚠️ Gotchas
 
 - **Question asks "version"** → use `-sV`. Without it you only get port state.
