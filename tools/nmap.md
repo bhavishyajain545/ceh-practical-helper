@@ -156,6 +156,56 @@ nmap -sV -p <PORT> <IP>
 
 ---
 
+## 🌐 IPv6 Scanning (`-6`)
+
+IPv6 targets are common in CEH scenario-based Qs. The `-6` flag switches nmap into IPv6 mode — most other flags work unchanged.
+
+### Basic IPv6 scans
+
+```bash
+nmap -6 2001:db8::1                          # single IPv6 host
+nmap -6 -sV 2001:db8::1                      # service versions
+sudo nmap -6 -sS fe80::a00:27ff:fe12:3456%eth0   # link-local (need zone id)
+nmap -6 --top-ports 100 2001:db8::/124       # small subnet
+```
+
+### Link-local quirks (VMware lab / local segment)
+Link-local addresses (`fe80::/10`) **require a zone identifier** `%<iface>` so the kernel knows which NIC.
+
+```bash
+# Discover neighbors on eth0
+ping6 -c 2 ff02::1%eth0                      # all-nodes multicast
+ip -6 neigh show dev eth0                    # ARP-equivalent cache
+
+# Scan discovered neighbor
+sudo nmap -6 -sS fe80::20c:29ff:fe12:3456%eth0
+```
+
+### IPv6-specific NSE scripts
+```bash
+nmap -6 --script=ipv6-* <target>             # all IPv6 scripts
+nmap -6 --script=targets-ipv6-multicast-*    # neighbor discovery via multicast
+nmap -6 --script=dns-ip6-arpa-scan <prefix>  # reverse DNS sweep of /64
+```
+
+### Gotchas
+- **No ping sweep on /64** — IPv6 subnets are too huge to sweep. Use neighbor discovery (`ip -6 neigh`, multicast ping `ff02::1`), DNS, or target lists.
+- **VMware NAT doesn't route IPv6** between guests by default — only link-local works on the shared L2. Host-Only mode or a manual config change is needed for global IPv6 testing.
+- **`-sn` (ping sweep)** with `-6` does ICMPv6 echo + NS — but still requires unicast targets, not a subnet scan.
+- Zone identifier must match the interface with the source IPv6 address — wrong `%iface` → "no route to host".
+- Windows Firewall blocks ICMPv6 by default → add `-Pn` if target looks down but is actually reachable via L2.
+
+### CEH IPv6 keyword → command
+
+| Question says | Command |
+|---|---|
+| "scan IPv6 target" | `nmap -6 <addr>` |
+| "discover neighbors on the IPv6 segment" | `ping6 ff02::1%eth0` then `ip -6 neigh` |
+| "scan link-local host" | `nmap -6 fe80::X%eth0` (zone id mandatory) |
+| "run IPv6 NSE scripts" | `nmap -6 --script=ipv6-*` |
+
+---
+
 ## 🥷 Firewall / IDS Evasion
 
 CEH **loves** evasion questions. Know these cold — they're often worded as *"perform a decoy scan"*, *"fragment packets"*, *"scan using spoofed source port"*, *"idle/zombie scan"*.
