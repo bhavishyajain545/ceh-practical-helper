@@ -110,10 +110,36 @@ Custom charset: `-1 ?l?d` then `?1?1?1?1` uses that set.
 | `22000` | **WPA-PBKDF2-PMKID+EAPOL** (new unified) | from `hcxpcapngtool` |
 | `2500` | WPA/WPA2 EAPOL (legacy `.hccapx`) | deprecated, use 22000 |
 | `16800` | WPA PMKID | legacy |
-| `11600` | 7-Zip | via `7z2hashcat` |
+| `11600` | **7-Zip** | via `7z2john` / `7z2hashcat` |
 | `13400` | KeePass | |
 | `9600` | Office 2013 | |
 | `9400` | Office 2007 | |
+| `7500` | **Kerberos 5 AS-REQ Pre-Auth (etype 23)** | captured AS-REQ, rare |
+| `10000` | Django PBKDF2-SHA256 | `pbkdf2_sha256$...` |
+| `13711` | **VeraCrypt SHA-512 + AES** | `.vc` container |
+| `13712` | VeraCrypt SHA-512 + Serpent | |
+| `13713` | VeraCrypt SHA-512 + Twofish | |
+| `13721` | VeraCrypt SHA-256 + AES | |
+| `13741` | VeraCrypt SHA-512 + AES (boot) | system-drive FDE |
+| `6211-6243` | TrueCrypt variants | legacy |
+
+### Attack-mode additions
+
+| `-a` | Name | Example |
+|---|---|---|
+| `7` | **Hybrid mask + wordlist** (digits prepended) | `hashcat -m 0 -a 7 hash.txt ?d?d?d words.txt` |
+
+### Workload / performance flags
+
+| Flag | Meaning |
+|---|---|
+| `-w 1` | Low (keeps desktop responsive) |
+| `-w 2` | Default |
+| `-w 3` | High (laptop can throttle) |
+| `-w 4` | **Nightmare** — 100% GPU, desktop becomes laggy; best speed |
+| `-O` | **Optimized kernels** — faster but pw length capped (~32) |
+| `--session=<name>` | Named session (pair with `--restore`) |
+| `--restore` | Resume a previously-named session after Ctrl+C |
 
 Full list: `hashcat --help | less` or `hashcat --example-hashes | less` (shows an example for every mode).
 

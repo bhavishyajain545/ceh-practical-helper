@@ -140,6 +140,86 @@ john --show=left hash.txt > uncracked.txt
 
 ---
 
+## 🔧 `*2john` preprocessors — extract hashes from files
+
+John ships with dozens of converters that turn a protected file into a john-compatible hash line. Then you crack with `john` or hashcat.
+
+| Preprocessor | Input | Example |
+|---|---|---|
+| `zip2john` | `.zip` | `zip2john secret.zip > zip.hash` |
+| `rar2john` | `.rar` | `rar2john secret.rar > rar.hash` |
+| `7z2john.pl` | `.7z` | `7z2john.pl secret.7z > 7z.hash` (hashcat `-m 11600`) |
+| `office2john.py` | `.docx` / `.xlsx` / `.pptx` / old `.doc` | `office2john.py doc.docx > off.hash` |
+| `pdf2john.pl` | `.pdf` | `pdf2john.pl doc.pdf > pdf.hash` |
+| `ssh2john` | SSH private key | `ssh2john id_rsa > ssh.hash` |
+| `keepass2john` | `.kdbx` | `keepass2john file.kdbx > kp.hash` |
+| `gpg2john` | GPG secret key | `gpg2john secring.gpg > gpg.hash` |
+| `hccap2john` | WPA `.hccap` (legacy) | `hccap2john cap.hccap > wpa.hash` |
+| `bitlocker2john` | BitLocker image | `bitlocker2john -i disk.img > bl.hash` |
+| `truecrypt_volume2john.py` | TrueCrypt `.tc` | pipe to hashcat `-m 6213` etc. |
+| `zed2john` | Zed! encrypted archive | |
+| `uaf2john` | OpenVMS UAF | |
+| `vncpcap2john` | VNC pcap | |
+
+**Find all of them on Parrot:**
+```bash
+ls /usr/share/john/ | grep 2john
+dpkg -L john | grep 2john
+```
+
+Typical flow:
+```bash
+office2john.py report.docx > off.hash
+john --wordlist=/usr/share/wordlists/rockyou.txt off.hash
+john --show off.hash
+# OR hand off to hashcat (faster on GPU)
+hashcat -m 9500 off.hash rockyou.txt   # Office 2010
+hashcat -m 9600 off.hash rockyou.txt   # Office 2013
+```
+
+---
+
+## 🎭 Mask mode (`--mask`)
+
+When you know the password shape (length/charset) but not the word, mask is 100x faster than `--incremental`.
+
+```bash
+# Exactly 8 lowercase letters
+john --mask='?l?l?l?l?l?l?l?l' hash.txt
+
+# Capital + 5 lowers + 2 digits (Corp2024-style)
+john --mask='?u?l?l?l?l?l?d?d' hash.txt
+
+# Variable length 4-10 with increment
+john --mask='?a?a?a?a?a?a?a?a?a?a' --min-length=4 --max-length=10 hash.txt
+
+# Custom charset: ?1 = lowercase + digit
+john -1='?l?d' --mask='?1?1?1?1?1?1?1?1' hash.txt
+```
+
+Token table (same as hashcat):
+- `?l` a-z · `?u` A-Z · `?d` 0-9 · `?s` specials · `?a` all printable · `?h` / `?H` hex
+
+---
+
+## ⚡ `--fork` — CPU parallelism
+
+John uses a single core by default. Use `--fork=<n>` to split the workload across N cores:
+
+```bash
+# Use 4 cores
+john --fork=4 --wordlist=rockyou.txt hash.txt
+
+# Check CPU count
+nproc
+```
+
+Each fork writes to the same potfile but its own session file (`session.log`, `session.1.log`, ...). On SMP laptops this is a free 2-8x speedup.
+
+For distributed cracking across machines: `--node=1/4` and run the same command on 4 boxes with `--node=2/4`, `3/4`, `4/4`.
+
+---
+
 ## 🔗 Related
 
 - [hashcat](./hashcat.md) — GPU cracking, same goal, faster

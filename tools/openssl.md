@@ -170,6 +170,36 @@ openssl x509 -in cert.pem -noout -subject -issuer -dates -fingerprint
 openssl req -x509 -newkey rsa:2048 -nodes \
   -keyout key.pem -out cert.pem -days 365 \
   -subj "/CN=test.local"
+
+# Explicit modern form (CEH blueprint wording)
+openssl req -new -x509 -days 365 -nodes \
+  -keyout server.key -out server.crt \
+  -subj "/CN=host"
+```
+
+### RSA decrypt with a private key (classic CTF / CEH crypto Q)
+```bash
+# Given private key + ciphertext, recover plaintext
+openssl rsautl -decrypt -inkey private.pem -in cipher.bin -out plain.txt
+
+# Modern alternative (rsautl is deprecated in OpenSSL 3):
+openssl pkeyutl -decrypt -inkey private.pem -in cipher.bin -out plain.txt
+
+# Inspect an RSA private key (modulus, exponent, d, primes)
+openssl rsa -in private.pem -text -noout
+
+# Extract public key from private
+openssl rsa -in private.pem -pubout -out public.pem
+```
+
+### AES decrypt with modern KDF (`-pbkdf2`)
+```bash
+# Matches files encrypted with the modern default openssl enc
+openssl enc -aes-256-cbc -d -pbkdf2 -iter 10000 \
+  -in cipher.bin -out plain.txt -k 'MyPassw0rd'
+
+# Legacy (pre-1.1) files need `-md md5` and no pbkdf2
+openssl enc -aes-256-cbc -d -md md5 -in legacy.enc -out plain.txt -k pass
 ```
 
 ### Password hashing (for /etc/shadow style)

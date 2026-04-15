@@ -52,10 +52,31 @@
 | `tcp.flags.fin == 1` | FIN packets |
 | `tcp.analysis.retransmission` | Retransmits |
 
+### Ethernet / MAC
+| Filter | What it matches |
+|---|---|
+| `eth.addr == aa:bb:cc:dd:ee:ff` | MAC (src or dst) |
+| `eth.src == aa:bb:...` | Source MAC only |
+| `eth.dst == ff:ff:ff:ff:ff:ff` | Broadcast frames |
+
+### ICMP
+| Filter | What it matches |
+|---|---|
+| `icmp` | All ICMP |
+| `icmp.type == 8` | Echo request (ping out) |
+| `icmp.type == 0` | Echo reply |
+| `icmp.type == 3` | Destination unreachable |
+| `icmp.type == 11` | Time exceeded (traceroute) |
+
 ### Protocols
 | Filter | What it matches |
 |---|---|
 | `http` | All HTTP |
+| `ftp-data` | FTP data channel (file transfer bytes) |
+| `smb2` | SMB 2/3 |
+| `tls.handshake` | All TLS handshake messages |
+| `http.response.code == 200` | HTTP 200 OK responses |
+| `http.response.code >= 400` | Errors |
 | `http.request` | Only HTTP requests |
 | `http.response` | Only HTTP responses |
 | `http.request.method == "POST"` | **POST requests (creds!)** |
@@ -120,6 +141,27 @@ Used at **Capture → Options → Capture filter**, not in the display bar.
 - **Statistics → I/O Graph** — spot spikes (DoS, exfil)
 - **Statistics → HTTP → Requests** — every URL hit
 - **Statistics → DNS** — query breakdown
+
+### Decode As (right-click a packet → Decode As)
+
+When Wireshark doesn't auto-recognize a protocol (e.g. a service running on a non-standard port), manually force dissection:
+- Right-click packet → **Decode As...** → add a row: field=TCP port, value=8443, current=HTTP
+- Great for: HTTP on 8081, RDP on custom port, MySQL on 13306
+
+### Coloring rules (View → Coloring Rules)
+
+Pre-defined rules highlight TCP RSTs red, bad checksums orange, HTTP green, etc. Add a custom rule (e.g. `http.request.method == "POST"` in bright yellow) to spot interesting packets at a glance.
+
+### Telephony menu (VoIP / RTP)
+- **Telephony → VoIP Calls** — list all SIP calls in the capture
+- **Telephony → RTP → RTP Streams** — pick a stream → **Play Streams** (requires decoded codec)
+- **Telephony → VoIP Calls → Play** — listen to the actual call audio (CEH VoIP Qs)
+
+### Time display format (View → Time Display Format)
+- **Date and Time of Day** — absolute timestamps
+- **Seconds Since Beginning of Capture** — relative (default)
+- **Seconds Since Previous Displayed Packet** — spot gaps / pauses
+- **UTC Date and Time of Day** — for correlation with server logs
 
 ### Follow stream (the shortcut you'll use constantly)
 Right-click any packet → **Follow → TCP Stream / UDP Stream / HTTP Stream / TLS Stream**. Reassembles the full conversation in readable form — where cleartext passwords usually appear.

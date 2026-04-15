@@ -107,7 +107,53 @@ tshark -r cap.pcap -qz conv,ip
 
 ---
 
+## 🔎 Display-filter parity with wireshark.md
+
+Every display filter documented in [wireshark.md](wireshark.md) works verbatim under `tshark -Y "<filter>"`. High-value ones to memorize for CLI use:
+
+### Ethernet / MAC
+```bash
+tshark -r cap.pcap -Y 'eth.addr == aa:bb:cc:dd:ee:ff'
+tshark -r cap.pcap -Y 'eth.dst == ff:ff:ff:ff:ff:ff'     # broadcasts
+```
+
+### ICMP
+```bash
+tshark -r cap.pcap -Y 'icmp.type == 8'                    # ping requests
+tshark -r cap.pcap -Y 'icmp.type == 3'                    # dest unreachable
+tshark -r cap.pcap -Y 'icmp.type == 11'                   # traceroute
+```
+
+### HTTP / TLS / DNS / SMB / FTP
+```bash
+tshark -r cap.pcap -Y 'http.response.code == 200'
+tshark -r cap.pcap -Y 'http.request.method == "POST"'
+tshark -r cap.pcap -Y 'tls.handshake.type == 1' -T fields -e tls.handshake.extensions_server_name
+tshark -r cap.pcap -Y 'dns.qry.name contains "evil"'
+tshark -r cap.pcap -Y 'smb2'
+tshark -r cap.pcap -Y 'ftp-data'                          # file transfer bytes
+```
+
+### IP / TCP / ports
+```bash
+tshark -r cap.pcap -Y 'ip.addr == 10.10.10.5'
+tshark -r cap.pcap -Y 'tcp.flags.syn == 1 and tcp.flags.ack == 0'   # SYN scan
+tshark -r cap.pcap -Y 'tcp.analysis.retransmission'
+```
+
+### Export objects via CLI (same as Wireshark's File → Export Objects)
+```bash
+tshark -r cap.pcap -q --export-objects http,./http_out
+tshark -r cap.pcap -q --export-objects smb,./smb_out
+tshark -r cap.pcap -q --export-objects tftp,./tftp_out
+tshark -r cap.pcap -q --export-objects imf,./email_out    # email (IMF)
+```
+
+For the full list, treat `wireshark.md` as the authoritative display-filter reference — anything with `.` syntax works here.
+
+---
+
 ## 📖 See also
-- [wireshark.md](wireshark.md)
+- [wireshark.md](wireshark.md) — the GUI and the authoritative filter list
 - [tcpdump.md](tcpdump.md)
 - [ettercap.md](ettercap.md)

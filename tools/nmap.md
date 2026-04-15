@@ -49,8 +49,13 @@
 | `-sS` | SYN stealth scan (default if root) | Default fast scan |
 | `-sT` | Full TCP connect | If you're not root |
 | `-sU` | UDP scan | SNMP, DNS, TFTP, NTP |
-| `-sA` | ACK scan | Map firewall rules |
+| `-sA` | **ACK scan** | Map firewall rules (distinguish stateful vs stateless) |
+| `-sW` | **Window scan** | Like ACK but reads TCP window size to infer open/closed |
+| `-sM` | **Maimon scan** (FIN/ACK) | Evasion against some BSD stacks |
 | `-sN` `-sF` `-sX` | NULL / FIN / Xmas | Bypass simple firewalls |
+| `-sY` | **SCTP INIT** | SCTP port discovery (CEH blueprint, telecom stacks) |
+| `-sZ` | **SCTP COOKIE-ECHO** | Stealthier SCTP probe |
+| `-sO` | **IP protocol scan** | Discover which IP protocols (ICMP/TCP/UDP/GRE/ESP...) respond |
 | `-sV` | **Version detection** | Almost every exam Q |
 | `-O` | OS detection | Needs root |
 | `-A` | Aggressive — `-sV -O -sC --traceroute` | When you have time |
@@ -62,6 +67,19 @@
 | `-T3` | Default | Normal |
 | `-T4` | **Aggressive** | **Default for exam** |
 | `-T5` | Insane | Risk of dropped packets |
+
+### Target selection extras
+| Flag | Meaning |
+|---|---|
+| `-iR <N>` | Scan **N random** internet hosts (research / CEH "pick random targets") |
+| `--exclude <host[,host]>` | Exclude specific hosts |
+| `--excludefile <file>` | Exclude a list |
+| `-e <iface>` | **Force source interface** (multi-NIC labs) |
+| `--reason` | **Why** a port is in the state it's in (e.g. "syn-ack", "no-response") |
+| `--script-args <k=v[,k=v]>` | Pass args to NSE scripts (e.g. `http-methods.url-path=/admin`) |
+| `--max-rate <pps>` | Cap packets-per-second (rate limit the attack) |
+| `--min-rate <pps>` | Force minimum PPS (speed up) |
+| `--open` | Show only open ports (skip closed/filtered) |
 
 ### Output (ALWAYS save scans)
 | Flag | Format |
@@ -116,6 +134,31 @@ nmap -sC <IP>                       # default scripts (safe)
 | **SSL** | 443 | `ssl-cert` | Cert details (CN, dates) |
 | SSL | 443 | `ssl-enum-ciphers` | Weak ciphers |
 | SSL | 443 | `ssl-heartbleed` | Heartbleed |
+
+### More NSE scripts worth knowing by name
+
+| Script | What it does |
+|---|---|
+| `smb-os-discovery` | Windows version, hostname, domain (pair with `-p 445`) |
+| `http-enum` | Dir / app fingerprint brute |
+| `http-methods` | With `--script-args http-methods.url-path=/admin` (see Q017) |
+| `ipv6-node-info` | IPv6 node info query (CEH IPv6 lab) |
+| `vuln` category | Run every safe-ish vuln check: `nmap --script vuln <IP>` |
+| `default` / `safe` / `auth` / `brute` / `discovery` / `dos` / `exploit` / `external` / `fuzzer` / `intrusive` / `malware` / `version` | Category names — use with `--script <category>` |
+
+### Using `--script-args`
+
+```bash
+# Probe /admin with http-methods
+nmap -p 80 --script http-methods --script-args http-methods.url-path=/admin <IP>
+
+# snmp-brute with a custom community list
+nmap -sU -p 161 --script snmp-brute --script-args snmp-brute.communitiesdb=communities.txt <IP>
+
+# http-brute against a login form
+nmap -p 80 --script http-brute --script-args \
+  http-brute.path=/login.php,userdb=users.txt,passdb=pass.txt <IP>
+```
 
 ### Find a script by keyword
 ```bash

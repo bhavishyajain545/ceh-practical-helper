@@ -108,8 +108,29 @@ while read pw; do
 done < /usr/share/wordlists/fasttrack.txt
 ```
 
-### Embed a secret (for practice / reverse scenarios)
+### Embed a secret (the "reverse" CEH Qs — half of stego questions!)
+
+The typical CEH stego question is split 50/50 between **extract** (given a file, find the secret) and **embed** (given a secret + cover, produce the stego file). Memorize both flows.
+
 ```bash
+# Canonical embed
+steghide embed -cf carrier.jpg -ef secret.txt -p 'password'
+
+# Info — shows capacity, asks if you want to probe (password needed to confirm data)
+steghide info carrier.jpg
+
+# Encryption algorithm choice (default rijndael-128 aka AES-128)
+steghide embed -cf carrier.jpg -ef secret.txt -p pass -e rijndael-256
+steghide embed -cf carrier.jpg -ef secret.txt -p pass -e serpent
+steghide embed -cf carrier.jpg -ef secret.txt -p pass -e twofish
+steghide embed -cf carrier.jpg -ef secret.txt -p pass -e 3des
+
+# Compression level (0 = no compression, 9 = max; default 9)
+steghide embed -cf carrier.jpg -ef secret.txt -p pass -z 9
+
+# List encryption options supported
+steghide encinfo
+
 # Embed secret.txt into cover.jpg, output replaces cover
 steghide embed -ef secret.txt -cf cover.jpg -p 'mypass'
 

