@@ -46,6 +46,7 @@
 | Tool | URL | Use |
 |---|---|---|
 | **Get-Metadata.com** | https://www.get-metadata.com/ | Universal metadata extractor (PDF, DOC, image, etc.) |
+| **Metadata Remover** | https://metadataremover.ai/metadata-viewer | Browser-local image metadata viewer/remover (JPG, PNG, WebP); no account |
 | **OnlineEXIF** | https://onlineexifviewer.com/ | Image EXIF only |
 | **MetaPicz** | http://metapicz.com/ | Photo metadata + GPS map view |
 
